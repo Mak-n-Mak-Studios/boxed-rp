@@ -33,6 +33,9 @@ namespace BoxedRp
 			player.Respawn();
 		}
 
+		/// <summary>
+		/// Overwrites noclip.
+		/// </summary>
 		public override void DoPlayerNoclip( Client player )
 		{
 		}

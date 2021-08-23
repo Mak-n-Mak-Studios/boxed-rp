@@ -7,6 +7,18 @@ namespace BoxedRp
 	/// </summary>
 	partial class BoxedRpPlayer : Player
 	{
+		private bool isFirstPerson = true;
+
+		public bool IsFirstPerson
+		{
+			get { return isFirstPerson; }
+			set
+			{
+				isFirstPerson = value;
+				Camera = IsFirstPerson ? new FirstPersonCamera() : new ThirdPersonCamera();
+			}
+		}
+
 		/// <summary>
 		/// Handles player spawning.
 		/// </summary>
@@ -15,7 +27,7 @@ namespace BoxedRp
 			SetModel( "models/citizen/citizen.vmdl" );
 			Controller = new WalkController();
 			Animator = new StandardPlayerAnimator();
-			Camera = new FirstPersonCamera();
+			Camera = IsFirstPerson ? new FirstPersonCamera() : new ThirdPersonCamera();
 			EnableAllCollisions = true;
 			EnableDrawing = true;
 			EnableHideInFirstPerson = true;
@@ -23,20 +35,10 @@ namespace BoxedRp
 			base.Respawn();
 		}
 
-		public override void Simulate( Client cl )
+		public override void Simulate( Client client )
 		{
-			base.Simulate( cl );
-			SimulateActiveChild( cl, ActiveChild );
-
-			if ( IsServer && Input.Pressed( InputButton.Attack1 ) )
-			{
-				var ragdoll = new ModelEntity();
-				ragdoll.SetModel( "models/citizen/citizen.vmdl" );
-				ragdoll.Position = EyePos + EyeRot.Forward * 40;
-				ragdoll.Rotation = Rotation.LookAt( Vector3.Random.Normal );
-				ragdoll.SetupPhysicsFromModel( PhysicsMotionType.Dynamic, false );
-				ragdoll.PhysicsGroup.Velocity = EyeRot.Forward * 1000;
-			}
+			base.Simulate( client );
+			SimulateActiveChild( client, ActiveChild );
 		}
 
 		public override void OnKilled()

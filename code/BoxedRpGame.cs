@@ -1,11 +1,12 @@
 ﻿using Sandbox;
+using Sandbox.UI;
 
 namespace BoxedRp
 {
 	/// <summary>
 	/// The game class for BoxedRP.
 	/// </summary>
-	public partial class BoxedRpGame : Game
+	internal partial class BoxedRpGame : SandboxGame
 	{
 		/// <summary>
 		/// Called on game load.
@@ -25,10 +26,15 @@ namespace BoxedRp
 
 		public override void ClientJoined( Client client )
 		{
-			base.ClientJoined( client );
+			Log.Info( $"\"{client.Name}\" has joined the game" );
+			ChatBox.AddInformation( To.Everyone, $"{client.Name} has joined", $"avatar:{client.SteamId}" );
 			BoxedRpPlayer player = new();
 			client.Pawn = player;
 			player.Respawn();
+		}
+
+		public override void DoPlayerNoclip( Client player )
+		{
 		}
 	}
 }

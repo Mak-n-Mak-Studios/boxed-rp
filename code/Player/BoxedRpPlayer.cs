@@ -5,7 +5,7 @@ namespace BoxedRp
 	/// <summary>
 	/// The player class for BoxedRP.
 	/// </summary>
-	partial class BoxedRpPlayer : Player
+	internal partial class BoxedRpPlayer : SandboxPlayer
 	{
 		private bool isFirstPerson = true;
 
@@ -24,27 +24,18 @@ namespace BoxedRp
 		/// </summary>
 		public override void Respawn()
 		{
-			SetModel( "models/citizen/citizen.vmdl" );
-			Controller = new WalkController();
-			Animator = new StandardPlayerAnimator();
-			Camera = IsFirstPerson ? new FirstPersonCamera() : new ThirdPersonCamera();
-			EnableAllCollisions = true;
-			EnableDrawing = true;
-			EnableHideInFirstPerson = true;
-			EnableShadowInFirstPerson = true;
 			base.Respawn();
+			Camera = IsFirstPerson ? new FirstPersonCamera() : new ThirdPersonCamera();
 		}
 
 		public override void Simulate( Client client )
 		{
 			base.Simulate( client );
-			SimulateActiveChild( client, ActiveChild );
 		}
 
 		public override void OnKilled()
 		{
 			base.OnKilled();
-			EnableDrawing = false;
 		}
 	}
 }

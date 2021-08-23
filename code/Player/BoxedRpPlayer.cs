@@ -9,6 +9,9 @@ namespace BoxedRp
 	{
 		private bool isFirstPerson = true;
 
+		/// <summary>
+		/// Getter/setter for whether the player's camera should be in first person mode or third person mode.
+		/// </summary>
 		public bool IsFirstPerson
 		{
 			get { return isFirstPerson; }

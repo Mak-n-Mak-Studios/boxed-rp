@@ -1,34 +1,37 @@
 ﻿using Sandbox;
 using Sandbox.UI;
 
-namespace BoxedRp
+namespace ChetoRp
 {
 	/// <summary>
-	/// The game class for BoxedRP.
+	/// The game class for ChetoRP.
 	/// </summary>
-	internal partial class BoxedRpGame : SandboxGame
+	internal partial class ChetoRpGame : SandboxGame
 	{
 		/// <summary>
 		/// Called on game load.
 		/// </summary>
-		public BoxedRpGame()
+		public ChetoRpGame()
 		{
 			if ( IsServer )
 			{
-				Log.Info( "BoxedRP has started loading on the server..." );
+				Log.Info( "ChetoRP has started loading on the server..." );
 			}
 
 			if ( IsClient )
 			{
-				Log.Info( "BoxedRP has started loading on the client..." );
+				Log.Info( "ChetoRP has started loading on the client..." );
 			}
 		}
 
+		/// <summary>
+		/// Called when a client joins.
+		/// </summary>
 		public override void ClientJoined( Client client )
 		{
 			Log.Info( $"\"{client.Name}\" has joined the game" );
 			ChatBox.AddInformation( To.Everyone, $"{client.Name} has joined", $"avatar:{client.SteamId}" );
-			BoxedRpPlayer player = new();
+			ChetoRpPlayer player = new();
 			client.Pawn = player;
 			player.Respawn();
 		}

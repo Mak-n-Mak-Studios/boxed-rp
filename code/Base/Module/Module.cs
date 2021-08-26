@@ -1,6 +1,4 @@
-﻿using Sandbox;
-
-namespace ChetoRp
+﻿namespace ChetoRp
 {
 	/// <summary>
 	/// Abstract class for modules. For internal use only. Extend <see cref="Module{T}"/> instead.

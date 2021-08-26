@@ -39,11 +39,11 @@
 		/// <summary>
 		/// The name of the event run prior to a config change.
 		/// </summary>
-		public const string OnPreConfigChange = "PreConfigChange";
+		public const string PreConfigChange = "PreConfigChange";
 
 		/// <summary>
 		/// The name of the event run after a config change.
 		/// </summary>
-		public const string OnPostConfigChange = "PostConfigChange";
+		public const string PostConfigChange = "PostConfigChange";
 	}
 }

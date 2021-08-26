@@ -41,7 +41,7 @@
 		/// </summary>
 		internal Module() : base()
 		{
-			ConfigStore = InitializeConfig();
+			InitializeConfig();
 			PreRun();
 		}
 	}

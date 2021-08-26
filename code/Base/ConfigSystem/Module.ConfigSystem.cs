@@ -1,5 +1,7 @@
 ﻿using Sandbox;
 
+using System;
+
 namespace ChetoRp
 {
 	/// <summary>
@@ -10,32 +12,30 @@ namespace ChetoRp
 		/// <summary>
 		/// The name of the folder holding the config files within the data folder.
 		/// </summary>
-		private const string CONFIG_FOLDER_NAME = "cheto-rp-config";
+		public const string ConfigFolderName = "cheto-rp-config";
+
+		private string configFileName;
+		private string configFilePath;
 
 		/// <summary>
 		/// Initializes the config store for the module with values from the config file or default values and returns it.
 		/// </summary>
 		/// <returns>The initialized config store.</returns>
-		private T InitializeConfig()
+		private void InitializeConfig()
 		{
-			T configStore = new();
+			configFileName = GetType().FullName + ".txt";
+			configFilePath = ConfigFolderName + "/" + configFileName;
 
-			FileSystem.Data.CreateDirectory( CONFIG_FOLDER_NAME );
+			FileSystem.Data.CreateDirectory( ConfigFolderName );
 
-			BaseFileSystem configFiles = FileSystem.Data.CreateSubSystem( CONFIG_FOLDER_NAME );
-			string configFileName = this.GetType().FullName + ".txt";
+			BaseFileSystem configFiles = FileSystem.Data.CreateSubSystem( ConfigFolderName );
 
-			if ( configFiles.FileExists( configFileName ) )
-			{
-				ReadConfigStoreFromDisk();
-			}
+			ReadConfigStoreFromDisk();
 
 			// Write regardless of whether the file exists or not to update any fields that are missing or get rid of outdated fields.
-			WriteConfigStoreToDisk( CONFIG_FOLDER_NAME + "/" + configFileName );
+			WriteConfigStoreToDisk( configFilePath );
 
 			configFiles.Watch( configFileName ).OnChangedFile += OnConfigFileModified;
-
-			return configStore;
 		}
 
 		/// <summary>
@@ -44,26 +44,37 @@ namespace ChetoRp
 		/// <param name="fileName">The config file's name.</param>
 		private void OnConfigFileModified( string fileName )
 		{
-			// Call the PreConfigChange event then update the struct using ReadConfigStoreFromDisk if no subscribers cancel it. Call PostConfigChange afterwards.
+			Event.Run( "PreConfigChange", ConfigStore );
+
+			ReadConfigStoreFromDisk();
+
+			Event.Run( "PostConfigChange", ConfigStore );
 		}
 
 		/// <summary>
-		/// Writes  the config file from the disk into the config store object.
+		/// Writes the contents of the config file from the disk into the config store. Silently fails.
 		/// </summary>
+
 		private void ReadConfigStoreFromDisk()
 		{
-			// Read the data folder's config file and mutate ConfigStore.
+			try
+			{
+				ConfigStore = FileSystem.Data.ReadJson<T>( configFilePath );
+			}
+			catch ( Exception )
+			{
+				// Don't do anything if ReadJson fails.
+			}
 		}
 
 		/// <summary>
 		/// Writes the config store to the disk, overwriting its current contents if there are any.
 		/// This will create a new config file if one is not found in the proper place.
 		/// The default path for the config file will be data/cheto-rp-config/&lt;MODULE_NAME&gt;.json.
-		/// <param name="filePath">The path of the config file to write to.</param>
 		/// </summary>
 		private void WriteConfigStoreToDisk( string filePath )
 		{
-			// Write the entirety of the config store into a file, overwriting the current contents.
+			JsonUtil.WritePrettyPrintedJson( ConfigStore, FileSystem.Data, filePath );
 		}
 	}
 }

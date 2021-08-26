@@ -29,9 +29,9 @@ namespace ChetoRp
 					modules.Add( type, module );
 					Event.Run( ChetoRpEvents.PostModuleInit, module );
 				}
-				catch
+				catch ( Exception e )
 				{
-					// TODO: Catch this and log the exception into the console.
+					Log.Error( e, $"Module of type, { type.FullName }, failed to load." );
 				}
 			}
 

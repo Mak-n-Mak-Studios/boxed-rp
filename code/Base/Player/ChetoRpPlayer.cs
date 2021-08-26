@@ -5,9 +5,9 @@ using Sandbox;
 namespace ChetoRp
 {
 	/// <summary>
-	/// The player class for ChetoRP.
+	/// The main player class for ChetoRP.
 	/// </summary>
-	internal partial class ChetoRpPlayer : SandboxPlayer
+	internal partial class ChetoRpPlayer : SandboxPlayer, IChetoRpPlayer
 	{
 		/// <summary>
 		/// The team the player is on.
@@ -24,7 +24,9 @@ namespace ChetoRp
 		/// </summary>
 		public override void Respawn()
 		{
+			Event.Run<IChetoRpPlayer>( "PrePlayerSpawn", this );
 			base.Respawn();
+			Event.Run<IChetoRpPlayer>( "PostPlayerSpawn", this );
 		}
 
 		/// <summary>

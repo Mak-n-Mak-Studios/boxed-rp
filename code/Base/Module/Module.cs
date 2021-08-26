@@ -1,4 +1,6 @@
-﻿namespace ChetoRp
+﻿using Sandbox;
+
+namespace ChetoRp
 {
 	/// <summary>
 	/// Abstract class for modules. For internal use only. Extend <see cref="Module{T}"/> instead.
@@ -17,7 +19,7 @@
 		/// </summary>
 		internal virtual void PreRun()
 		{
-			// Run Run().
+			Run();
 		}
 
 		/// <summary>
@@ -41,9 +43,8 @@
 		/// </summary>
 		internal Module() : base()
 		{
-			// Run the InitializeConfig method, returning a ConfigStore.
-			// Set ConfigStore to the above return value.
-			// Run the PreRun method.
+			ConfigStore = InitializeConfig();
+			PreRun();
 		}
 	}
 }

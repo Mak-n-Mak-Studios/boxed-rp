@@ -15,7 +15,7 @@
 		/// </summary>
 		internal OptionalModule() : base()
 		{
-			// Set the Enabled property based on the config store's value.
+			Enabled = ConfigStore.Enabled;
 		}
 
 		/// <summary>
@@ -23,7 +23,10 @@
 		/// </summary>
 		internal override void PreRun()
 		{
-			// If module is enabled, run Run().
+			if ( Enabled )
+			{
+				Run();
+			}
 		}
 	}
 }

@@ -22,8 +22,17 @@ namespace ChetoRp
 			foreach ( Type type in moduleTypes )
 			{
 				Event.Run( "PreModuleInit" );
-				Module module = Library.Create<Module>( type );
-				modules.Add( type, module );
+
+				try
+				{
+					Module module = Library.Create<Module>( type );
+					modules.Add( type, module );
+				}
+				catch
+				{
+					// TODO: Catch this and log the exception into the console.
+				}
+
 				Event.Run( "PostModuleInit" );
 			}
 		}

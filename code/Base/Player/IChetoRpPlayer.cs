@@ -10,6 +10,11 @@ namespace ChetoRp
 	public interface IChetoRpPlayer
 	{
 		/// <summary>
+		/// The main camera for the player.
+		/// </summary>
+		public ICamera MainCamera { get; set; }
+
+		/// <summary>
 		/// The team the player is on.
 		/// </summary>
 		public Team Team { get; set; }

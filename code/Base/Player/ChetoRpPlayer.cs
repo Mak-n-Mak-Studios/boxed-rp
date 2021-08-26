@@ -38,11 +38,26 @@ namespace ChetoRp
 		}
 
 		/// <summary>
+		/// Called when the player takes damage.
+		/// </summary>
+		/// <param name="info">The damage info.</param>
+		public override void TakeDamage( DamageInfo info )
+		{
+			ChetoRpDamageInfo modifiableDamageInfo = new();
+			modifiableDamageInfo.DamageInfo = info;
+			Event.Run( "PrePlayerTakeDamage", modifiableDamageInfo );
+			base.TakeDamage( modifiableDamageInfo.DamageInfo );
+			Event.Run( "PostPlayerTakeDamage", modifiableDamageInfo.DamageInfo );
+		}
+
+		/// <summary>
 		/// Called when a player's health reaches 0.
 		/// </summary>
 		public override void OnKilled()
 		{
+			Event.Run<IChetoRpPlayer>( "PrePlayerDeath", this );
 			base.OnKilled();
+			Event.Run<IChetoRpPlayer>( "PostPlayerDeath", this );
 		}
 	}
 }

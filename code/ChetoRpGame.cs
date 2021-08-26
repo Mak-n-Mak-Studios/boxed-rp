@@ -13,7 +13,7 @@ namespace ChetoRp
 		/// </summary>
 		public ChetoRpGame() : base()
 		{
-			Event.Run( "PreGameInit" );
+			Event.Run( ChetoRpEvents.PreGameInit );
 
 			if ( IsServer )
 			{
@@ -25,7 +25,7 @@ namespace ChetoRp
 				Log.Info( "ChetoRP has started loading on the client..." );
 			}
 
-			Event.Run( "PostGameInit" );
+			Event.Run( ChetoRpEvents.PostGameInit );
 			Modules.Start();
 		}
 
@@ -53,7 +53,7 @@ namespace ChetoRp
 		/// </summary>
 		public override void Shutdown()
 		{
-			Event.Run( "OnGameShutdown" );
+			Event.Run( ChetoRpEvents.OnGameShutdown );
 			base.Shutdown();
 		}
 	}

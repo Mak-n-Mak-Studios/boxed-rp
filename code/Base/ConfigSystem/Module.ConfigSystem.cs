@@ -8,7 +8,7 @@ namespace ChetoRp
 	public abstract partial class Module<T> : Module where T : new()
 	{
 		/// <summary>
-		/// The c o n f i g_ f o l d e r_ n a m e.
+		/// The name of the folder holding the config files within the data folder.
 		/// </summary>
 		private const string CONFIG_FOLDER_NAME = "cheto-rp-config";
 
@@ -18,12 +18,11 @@ namespace ChetoRp
 		/// <returns>The initialized config store.</returns>
 		private T InitializeConfig()
 		{
-			T configStore = Library.Create<T>( typeof( T ) );
+			T configStore = new();
 
 			FileSystem.Data.CreateDirectory( CONFIG_FOLDER_NAME );
 
 			BaseFileSystem configFiles = FileSystem.Data.CreateSubSystem( CONFIG_FOLDER_NAME );
-
 			string configFileName = this.GetType().FullName + ".txt";
 
 			if ( configFiles.FileExists( configFileName ) )

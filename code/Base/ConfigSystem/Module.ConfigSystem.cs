@@ -1,4 +1,6 @@
-﻿namespace ChetoRp
+﻿using Sandbox;
+
+namespace ChetoRp
 {
 	/// <summary>
 	/// The part of the <see cref="Module {T}"/> class which deals with the config system.
@@ -6,12 +8,35 @@
 	public abstract partial class Module<T> : Module where T : new()
 	{
 		/// <summary>
-		/// Initializes the config store for the module with default values and returns it.
+		/// The c o n f i g_ f o l d e r_ n a m e.
+		/// </summary>
+		private const string CONFIG_FOLDER_NAME = "cheto-rp-config";
+
+		/// <summary>
+		/// Initializes the config store for the module with values from the config file or default values and returns it.
 		/// </summary>
 		/// <returns>The initialized config store.</returns>
 		private T InitializeConfig()
 		{
-			return default;
+			T configStore = Library.Create<T>( typeof( T ) );
+
+			FileSystem.Data.CreateDirectory( CONFIG_FOLDER_NAME );
+
+			BaseFileSystem configFiles = FileSystem.Data.CreateSubSystem( CONFIG_FOLDER_NAME );
+
+			string configFileName = this.GetType().FullName + ".txt";
+
+			if ( configFiles.FileExists( configFileName ) )
+			{
+				ReadConfigStoreFromDisk();
+			}
+
+			// Write regardless of whether the file exists or not to update any fields that are missing or get rid of outdated fields.
+			WriteConfigStoreToDisk( CONFIG_FOLDER_NAME + "/" + configFileName );
+
+			configFiles.Watch( configFileName ).OnChangedFile += OnConfigFileModified;
+
+			return configStore;
 		}
 
 		/// <summary>
@@ -35,8 +60,9 @@
 		/// Writes the config store to the disk, overwriting its current contents if there are any.
 		/// This will create a new config file if one is not found in the proper place.
 		/// The default path for the config file will be data/cheto-rp-config/&lt;MODULE_NAME&gt;.json.
+		/// <param name="filePath">The path of the config file to write to.</param>
 		/// </summary>
-		private void WriteConfigStoreToDisk()
+		private void WriteConfigStoreToDisk( string filePath )
 		{
 			// Write the entirety of the config store into a file, overwriting the current contents.
 		}

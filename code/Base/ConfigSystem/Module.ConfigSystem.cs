@@ -44,11 +44,11 @@ namespace ChetoRp
 		/// <param name="fileName">The config file's name.</param>
 		private void OnConfigFileModified( string fileName )
 		{
-			Event.Run( ChetoRpEvents.PreConfigChange, ConfigStore );
+			Event.Run( ChetoRpEvents.PreConfigChange, this );
 
 			ReadConfigStoreFromDisk();
 
-			Event.Run( ChetoRpEvents.PostConfigChange, ConfigStore );
+			Event.Run( ChetoRpEvents.PostConfigChange, this );
 		}
 
 		/// <summary>

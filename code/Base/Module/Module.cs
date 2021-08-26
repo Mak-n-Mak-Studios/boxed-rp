@@ -32,9 +32,9 @@
 	public abstract partial class Module<T> : Module where T : new()
 	{
 		/// <summary>
-		/// The config store for the module.
+		/// The config store for the module. Do not hold onto a reference to this. The ConfigStore may change at anytime.
 		/// </summary>
-		public T ConfigStore { get; }
+		public T ConfigStore { get; private set; }
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Module{T}"/> class. For internal use only.

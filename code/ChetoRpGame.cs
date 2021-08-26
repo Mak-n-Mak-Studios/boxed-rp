@@ -11,8 +11,10 @@ namespace ChetoRp
 		/// <summary>
 		/// Called on game load.
 		/// </summary>
-		public ChetoRpGame()
+		public ChetoRpGame() : base()
 		{
+			Event.Run( "PreGameInit" );
+
 			if ( IsServer )
 			{
 				Log.Info( "ChetoRP has started loading on the server..." );
@@ -22,6 +24,8 @@ namespace ChetoRp
 			{
 				Log.Info( "ChetoRP has started loading on the client..." );
 			}
+
+			Event.Run( "PostGameInit" );
 		}
 
 		/// <summary>
@@ -41,6 +45,15 @@ namespace ChetoRp
 		/// </summary>
 		public override void DoPlayerNoclip( Client player )
 		{
+		}
+
+		/// <summary>
+		/// Called on game shutdown.
+		/// </summary>
+		public override void Shutdown()
+		{
+			Event.Run( "OnGameShutdown" );
+			base.Shutdown();
 		}
 	}
 }

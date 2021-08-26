@@ -24,9 +24,9 @@ namespace ChetoRp
 		/// </summary>
 		public override void Respawn()
 		{
-			Event.Run<IChetoRpPlayer>( "PrePlayerSpawn", this );
+			Event.Run<IChetoRpPlayer>( ChetoRpEvents.PrePlayerSpawn, this );
 			base.Respawn();
-			Event.Run<IChetoRpPlayer>( "PostPlayerSpawn", this );
+			Event.Run<IChetoRpPlayer>( ChetoRpEvents.PostPlayerSpawn, this );
 		}
 
 		/// <summary>
@@ -45,9 +45,9 @@ namespace ChetoRp
 		{
 			ChetoRpDamageInfo modifiableDamageInfo = new();
 			modifiableDamageInfo.DamageInfo = info;
-			Event.Run( "PrePlayerTakeDamage", modifiableDamageInfo );
+			Event.Run<IChetoRpPlayer, ChetoRpDamageInfo>( ChetoRpEvents.PrePlayerTakeDamage, this, modifiableDamageInfo );
 			base.TakeDamage( modifiableDamageInfo.DamageInfo );
-			Event.Run( "PostPlayerTakeDamage", modifiableDamageInfo.DamageInfo );
+			Event.Run<IChetoRpPlayer, DamageInfo>( ChetoRpEvents.PostPlayerTakeDamage, this, modifiableDamageInfo.DamageInfo );
 		}
 
 		/// <summary>
@@ -55,9 +55,9 @@ namespace ChetoRp
 		/// </summary>
 		public override void OnKilled()
 		{
-			Event.Run<IChetoRpPlayer>( "PrePlayerDeath", this );
+			Event.Run<IChetoRpPlayer>( ChetoRpEvents.PrePlayerDeath, this );
 			base.OnKilled();
-			Event.Run<IChetoRpPlayer>( "PostPlayerDeath", this );
+			Event.Run<IChetoRpPlayer>( ChetoRpEvents.PostPlayerDeath, this );
 		}
 	}
 }

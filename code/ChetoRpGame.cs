@@ -26,6 +26,8 @@ namespace ChetoRp
 			}
 
 			Event.Run( "PostGameInit" );
+			Modules.Start();
+			Event.Run( "OnAllModulesInit" );
 		}
 
 		/// <summary>

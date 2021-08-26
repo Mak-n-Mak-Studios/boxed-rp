@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using Sandbox;
+
 namespace ChetoRp
 {
 	/// <summary>
@@ -8,14 +10,22 @@ namespace ChetoRp
 	/// </summary>
 	public static class Modules
 	{
-		private readonly static Dictionary<Type, object> modules = new();
+		private readonly static Dictionary<Type, Module> modules = new();
 
 		/// <summary>
 		/// Starts all modules.
 		/// </summary>
 		internal static void Start()
 		{
-			// Will instantiate all modules via the ChetoRpModule attribute and add them to the modules dictionary. The object in the modules dictionary is the module instance corresponding to the type key. Make sure to run the events: PreModuleInit and PostModuleInit.
+			IEnumerable<Type> moduleTypes = Library.GetAll<Module>();
+
+			foreach ( Type type in moduleTypes )
+			{
+				Event.Run( "PreModuleInit" );
+				Module module = Library.Create<Module>( type );
+				modules.Add( type, module );
+				Event.Run( "PostModuleInit" );
+			}
 		}
 
 		/// <summary>
@@ -24,8 +34,7 @@ namespace ChetoRp
 		/// <returns>The module.</returns>
 		public static T Get<T>() where T : Module
 		{
-			// Get the module from the dictionary and cast to T.
-			return default;
+			return ( T ) modules[ typeof( T ) ];
 		}
 	}
 }

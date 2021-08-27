@@ -59,7 +59,7 @@ namespace ChetoRp
 		{
 			try
 			{
-				ConfigStore = FileSystem.Data.ReadJson<T>( configFilePath );
+				ConfigStore = FileSystem.Data.ReadJson<T>( configFilePath ) ?? new();
 			}
 			catch ( Exception )
 			{

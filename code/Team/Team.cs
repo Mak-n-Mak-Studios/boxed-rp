@@ -5,6 +5,7 @@ namespace ChetoRp.Employment
 	/// <summary>
 	/// The class for teams.
 	/// </summary>
+	[ChetoRpConfigObject]
 	public class Team
 	{
 		/// <summary>

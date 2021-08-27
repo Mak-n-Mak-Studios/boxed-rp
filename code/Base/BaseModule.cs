@@ -3,16 +3,19 @@
 	/// <summary>
 	/// The config store class for <see cref="BaseModule"/>.
 	/// </summary>
+	[ChetoRpConfigObject]
 	public class BaseModuleConfig
 	{
 		/// <summary>
 		/// The minimum speed the player needs to be going down vertically to take damage.
 		/// </summary>
+		[ChetoRpConfigOptionInfo( "The minimum speed the player needs to be going down vertically to take damage." )]
 		public float MinFallDamageSpeed { get; set; } = 500;
 
 		/// <summary>
 		/// The damping of the fall damage value. The formula for fall damage is FallSpeed / FallDamageDamping.
 		/// </summary>
+		[ChetoRpConfigOptionInfo( "The damping of the fall damage value. The formula for fall damage is FallSpeed / FallDamageDamping." )]
 		public int FallDamageDamping { get; set; } = 20;
 	}
 

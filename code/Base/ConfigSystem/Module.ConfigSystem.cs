@@ -24,6 +24,7 @@ namespace ChetoRp
 			ReadCommentHandling = JsonCommentHandling.Skip,
 			WriteIndented = true
 		};
+
 		private string configFileName;
 		private string configFilePath;
 		private string configDocumentation;
@@ -97,6 +98,8 @@ namespace ChetoRp
 		/// <returns>The readable string.</returns>
 		private static string TypeToString( Type type )
 		{
+			// This code should be swapped back in once TypeCodes are whitelisted.
+
 			/*return Type.GetTypeCode( type ) switch
 			{
 				TypeCode.Boolean => "true or false",
@@ -171,7 +174,7 @@ namespace ChetoRp
 			if ( propertyPrimitiveTypeString == null )
 			{
 				string customTypeString = propertyInfo.PropertyType.ToString();
-				propertyCustomTypeString = customTypeString[ ( propertyCustomTypeString.LastIndexOf( '.' ) + 1 ).. ];
+				propertyCustomTypeString = customTypeString[ ( customTypeString.LastIndexOf( '.' ) + 1 ).. ];
 			}
 
 			configDocBuilder.Append( spaces )
@@ -179,6 +182,9 @@ namespace ChetoRp
 				.Append( " - " )
 				.Append( propertyPrimitiveTypeString ?? propertyCustomTypeString )
 				.Append( ":\n\n" )
+				.Append( spaces )
+				.Append( "Description:" )
+				.Append( ":\n" )
 				.Append( spaces )
 				.Append( propertyInfo.Description.Replace( "\n", "\n" + spaces ) )
 				.Append( ":\n\n" )
@@ -233,15 +239,18 @@ namespace ChetoRp
 		{
 			if ( configDocumentation == null )
 			{
-				StringBuilder configDocBuilder = new( @"/*//////////// BEGINNING OF <CONFIG NAME> DOCUMENTATION \\\\\\\\\\\\" );
+				string qualifiedTypeName = GetType().ToString();
+				string typeName = qualifiedTypeName[ ( qualifiedTypeName.LastIndexOf( '.' ) + 1 ).. ];
+
+				StringBuilder configDocBuilder = new StringBuilder( @$"/*//////////// BEGINNING OF {typeName} DOCUMENTATION \\\\\\\\\\\\" )
+					.Append( "\n\n\n" );
 
 				AppendConfigObject( configDocBuilder, ConfigStore, 0 )
-					.Append( @"/////////////// END OF <CONFIG NAME> DOCUMENTATION \\\\\\\\\\\\\\\*/" )
-					.Append( "\n\n\n\n\n" );
+					.Append( @$"/////////////// END OF {typeName} DOCUMENTATION \\\\\\\\\\\\\\\*/" )
+					.Append( "\n\n\n\n" );
 
 				configDocumentation = configDocBuilder.ToString();
 			}
-
 
 			FileSystem.Data.WriteAllText( filePath, configDocumentation + JsonSerializer.Serialize( ConfigStore, serializerOptions ) );
 		}

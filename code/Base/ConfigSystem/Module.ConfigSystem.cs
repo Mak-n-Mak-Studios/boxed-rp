@@ -1,6 +1,8 @@
 ﻿using Sandbox;
 
 using System;
+using System.IO;
+using System.Text.Json;
 
 namespace ChetoRp
 {
@@ -52,18 +54,34 @@ namespace ChetoRp
 		}
 
 		/// <summary>
-		/// Writes the contents of the config file from the disk into the config store. Silently fails.
+		/// Writes the contents of the config file from the disk into the config store.
+		/// This will back up the config file if a JsonException is encountered or rethrow
+		/// any other exceptions created, retaining the latest available ConfigStore
+		/// unless none is available in which case it will be set to the default one.
 		/// </summary>
 
 		private void ReadConfigStoreFromDisk()
 		{
+			string fileContent = null;
+
 			try
 			{
-				ConfigStore = FileSystem.Data.ReadJson<T>( configFilePath ) ?? new();
+				fileContent = FileSystem.Data.ReadAllText( configFilePath );
+				ConfigStore = JsonSerializer.Deserialize<T>( fileContent, new JsonSerializerOptions()
+				{
+					ReadCommentHandling = JsonCommentHandling.Skip,
+					AllowTrailingCommas = true
+				} ) ?? new();
 			}
-			catch ( Exception )
+			catch ( FileNotFoundException _ )
 			{
 				ConfigStore = new();
+			}
+			catch ( JsonException _ )
+			{
+				ConfigStore ??= new();
+
+				FileSystem.Data.WriteAllText( configFilePath + ".bak", fileContent );
 			}
 		}
 

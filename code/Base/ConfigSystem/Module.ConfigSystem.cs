@@ -95,9 +95,9 @@ namespace ChetoRp
 		/// </summary>
 		/// <param name="type">The type.</param>
 		/// <returns>The readable string.</returns>
-		private string TypeToString( Type type )
+		private static string TypeToString( Type type )
 		{
-			return Type.GetTypeCode( type ) switch
+			/*return Type.GetTypeCode( type ) switch
 			{
 				TypeCode.Boolean => "true or false",
 
@@ -119,7 +119,33 @@ namespace ChetoRp
 				TypeCode.String => "text",
 
 				_ => null,
-			};
+			};*/
+
+			if ( type == typeof( bool ) )
+			{
+				return "true or false";
+			}
+			else if ( type == typeof( uint ) || type == typeof( int ) || type == typeof( ushort ) || type == typeof( short ) ||
+				type == typeof( ulong ) || type == typeof( long ) || type == typeof( byte ) || type == typeof( sbyte ) )
+			{
+				return "integer";
+			}
+			else if ( type == typeof( float ) || type == typeof( double ) || type == typeof( decimal ) )
+			{
+				return "integer or decimal";
+			}
+			else if ( type == typeof( char ) )
+			{
+				return "single character";
+			}
+			else if ( type == typeof( string ) )
+			{
+				return "text";
+			}
+			else
+			{
+				return null;
+			}
 		}
 
 		/// <summary>
@@ -137,14 +163,21 @@ namespace ChetoRp
 				return null;
 			}
 
-			string propertyTypeString = TypeToString( propertyInfo.PropertyType );
+			string propertyPrimitiveTypeString = TypeToString( propertyInfo.PropertyType );
+			string propertyCustomTypeString = null;
 			object propertyDefaultValue = propertyInfo.GetValue<object>( enclosingObject );
 			string spaces = new( ' ', tabsIn * 4 );
+
+			if ( propertyPrimitiveTypeString == null )
+			{
+				string customTypeString = propertyInfo.PropertyType.ToString();
+				propertyCustomTypeString = customTypeString[ ( propertyCustomTypeString.LastIndexOf( '.' ) + 1 ).. ]
+			}
 
 			configDocBuilder.Append( spaces )
 				.Append( propertyInfo.Name )
 				.Append( " - " )
-				.Append( propertyTypeString ?? propertyInfo.PropertyType.Name )
+				.Append( propertyPrimitiveTypeString ?? propertyCustomTypeString )
 				.Append( ":\n\n" )
 				.Append( spaces )
 				.Append( propertyInfo.Description.Replace( "\n", "\n" + spaces ) )
@@ -156,10 +189,10 @@ namespace ChetoRp
 				.Append( spaces )
 				.Append( JsonSerializer.Serialize( propertyDefaultValue, serializerOptions ).Replace( "\n", "\n" + spaces ) );
 
-			if ( propertyTypeString == null )
+			if ( propertyCustomTypeString != null )
 			{
 				configDocBuilder.Append( "\n\n\n\nLayout of " )
-					.Append( propertyInfo.PropertyType.Name )
+					.Append( propertyCustomTypeString )
 					.Append( ":\n" );
 
 				AppendConfigObject( configDocBuilder, propertyDefaultValue, tabsIn + 1 );

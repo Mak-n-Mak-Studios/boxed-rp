@@ -36,7 +36,7 @@ namespace ChetoRp
 			// Write regardless of whether the file exists or not to update any fields that are missing or get rid of outdated fields.
 			WriteConfigStoreToDisk( configFilePath );
 
-			configFiles.Watch( configFileName ).OnChangedFile += OnConfigFileModified;
+			configFiles.Watch( configFileName ).OnChangedFile += OnConfigFileModified; // TO-DO: Fix this. File watcher does not seem to be calling the event.
 		}
 
 		/// <summary>

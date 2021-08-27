@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Sandbox;
+
+using System;
 
 namespace ChetoRp
 {
 	/// <summary>
 	/// The attribute to put on all config options properties within config stores
 	/// </summary>
-	[AttributeUsage( AttributeTargets.Property )]
-	class ChetoRpConfigOptionInfoAttribute : Attribute
+	class ChetoRpConfigOptionInfoAttribute : PropertyAttribute
 	{
 		/// <summary>
 		/// The description of the config option that this attribute is applied to.

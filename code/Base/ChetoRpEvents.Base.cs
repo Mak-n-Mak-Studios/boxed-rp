@@ -5,9 +5,9 @@ using Sandbox;
 namespace ChetoRp
 {
 	/// <summary>
-	/// A static class containing constant event names.
+	/// A static partial class containing constant event names.
 	/// </summary>
-	public static class ChetoRpEvents
+	public static partial class ChetoRpEvents
 	{
 		// Game events.
 

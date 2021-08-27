@@ -10,12 +10,21 @@ namespace ChetoRp
 		/// <summary>
 		/// The minimum speed the player needs to be going down vertically to take damage.
 		/// </summary>
-		public float MinFallDamageSpeed { get; set; } = 500;
+		public float MinFallDamageSpeed { get; set; }
 
 		/// <summary>
 		/// The damping of the fall damage value. The formula for fall damage is FallSpeed / FallDamageDamping.
 		/// </summary>
-		public int FallDamageDamping { get; set; } = 20;
+		public int FallDamageDamping { get; set; }
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="ChetoRpWalkController"/> class.
+		/// </summary>
+		public ChetoRpWalkController()
+		{
+			MinFallDamageSpeed = Modules.Get<BaseModule>().ConfigStore.MinFallDamageSpeed;
+			FallDamageDamping = Modules.Get<BaseModule>().ConfigStore.FallDamageDamping;
+		}
 
 		/// <summary>
 		/// Simulates the player's movements.

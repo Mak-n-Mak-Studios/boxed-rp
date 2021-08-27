@@ -1,8 +1,7 @@
-﻿using Sandbox;
-
-using System;
-using System.IO;
+﻿using System.IO;
 using System.Text.Json;
+
+using Sandbox;
 
 namespace ChetoRp
 {
@@ -73,11 +72,11 @@ namespace ChetoRp
 					AllowTrailingCommas = true
 				} ) ?? new();
 			}
-			catch ( FileNotFoundException _ )
+			catch ( FileNotFoundException )
 			{
 				ConfigStore = new();
 			}
-			catch ( JsonException _ )
+			catch ( JsonException )
 			{
 				ConfigStore ??= new();
 

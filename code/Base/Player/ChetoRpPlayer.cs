@@ -12,11 +12,13 @@ namespace ChetoRp
 		/// <summary>
 		/// The team the player is on.
 		/// </summary>
+		[Net, Local]
 		public Team Team { get; set; } = Team.DefaultTeam;
 
 		/// <summary>
 		/// The amount of money a player has.
 		/// </summary>
+		[Net, Local]
 		public ulong Money { get; set; } = 0;
 
 		/// <summary>
@@ -26,6 +28,7 @@ namespace ChetoRp
 		{
 			Event.Run<IChetoRpPlayer>( ChetoRpEvents.PrePlayerSpawn, this );
 			base.Respawn();
+			Controller = new ChetoRpWalkController();
 			Event.Run<IChetoRpPlayer>( ChetoRpEvents.PostPlayerSpawn, this );
 		}
 

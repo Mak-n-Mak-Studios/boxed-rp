@@ -6,7 +6,7 @@ namespace ChetoRp
 	/// The attribute to put on all config options properties within config stores
 	/// </summary>
 	[AttributeUsage( AttributeTargets.Property )]
-	class ChetoRpConfigOptionDescriptionAttribute : Attribute
+	class ChetoRpConfigOptionInfoAttribute : Attribute
 	{
 		/// <summary>
 		/// The description of the config option that this attribute is applied to.
@@ -14,10 +14,10 @@ namespace ChetoRp
 		public string Description { get; }
 
 		/// <summary>
-		/// Initializes a new<see cref="ChetoRpConfigOptionDescriptionAttribute"/>.
+		/// Initializes a new<see cref="ChetoRpConfigOptionInfoAttribute"/>.
 		/// </summary>
 		/// <param name="description">The config option description.</param>
-		public ChetoRpConfigOptionDescriptionAttribute( string description )
+		public ChetoRpConfigOptionInfoAttribute( string description )
 		{
 			Description = description;
 		}

@@ -63,7 +63,7 @@ namespace ChetoRp
 			}
 			catch ( Exception )
 			{
-				// Don't do anything if ReadJson fails.
+				ConfigStore = new();
 			}
 		}
 

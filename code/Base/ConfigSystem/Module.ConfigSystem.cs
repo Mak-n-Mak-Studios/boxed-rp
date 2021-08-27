@@ -171,7 +171,7 @@ namespace ChetoRp
 			if ( propertyPrimitiveTypeString == null )
 			{
 				string customTypeString = propertyInfo.PropertyType.ToString();
-				propertyCustomTypeString = customTypeString[ ( propertyCustomTypeString.LastIndexOf( '.' ) + 1 ).. ]
+				propertyCustomTypeString = customTypeString[ ( propertyCustomTypeString.LastIndexOf( '.' ) + 1 ).. ];
 			}
 
 			configDocBuilder.Append( spaces )

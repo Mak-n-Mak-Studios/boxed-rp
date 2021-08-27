@@ -5,9 +5,9 @@ using System;
 namespace ChetoRp
 {
 	/// <summary>
-	/// The part of the <see cref="Module {T}"/> class which deals with the config system.
+	/// The part of the <see cref="Module{T}"/> class which deals with the config system.
 	/// </summary>
-	public abstract partial class Module<T> : Module where T : new()
+	public abstract partial class Module<T> where T : new()
 	{
 		/// <summary>
 		/// The name of the folder holding the config files within the data folder.

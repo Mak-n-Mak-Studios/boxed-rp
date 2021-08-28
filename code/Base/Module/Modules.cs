@@ -31,7 +31,7 @@ namespace ChetoRp
 				}
 				catch ( Exception e )
 				{
-					Log.Error( e, $"Module of type, { type.FullName }, failed to load." );
+					Log.Error( e, $"Module of type, {type.FullName}, failed to load." );
 				}
 			}
 

@@ -216,7 +216,7 @@ namespace ChetoRp
 		/// <returns>A StringBuilder.</returns>
 		private StringBuilder AppendConfigObject<U>( StringBuilder configDocBuilder, U obj, int tabsIn )
 		{
-			Type type = typeof( U );
+			Type type = obj.GetType();
 			IReadOnlyList<PropertyAttribute> configStoreProperties = Library.GetAttribute( type )?.Properties ??
 				throw new Exception( $"The config object of type {type} used in this module's config store does not have the ChetoRpConfigObject attribute on it." );
 

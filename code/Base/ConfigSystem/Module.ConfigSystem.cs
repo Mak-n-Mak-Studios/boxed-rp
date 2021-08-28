@@ -165,16 +165,28 @@ namespace ChetoRp
 				return null;
 			}
 
-			Type baseType = GetArrayElementType( propertyInfo.PropertyType, out _ );
+			Type baseType = GetArrayElementType( propertyInfo.PropertyType, out int deep );
 			string propertyPrimitiveTypeString = TypeToString( propertyInfo.PropertyType );
 			string propertyCustomTypeString = null;
+			string propertyCustomBaseTypeString = null;
 			object propertyDefaultValue = propertyInfo.GetValue<object>( enclosingObject );
 			string spaces = new( ' ', tabsIn * 4 );
 
 			if ( propertyPrimitiveTypeString == null )
 			{
-				string customTypeString = baseType.ToString();
+				string customTypeString = propertyInfo.PropertyType.ToString();
+
 				propertyCustomTypeString = customTypeString[ ( customTypeString.LastIndexOf( '.' ) + 1 ).. ];
+
+				if ( deep > 0 )
+				{
+					string customBaseTypeString = baseType.ToString();
+					propertyCustomBaseTypeString = customBaseTypeString[ ( customBaseTypeString.LastIndexOf( '.' ) + 1 ).. ];
+				}
+				else
+				{
+					propertyCustomBaseTypeString = propertyCustomTypeString;
+				}
 			}
 
 			configDocBuilder.Append( spaces )
@@ -197,11 +209,11 @@ namespace ChetoRp
 
 			if ( propertyCustomTypeString != null )
 			{
-				configDocBuilder.Append( "\n\n\n\nLayout of " )
-					.Append( propertyCustomTypeString )
+				configDocBuilder.Append( "\n\n-----------------------------------------------------------------\n\nLayout of " )
+					.Append( propertyCustomBaseTypeString )
 					.Append( ":\n" );
 
-				if ( baseType == propertyDefaultValue.GetType() )
+				if ( deep == 0 )
 				{
 					AppendConfigObject( configDocBuilder, propertyDefaultValue, tabsIn + 1 );
 				}
@@ -222,7 +234,7 @@ namespace ChetoRp
 		/// <param name="type">The config object type to append.</param>
 		/// <param name="tabsIn">The number of tabs in to append everything.</param>
 		/// <returns>A StringBuilder.</returns>
-		private StringBuilder AppendConfigObject<U>( StringBuilder configDocBuilder, Type type, int tabsIn )
+		private StringBuilder AppendConfigObject( StringBuilder configDocBuilder, Type type, int tabsIn )
 		{
 			object configObject = Library.Create<object>( type ) ??
 				throw new Exception( $"The config object of type {type} used in this module's config store does not have the ChetoRpConfigObject attribute on it" );

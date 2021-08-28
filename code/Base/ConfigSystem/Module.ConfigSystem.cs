@@ -98,58 +98,57 @@ namespace ChetoRp
 		/// <returns>The readable string.</returns>
 		private static string TypeToString( Type type )
 		{
-			// This code should be swapped back in once TypeCodes are whitelisted.
-
-			/*return Type.GetTypeCode( type ) switch
-			{
-				TypeCode.Boolean => "true or false",
-
-				TypeCode.SByte or
-				TypeCode.Byte or
-				TypeCode.Int16 or
-				TypeCode.UInt16 or
-				TypeCode.Int32 or
-				TypeCode.UInt32 or
-				TypeCode.Int64 or
-				TypeCode.UInt64 => "integer",
-
-				TypeCode.Single or
-				TypeCode.Double or
-				TypeCode.Decimal => "integer or decimal",
-
-				TypeCode.Char => "single character",
-
-				TypeCode.String => "text",
-
-				_ => null,
-			};*/
+			type = GetArrayElementType( type, out int deep );
+			StringBuilder arrayOfText = new StringBuilder( deep * 9 + 15 ).
+				Insert( 0, "array of ", deep );
 
 			if ( type == typeof( bool ) )
 			{
-				return "true or false";
+				return arrayOfText.Append( "true/false" ).ToString();
 			}
 			else if ( type == typeof( uint ) || type == typeof( int ) || type == typeof( ushort ) || type == typeof( short ) ||
 				type == typeof( ulong ) || type == typeof( long ) || type == typeof( byte ) || type == typeof( sbyte ) )
 			{
-				return "integer";
+				return arrayOfText.Append( "integer" ).ToString();
 			}
 			else if ( type == typeof( float ) || type == typeof( double ) || type == typeof( decimal ) )
 			{
-				return "integer or decimal";
+				return arrayOfText.Append( "integer/decimal" ).ToString();
 			}
 			else if ( type == typeof( char ) )
 			{
-				return "single character";
+				return arrayOfText.Append( "character" ).ToString();
 			}
 			else if ( type == typeof( string ) )
 			{
-				return "text";
+				return arrayOfText.Append( "text" ).ToString();
 			}
 			else
 			{
 				return null;
 			}
 		}
+
+		/// <summary>
+		/// Gets the deepest element type of a given type
+		/// </summary>
+		/// <param name="type">The type to get the deepest element type of..</param>
+		/// <param name="deep">How deep the deepest element type was.</param>
+		/// <returns>The deepest element type.</returns>
+		private static Type GetArrayElementType( Type type, out int deep )
+		{
+			deep = 0;
+			Type arrayElementType = type;
+
+			while ( arrayElementType.HasElementType )
+			{
+				deep++;
+				arrayElementType = arrayElementType.GetElementType();
+			}
+
+			return arrayElementType;
+		}
+
 
 		/// <summary>
 		/// Appends the documentation for a config option to the given <see cref="StringBuilder"/>.
@@ -166,6 +165,7 @@ namespace ChetoRp
 				return null;
 			}
 
+			Type baseType = GetArrayElementType( propertyInfo.PropertyType, out _ );
 			string propertyPrimitiveTypeString = TypeToString( propertyInfo.PropertyType );
 			string propertyCustomTypeString = null;
 			object propertyDefaultValue = propertyInfo.GetValue<object>( enclosingObject );
@@ -173,7 +173,7 @@ namespace ChetoRp
 
 			if ( propertyPrimitiveTypeString == null )
 			{
-				string customTypeString = propertyInfo.PropertyType.ToString();
+				string customTypeString = baseType.ToString();
 				propertyCustomTypeString = customTypeString[ ( customTypeString.LastIndexOf( '.' ) + 1 ).. ];
 			}
 
@@ -201,10 +201,33 @@ namespace ChetoRp
 					.Append( propertyCustomTypeString )
 					.Append( ":\n" );
 
-				AppendConfigObject( configDocBuilder, propertyDefaultValue, tabsIn + 1 );
+				if ( baseType == propertyDefaultValue.GetType() )
+				{
+					AppendConfigObject( configDocBuilder, propertyDefaultValue, tabsIn + 1 );
+				}
+				else
+				{
+					AppendConfigObject( configDocBuilder, baseType, tabsIn + 1 );
+				}
+
 			}
 
 			return configDocBuilder;
+		}
+
+		/// <summary>
+		/// Appends the documentation for a config object type to the given <see cref="StringBuilder"/>.
+		/// </summary>
+		/// <param name="configDocBuilder">The string builder to append the config object to.</param>
+		/// <param name="type">The config object type to append.</param>
+		/// <param name="tabsIn">The number of tabs in to append everything.</param>
+		/// <returns>A StringBuilder.</returns>
+		private StringBuilder AppendConfigObject<U>( StringBuilder configDocBuilder, Type type, int tabsIn )
+		{
+			object configObject = Library.Create<object>( type ) ??
+				throw new Exception( $"The config object of type {type} used in this module's config store does not have the ChetoRpConfigObject attribute on it" );
+
+			return AppendConfigObject( configDocBuilder, configObject, tabsIn );
 		}
 
 		/// <summary>
@@ -216,9 +239,9 @@ namespace ChetoRp
 		/// <returns>A StringBuilder.</returns>
 		private StringBuilder AppendConfigObject<U>( StringBuilder configDocBuilder, U obj, int tabsIn )
 		{
-			Type type = obj.GetType();
+			Type type = GetArrayElementType( obj.GetType(), out _ );
 			IReadOnlyList<PropertyAttribute> configStoreProperties = Library.GetAttribute( type )?.Properties ??
-				throw new Exception( $"The config object of type {type} used in this module's config store does not have the ChetoRpConfigObject attribute on it." );
+				throw new Exception( $"The config object of type {type} used in this module's config store does not have the ChetoRpConfigObject attribute on it" );
 
 			foreach ( PropertyAttribute property in configStoreProperties )
 			{

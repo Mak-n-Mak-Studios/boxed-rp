@@ -12,34 +12,37 @@ namespace ChetoRp.Employment
 		/// The default team.
 		/// </summary>
 		public static Team DefaultTeam { get; } = new();
-		private static readonly List<Team> teams = new();
+		private static readonly List<Team> teams = new() { DefaultTeam };
 
 		/// <summary>
 		/// The ID of the team.
 		/// </summary>
+		[ChetoRpConfigOptionInfo( "The ID of the team." )]
 		public int Id { get; }
 
 		/// <summary>
 		/// The pretty name of the team.
 		/// </summary>
+		[ChetoRpConfigOptionInfo( "The pretty name of the team." )]
 		public string PrettyName { get; }
 
 		/// <summary>
-		/// Prevents a default instance of the <see cref="Team"/> class from being created outside of the class.
+		/// Initializes a new instance of the <see cref="Team"/> class.
 		/// </summary>
-		private Team()
+		public Team()
 		{
+			Id = teams?.Count ?? 0;
+			PrettyName = "";
+			teams?.Add( this );
 		}
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Team"/> class.
 		/// </summary>
 		/// <param name="prettyName">The pretty name of the team.</param>
-		public Team( string prettyName )
+		public Team( string prettyName ) : this()
 		{
-			Id = teams.Count;
 			PrettyName = prettyName;
-			teams.Add( this );
 		}
 	}
 }

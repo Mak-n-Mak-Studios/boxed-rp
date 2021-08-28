@@ -223,7 +223,7 @@ namespace ChetoRp
 			foreach ( PropertyAttribute property in configStoreProperties )
 			{
 				AppendConfigOption( configDocBuilder, property, obj, tabsIn )?
-					.Append( "\n\n\n" );
+					.Append( "\n\n-----------------------------------------------------------------\n\n" );
 			}
 
 			return configDocBuilder;
@@ -243,11 +243,11 @@ namespace ChetoRp
 				string typeName = qualifiedTypeName[ ( qualifiedTypeName.LastIndexOf( '.' ) + 1 ).. ];
 
 				StringBuilder configDocBuilder = new StringBuilder( @$"/*//////////// BEGINNING OF {typeName} DOCUMENTATION \\\\\\\\\\\\" )
-					.Append( "\n\n\n" );
+					.Append( "\n\n" );
 
 				AppendConfigObject( configDocBuilder, ConfigStore, 0 )
 					.Append( @$"/////////////// END OF {typeName} DOCUMENTATION \\\\\\\\\\\\\\\*/" )
-					.Append( "\n\n\n\n" );
+					.Append( "\n\n\n" );
 
 				configDocumentation = configDocBuilder.ToString();
 			}

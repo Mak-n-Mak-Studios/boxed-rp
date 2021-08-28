@@ -1,11 +1,9 @@
 ﻿using Sandbox;
 
-using System;
-
 namespace ChetoRp
 {
 	/// <summary>
-	/// The attribute to put on all config options properties within config stores
+	/// The attribute to put on all config options properties within classes marked with <see cref="ChetoRpConfigObjectAttribute"/>.
 	/// </summary>
 	class ChetoRpConfigOptionInfoAttribute : PropertyAttribute
 	{

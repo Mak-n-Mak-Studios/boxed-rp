@@ -12,6 +12,6 @@ namespace ChetoRp
 	/// a parameterless constructor because they will be instantiated
 	/// every time the config file is rewritten.
 	/// </summary>
-	[AttributeUsage( AttributeTargets.Class )]
+	[AttributeUsage( AttributeTargets.Class, AllowMultiple = false )]
 	public class ChetoRpConfigObjectAttribute : LibraryAttribute { }
 }

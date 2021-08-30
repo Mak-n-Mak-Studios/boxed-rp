@@ -231,6 +231,7 @@ namespace ChetoRp
 
 		/// <summary>
 		/// Appends the documentation for a config object type to the given <see cref="StringBuilder"/>.
+		/// This config object is assumed to not be the outer object.
 		/// </summary>
 		/// <param name="configDocBuilder">The string builder to append the config object to.</param>
 		/// <param name="type">The config object type to append.</param>
@@ -247,15 +248,17 @@ namespace ChetoRp
 		/// <summary>
 		/// Appends the documentation for a config object to the given <see cref="StringBuilder"/>.
 		/// </summary>
-		/// <param name="configDocBuilder">The string builder to append the config object to.</param>
+		/// <param name="docBuilder">The string builder to append the config object to.</param>
 		/// <param name="obj">The config object to append.</param>
 		/// <param name="tabsIn">The number of tabs in to append everything.</param>
 		/// <returns>A StringBuilder.</returns>
-		private StringBuilder AppendConfigObject<U>( StringBuilder configDocBuilder, U obj, int tabsIn )
+		private StringBuilder AppendConfigObject<U>( StringBuilder docBuilder, U obj, int tabsIn )
 		{
 			Type type = obj.GetType();
 			IReadOnlyList<PropertyAttribute> configStoreProperties = Library.GetAttribute( type )?.Properties ??
 				throw new Exception( $"The config object of type {type} used in this module's config store does not have the ChetoRpConfigObject attribute on it" );
+
+			PropertyAttribute lastProperty = configStoreProperties[ ^1 ];
 
 			foreach ( PropertyAttribute property in configStoreProperties )
 			{
@@ -273,11 +276,18 @@ namespace ChetoRp
 					throw new Exception( $"The {property.Name} property within {type} has [JsonIgnore] on it. This attribute is not compatible with [ChetoRpConfigOptionInfo]." );
 				}
 
-				AppendConfigOption( configDocBuilder, property, obj, tabsIn )?
-					.Append( "\n\n-----------------------------------------------------------------\n\n" );
+				AppendConfigOption( docBuilder, property, obj, tabsIn )?
+					.Append( "\n\n" );
+
+
+				if ( lastProperty != property )
+				{
+					docBuilder.Append( ' ', tabsIn * 4 )
+						.Append( "=================================================================\n\n" );
+				}
 			}
 
-			return configDocBuilder;
+			return docBuilder;
 		}
 
 		/// <summary>

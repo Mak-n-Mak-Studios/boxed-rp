@@ -276,13 +276,12 @@ namespace ChetoRp
 					throw new Exception( $"The {property.Name} property within {type} has [JsonIgnore] on it. This attribute is not compatible with [ChetoRpConfigOptionInfo]." );
 				}
 
-				AppendConfigOption( docBuilder, property, obj, tabsIn )?
-					.Append( "\n\n" );
+				bool isConfigOption = AppendConfigOption( docBuilder, property, obj, tabsIn ) != null;
 
-
-				if ( lastProperty != property )
+				if ( isConfigOption && lastProperty != property )
 				{
-					docBuilder.Append( ' ', tabsIn * 4 )
+					docBuilder.Append( "\n\n" )
+						.Append( ' ', tabsIn * 4 )
 						.Append( "=================================================================\n\n" );
 				}
 			}
@@ -307,6 +306,7 @@ namespace ChetoRp
 					.Append( "\n\n" );
 
 				AppendConfigObject( configDocBuilder, ConfigStore, 0 )
+					.Append( "\n\n" )
 					.Append( @$"/////////////// END OF {typeName} DOCUMENTATION \\\\\\\\\\\\\\\*/" )
 					.Append( "\n\n\n" );
 

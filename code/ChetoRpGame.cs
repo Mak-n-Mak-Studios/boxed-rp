@@ -14,19 +14,10 @@ namespace ChetoRp
 		public ChetoRpGame() : base()
 		{
 			Event.Run( ChetoRpEvents.PreGameInit );
-
-			if ( IsServer )
-			{
-				Log.Info( "ChetoRP has started loading on the server..." );
-			}
-
-			if ( IsClient )
-			{
-				Log.Info( "ChetoRP has started loading on the client..." );
-			}
-
+			Log.Info( "ChetoRP has started loading..." );
 			Event.Run( ChetoRpEvents.PostGameInit );
 			Modules.Start();
+			Log.Info( "ChetoRP and ChetoRP modules have finished loading." );
 		}
 
 		/// <summary>

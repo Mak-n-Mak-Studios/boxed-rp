@@ -179,8 +179,6 @@ namespace ChetoRp.Employment
 		};
 	}
 
-	// TO-DO: Don't make Team an autoproperty on player. Make a property to get Team, but setting it will be done by a method. Make setting the team trigger team events. Also, make it change model and weapons. Make SetTeam return a boolean. Do nothing and return false if the max players is exceeded.
-
 	/// <summary>
 	/// The <see cref="EmploymentModule"/> entrypoint class.
 	/// </summary>

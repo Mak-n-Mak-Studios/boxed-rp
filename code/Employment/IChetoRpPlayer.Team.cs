@@ -10,6 +10,12 @@ namespace ChetoRp
 		/// <summary>
 		/// The team the player is on.
 		/// </summary>
-		public Team Team { get; set; }
+		public Team Team { get; }
+
+		/// <summary>
+		/// Sets the team of a player.
+		/// </summary>
+		/// <returns>Whether the player's team could be set. Will return false if team switching failed.</returns>
+		public bool SetTeam( Team newTeam );
 	}
 }

@@ -6,7 +6,7 @@ using Sandbox;
 namespace ChetoRp
 {
 	/// <summary>
-	/// The class for modules without a generic parameter. Should only be used directly internally.
+	/// The class that manages modules.
 	/// </summary>
 	public static class Modules
 	{

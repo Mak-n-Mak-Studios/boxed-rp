@@ -240,7 +240,7 @@ namespace ChetoRp
 		private StringBuilder AppendConfigObject( StringBuilder configDocBuilder, Type type, int tabsIn )
 		{
 			object configObject = Library.Create<object>( type ) ??
-				throw new Exception( $"The config object of type {type} used in this module's config store does not have the ChetoRpConfigObject attribute on it" );
+				throw new Exception( $"The config object of type {type} used in this module's config store does not have the ChetoRpConfigObject attribute on it." );
 
 			return AppendConfigObject( configDocBuilder, configObject, tabsIn );
 		}
@@ -256,7 +256,7 @@ namespace ChetoRp
 		{
 			Type type = obj.GetType();
 			IReadOnlyList<PropertyAttribute> configStoreProperties = Library.GetAttribute( type )?.Properties ??
-				throw new Exception( $"The config object of type {type} used in this module's config store does not have the ChetoRpConfigObject attribute on it" );
+				throw new Exception( $"The config object of type {type} used in this module's config store does not have the ChetoRpConfigObject attribute on it." );
 
 			PropertyAttribute lastProperty = configStoreProperties[ ^1 ];
 
@@ -266,7 +266,7 @@ namespace ChetoRp
 				{
 					property.SetValue( obj, property.GetValue<object>( obj ) );
 				}
-				catch ( MethodAccessException )
+				catch ( ArgumentException )
 				{
 					throw new Exception( $"The {property.Name} property within {type} is not both publicly gettable and settable." );
 				}

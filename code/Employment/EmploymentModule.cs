@@ -59,7 +59,8 @@ namespace ChetoRp.Employment
 				},
 				MaxPlayers = 5,
 				Salary = 200,
-				IsVoteRequired = true
+				IsVoteRequired = true,
+				IsSpecialTeam = SpecialTeam.Police
 			},
 			new TeamConfig()
 			{
@@ -77,7 +78,8 @@ namespace ChetoRp.Employment
 				},
 				MaxPlayers = 5,
 				Salary = 225,
-				IsVoteRequired = true
+				IsVoteRequired = true,
+				IsSpecialTeam = SpecialTeam.Police
 			},
 			new TeamConfig()
 			{
@@ -96,7 +98,8 @@ namespace ChetoRp.Employment
 				},
 				MaxPlayers = 5,
 				Salary = 250,
-				IsVoteRequired = true
+				IsVoteRequired = true,
+				IsSpecialTeam = SpecialTeam.Police
 			},
 			new TeamConfig()
 			{
@@ -116,7 +119,8 @@ namespace ChetoRp.Employment
 				},
 				MaxPlayers = 1,
 				Salary = 300,
-				IsVoteRequired = true
+				IsVoteRequired = true,
+				IsSpecialTeam = SpecialTeam.Police
 			},
 			new TeamConfig()
 			{
@@ -136,7 +140,8 @@ namespace ChetoRp.Employment
 				},
 				MaxPlayers = 1,
 				Salary = 300,
-				IsVoteRequired = true
+				IsVoteRequired = true,
+				IsSpecialTeam = SpecialTeam.Police
 			},
 			new TeamConfig()
 			{
@@ -153,7 +158,8 @@ namespace ChetoRp.Employment
 					// TO-DO: Add healing kit and defibrillation system.
 				},
 				MaxPlayers = 5,
-				Salary = 250
+				Salary = 250,
+				IsSpecialTeam = SpecialTeam.Ems
 			},
 			new TeamConfig()
 			{
@@ -167,7 +173,8 @@ namespace ChetoRp.Employment
 				},
 				MaxPlayers = 1,
 				Salary = 350,
-				IsVoteRequired = true
+				IsVoteRequired = true,
+				IsSpecialTeam = SpecialTeam.Governor
 			},
 		};
 	}

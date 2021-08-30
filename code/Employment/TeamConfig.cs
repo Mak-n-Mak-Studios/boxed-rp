@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 
 namespace ChetoRp.Employment
 {
@@ -73,6 +74,13 @@ namespace ChetoRp.Employment
 		/// </summary>
 		[ChetoRpConfigOptionInfo( "Whether this team should be the default team given when a player joins. The first default team in the configuration file will be the default team." )]
 		public bool IsDefault { get; set; } = false;
+
+		/// <summary>
+		/// Whether this team is a special team.
+		/// </summary>
+		[ChetoRpConfigOptionInfo( "Whether this team is a special team." )]
+		[JsonConverter( typeof( JsonStringEnumConverter ) )]
+		public SpecialTeam IsSpecialTeam { get; set; } = SpecialTeam.None;
 
 		/// <summary>
 		/// Converts the <see cref="TeamConfig"/> to a <see cref="Team"/>.

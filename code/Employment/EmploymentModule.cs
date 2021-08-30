@@ -24,7 +24,7 @@ namespace ChetoRp.Employment
 		public Weapon[] DefaultWeapons { get; set; } = Array.Empty<Weapon>();
 
 		/// <summary>
-		/// The teams in the game. Do not use this directly. Use EmploymentModule.Teams instead.
+		/// The teams in the game. Do not use this directly. Use <see cref="EmploymentModule.Teams"/> instead.
 		/// </summary>
 		[ChetoRpConfigOptionInfo( "The teams in the game." )]
 		public TeamConfig[] Teams { get; set; }

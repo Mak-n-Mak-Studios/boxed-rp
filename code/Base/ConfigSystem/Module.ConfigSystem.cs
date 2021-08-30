@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 using Sandbox;
 
@@ -251,12 +253,26 @@ namespace ChetoRp
 		/// <returns>A StringBuilder.</returns>
 		private StringBuilder AppendConfigObject<U>( StringBuilder configDocBuilder, U obj, int tabsIn )
 		{
-			Type type = GetArrayElementType( obj.GetType(), out _ );
+			Type type = obj.GetType();
 			IReadOnlyList<PropertyAttribute> configStoreProperties = Library.GetAttribute( type )?.Properties ??
 				throw new Exception( $"The config object of type {type} used in this module's config store does not have the ChetoRpConfigObject attribute on it" );
 
 			foreach ( PropertyAttribute property in configStoreProperties )
 			{
+				try
+				{
+					property.SetValue( obj, property.GetValue<object>( obj ) );
+				}
+				catch ( MethodAccessException )
+				{
+					throw new Exception( $"The {property.Name} property within {type} is not both publicly gettable and settable." );
+				}
+
+				if ( property.Attributes.Where( ( attr ) => attr.GetType() == typeof( JsonIgnoreAttribute ) ).Any() )
+				{
+					throw new Exception( $"The {property.Name} property within {type} has [JsonIgnore] on it. This attribute is not compatible with [ChetoRpConfigOptionInfo]." );
+				}
+
 				AppendConfigOption( configDocBuilder, property, obj, tabsIn )?
 					.Append( "\n\n-----------------------------------------------------------------\n\n" );
 			}

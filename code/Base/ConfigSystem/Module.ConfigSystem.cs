@@ -255,8 +255,42 @@ namespace ChetoRp
 		private StringBuilder AppendConfigObject<U>( StringBuilder docBuilder, U obj, int tabsIn )
 		{
 			Type type = obj.GetType();
+
+			if ( type.IsEnum )
+			{
+				string[] enumNames = type.GetEnumNames();
+
+				if ( enumNames.Length == 0 )
+				{
+					string typeString = type.ToString();
+
+					return docBuilder.Append( $"{typeString[ ( typeString.LastIndexOf( '.' ) + 1 ).. ]} contains nothing." );
+				}
+
+				string lastEnumConstant = enumNames[ ^1 ];
+
+				foreach ( string enumName in type.GetEnumNames() )
+				{
+					docBuilder.Append( enumName );
+
+					if ( enumName != lastEnumConstant )
+					{
+						docBuilder.Append( '\n' );
+					}
+				}
+
+				return docBuilder;
+			}
+
 			IReadOnlyList<PropertyAttribute> configStoreProperties = Library.GetAttribute( type )?.Properties ??
 				throw new Exception( $"The config object of type {type} used in this module's config store does not have the ChetoRpConfigObject attribute on it." );
+
+			if ( configStoreProperties.Count == 0 )
+			{
+				string typeString = type.ToString();
+
+				return docBuilder.Append( $"{typeString[ ( typeString.LastIndexOf( '.' ) + 1 ).. ]} contains no fields." );
+			}
 
 			PropertyAttribute lastProperty = configStoreProperties[ ^1 ];
 

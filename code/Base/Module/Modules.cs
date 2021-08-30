@@ -10,7 +10,10 @@ namespace ChetoRp
 	/// </summary>
 	public static class Modules
 	{
-		private readonly static Dictionary<Type, Module> modules = new();
+		/// <summary>
+		/// A dictionary of all loaded modules.
+		/// </summary>
+		internal static Dictionary<Type, Module> ModulesDictionary { get; } = new();
 
 		/// <summary>
 		/// Starts all modules.
@@ -26,7 +29,6 @@ namespace ChetoRp
 				try
 				{
 					Module module = Library.Create<Module>( type );
-					modules.Add( type, module );
 					Event.Run( ChetoRpEvents.PostModuleInit, module );
 				}
 				catch ( Exception e )
@@ -44,7 +46,7 @@ namespace ChetoRp
 		/// <returns>The module.</returns>
 		public static T Get<T>() where T : Module
 		{
-			return ( T ) modules[ typeof( T ) ];
+			return ( T ) ModulesDictionary[ typeof( T ) ];
 		}
 	}
 }

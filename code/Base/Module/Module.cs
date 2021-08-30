@@ -41,6 +41,7 @@
 		/// </summary>
 		internal Module() : base()
 		{
+			Modules.ModulesDictionary.Add( GetType(), this );
 			InitializeConfig();
 			PreRun();
 		}

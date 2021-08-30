@@ -35,7 +35,7 @@ namespace ChetoRp.Employment
 		/// <summary>
 		/// The weapons given to players in the team on spawn.
 		/// </summary>
-		public Weapon[] Weapons { get; }
+		public string[] Weapons { get; }
 
 		/// <summary>
 		/// Whether the default weapons should be given to this team.

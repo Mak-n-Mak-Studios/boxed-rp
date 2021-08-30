@@ -21,13 +21,13 @@ namespace ChetoRp.Employment
 		/// The default weapons given to all players.
 		/// </summary>
 		[ChetoRpConfigOptionInfo( "The default weapons given to all players." )]
-		public Weapon[] DefaultWeapons { get; set; } = Array.Empty<Weapon>();
+		public string[] DefaultWeapons { get; set; } = Array.Empty<string>();
 
 		/// <summary>
 		/// The teams in the game. Do not use this directly. Use <see cref="EmploymentModule.Teams"/> instead.
 		/// </summary>
 		[ChetoRpConfigOptionInfo( "The teams in the game." )]
-		public TeamConfig[] Teams { get; set; }
+		public TeamConfig[] Teams { get; set; } = Array.Empty<TeamConfig>();
 	}
 
 	/// <summary>

@@ -264,14 +264,16 @@ namespace ChetoRp
 				{
 					string typeString = type.ToString();
 
-					return docBuilder.Append( $"{typeString[ ( typeString.LastIndexOf( '.' ) + 1 ).. ]} contains nothing." );
+					return docBuilder.Append( ' ', tabsIn * 4 )
+						.Append( $"{typeString[ ( typeString.LastIndexOf( '.' ) + 1 ).. ]} contains nothing." );
 				}
 
 				string lastEnumConstant = enumNames[ ^1 ];
 
 				foreach ( string enumName in type.GetEnumNames() )
 				{
-					docBuilder.Append( enumName );
+					docBuilder.Append( ' ', tabsIn * 4 )
+						.Append( enumName );
 
 					if ( enumName != lastEnumConstant )
 					{
@@ -289,7 +291,8 @@ namespace ChetoRp
 			{
 				string typeString = type.ToString();
 
-				return docBuilder.Append( $"{typeString[ ( typeString.LastIndexOf( '.' ) + 1 ).. ]} contains no fields." );
+				return docBuilder.Append( ' ', tabsIn * 4 )
+					.Append( $"{typeString[ ( typeString.LastIndexOf( '.' ) + 1 ).. ]} contains no fields." );
 			}
 
 			PropertyAttribute lastProperty = configStoreProperties[ ^1 ];

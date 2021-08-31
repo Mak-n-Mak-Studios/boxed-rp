@@ -71,7 +71,6 @@ namespace ChetoRp
 		/// any other exceptions created, retaining the latest available ConfigStore
 		/// unless none is available in which case it will be set to the default one.
 		/// </summary>
-
 		private void ReadConfigStoreFromDisk()
 		{
 			string fileContent = null;
@@ -211,7 +210,11 @@ namespace ChetoRp
 
 			if ( propertyCustomTypeString != null )
 			{
-				configDocBuilder.Append( "\n\n-----------------------------------------------------------------\n\nLayout of " )
+				configDocBuilder.Append( "\n\n" )
+					.Append( spaces )
+					.Append( "-----------------------------------------------------------------\n\n" )
+					.Append( spaces )
+					.Append( "Layout of " )
 					.Append( propertyCustomBaseTypeString )
 					.Append( ":\n" );
 
@@ -255,6 +258,7 @@ namespace ChetoRp
 		private StringBuilder AppendConfigObject<U>( StringBuilder docBuilder, U obj, int tabsIn )
 		{
 			Type type = obj.GetType();
+			string spaces = new( ' ', tabsIn * 4 );
 
 			if ( type.IsEnum )
 			{
@@ -264,7 +268,7 @@ namespace ChetoRp
 				{
 					string typeString = type.ToString();
 
-					return docBuilder.Append( ' ', tabsIn * 4 )
+					return docBuilder.Append( spaces )
 						.Append( $"{typeString[ ( typeString.LastIndexOf( '.' ) + 1 ).. ]} contains nothing." );
 				}
 
@@ -272,7 +276,7 @@ namespace ChetoRp
 
 				foreach ( string enumName in type.GetEnumNames() )
 				{
-					docBuilder.Append( ' ', tabsIn * 4 )
+					docBuilder.Append( spaces )
 						.Append( enumName );
 
 					if ( enumName != lastEnumConstant )
@@ -291,7 +295,7 @@ namespace ChetoRp
 			{
 				string typeString = type.ToString();
 
-				return docBuilder.Append( ' ', tabsIn * 4 )
+				return docBuilder.Append( spaces )
 					.Append( $"{typeString[ ( typeString.LastIndexOf( '.' ) + 1 ).. ]} contains no fields." );
 			}
 
@@ -318,7 +322,7 @@ namespace ChetoRp
 				if ( isConfigOption && lastProperty != property )
 				{
 					docBuilder.Append( "\n\n" )
-						.Append( ' ', tabsIn * 4 )
+						.Append( spaces )
 						.Append( "=================================================================\n\n" );
 				}
 			}

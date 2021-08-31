@@ -3,9 +3,9 @@
 namespace ChetoRp
 {
 	/// <summary>
-	/// The interface for the ChetoRP player.
+	/// The interface for the game player.
 	/// </summary>
-	public partial interface IChetoRpPlayer
+	public partial interface IGamePlayer
 	{
 		/// <summary>
 		/// The main camera for the player.

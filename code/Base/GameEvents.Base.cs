@@ -7,7 +7,7 @@ namespace ChetoRp
 	/// <summary>
 	/// A static partial class containing constant event names.
 	/// </summary>
-	public static partial class ChetoRpEvents
+	public static partial class GameEvents
 	{
 		// Game events.
 
@@ -53,7 +53,7 @@ namespace ChetoRp
 		/// The name of the event run before a player spawns.
 		/// <para/>
 		/// Event Parameters:<br/>
-		/// <see cref="IChetoRpPlayer"/> player - The player that is about to spawn.
+		/// <see cref="IGamePlayer"/> player - The player that is about to spawn.
 		/// </summary>
 		public const string PrePlayerSpawn = "PrePlayerSpawn";
 
@@ -61,7 +61,7 @@ namespace ChetoRp
 		/// The name of the event run after a player spawns.
 		/// <para/>
 		/// Event Parameters:<br/>
-		/// <see cref="IChetoRpPlayer"/> player - The player that spawned.
+		/// <see cref="IGamePlayer"/> player - The player that spawned.
 		/// </summary>
 		public const string PostPlayerSpawn = "PostPlayerSpawn";
 
@@ -69,8 +69,8 @@ namespace ChetoRp
 		/// The name of the event run before a player takes damage. This can be used to modify the damage a player takes.
 		/// <para/>
 		/// Event Parameters:<br/>
-		/// <see cref="IChetoRpPlayer"/> player - The player that is taking damage.<br/>
-		/// <see cref="ChetoRpDamageInfo"/> damageInfo - The ChetoRpDamageInfo representing the damage the player is about to take. Use this to view or modify the damage the player takes.
+		/// <see cref="IGamePlayer"/> player - The player that is taking damage.<br/>
+		/// <see cref="ModifiableDamageInfo"/> damageInfo - The <see cref="ModifiableDamageInfo"/> representing the damage the player is about to take. Use this to view or modify the damage the player takes.
 		/// </summary>
 		public const string PrePlayerTakeDamage = "PrePlayerTakeDamage";
 
@@ -78,7 +78,7 @@ namespace ChetoRp
 		/// The name of the event run after a player takes damage. Do NOT use this to modify the damage a player takes. Any changes will not modify the damage the player takes. Use <see cref="PrePlayerTakeDamage"/> if you need to modify the damage a player takes.
 		/// <para/>
 		/// Event Parameters:<br/>
-		/// <see cref="IChetoRpPlayer"/> player - The player that has taken damage.<br/>
+		/// <see cref="IGamePlayer"/> player - The player that has taken damage.<br/>
 		/// <see cref="DamageInfo"/> damageInfo - The DamageInfo representing the damage the player has taken.
 		/// </summary>
 		public const string PostPlayerTakeDamage = "PostPlayerTakeDamage";
@@ -87,7 +87,7 @@ namespace ChetoRp
 		/// The name of the event run before a player dies.
 		/// <para/>
 		/// Event Parameters:<br/>
-		/// <see cref="IChetoRpPlayer"/> player - The player that is about to die.
+		/// <see cref="IGamePlayer"/> player - The player that is about to die.
 		/// </summary>
 		public const string PrePlayerDeath = "PrePlayerDeath";
 
@@ -95,7 +95,7 @@ namespace ChetoRp
 		/// The name of the event run after a player dies.
 		/// <para/>
 		/// Event Parameters:<br/>
-		/// <see cref="IChetoRpPlayer"/> player - The player that has died.
+		/// <see cref="IGamePlayer"/> player - The player that has died.
 		/// </summary>
 		public const string PostPlayerDeath = "PostPlayerDeath";
 

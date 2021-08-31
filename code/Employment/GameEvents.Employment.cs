@@ -5,7 +5,7 @@ namespace ChetoRp
 	/// <summary>
 	/// A static partial class containing constant event names.
 	/// </summary>
-	public static partial class ChetoRpEvents
+	public static partial class GameEvents
 	{
 		/// <summary>
 		/// The name of the event run before a team change.

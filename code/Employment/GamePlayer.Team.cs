@@ -7,9 +7,9 @@ using Sandbox;
 namespace ChetoRp
 {
 	/// <summary>
-	/// The part of the <see cref="ChetoRpPlayer"/> class that deals with the Employment module.
+	/// The part of the <see cref="GamePlayer"/> class that deals with the Employment module.
 	/// </summary>
-	internal partial class ChetoRpPlayer : SandboxPlayer, IChetoRpPlayer
+	internal partial class GamePlayer : SandboxPlayer, IGamePlayer
 	{
 		/// <summary>
 		/// The team the player is on.
@@ -27,7 +27,7 @@ namespace ChetoRp
 			// TO-DO: Return false if the max players is exceeded.
 
 			TeamChange teamChange = new( this, Team, newTeam );
-			Event.Run( ChetoRpEvents.PreTeamChange, teamChange );
+			Event.Run( GameEvents.PreTeamChange, teamChange );
 
 			if ( !teamChange.AllowTeamChange )
 			{
@@ -50,7 +50,7 @@ namespace ChetoRp
 				Inventory.Add( weapon );
 			}
 
-			Event.Run( ChetoRpEvents.PostTeamChange, teamChange );
+			Event.Run( GameEvents.PostTeamChange, teamChange );
 
 			return true;
 		}

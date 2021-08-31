@@ -5,8 +5,8 @@ using Sandbox;
 namespace ChetoRp
 {
 	/// <summary>
-	/// The attribute to declare ChetoRP modules.
+	/// The attribute to declare game modules.
 	/// </summary>
 	[AttributeUsage( AttributeTargets.Class, AllowMultiple = false )]
-	public class ChetoRpModuleAttribute : LibraryAttribute { }
+	public class GameModuleAttribute : LibraryAttribute { }
 }

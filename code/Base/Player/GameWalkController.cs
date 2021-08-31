@@ -5,7 +5,7 @@ namespace ChetoRp
 	/// <summary>
 	/// The default walk controller, modified to have fall damage.
 	/// </summary>
-	public class ChetoRpWalkController : WalkController
+	public class GameWalkController : WalkController
 	{
 		/// <summary>
 		/// The minimum speed the player needs to be going down vertically to take damage.
@@ -18,9 +18,9 @@ namespace ChetoRp
 		public int FallDamageDamping { get; set; }
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="ChetoRpWalkController"/> class.
+		/// Initializes a new instance of the <see cref="GameWalkController"/> class.
 		/// </summary>
-		public ChetoRpWalkController()
+		public GameWalkController()
 		{
 			MinFallDamageSpeed = Modules.Get<BaseModule>().ConfigStore.MinFallDamageSpeed;
 			FallDamageDamping = Modules.Get<BaseModule>().ConfigStore.FallDamageDamping;

@@ -3,9 +3,9 @@
 namespace ChetoRp
 {
 	/// <summary>
-	/// The part of the <see cref="IChetoRpPlayer"/> interface that deals with the Team module.
+	/// The part of the <see cref="IGamePlayer"/> interface that deals with the Team module.
 	/// </summary>
-	public partial interface IChetoRpPlayer
+	public partial interface IGamePlayer
 	{
 		/// <summary>
 		/// The team the player is on.

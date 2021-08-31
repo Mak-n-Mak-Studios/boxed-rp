@@ -18,7 +18,7 @@ namespace ChetoRp
 		/// <summary>
 		/// The name of the folder holding the config files within the data folder.
 		/// </summary>
-		public const string ConfigFolderName = "cheto-rp-config";
+		public const string ConfigFolderName = "game-config";
 
 		private static readonly JsonSerializerOptions serializerOptions = new()
 		{
@@ -58,11 +58,11 @@ namespace ChetoRp
 		/// <param name="fileName">The config file's name.</param>
 		private void OnConfigFileModified( string fileName )
 		{
-			Event.Run( ChetoRpEvents.PreConfigChange, this );
+			Event.Run( GameEvents.PreConfigChange, this );
 
 			ReadConfigStoreFromDisk();
 
-			Event.Run( ChetoRpEvents.PostConfigChange, this );
+			Event.Run( GameEvents.PostConfigChange, this );
 		}
 
 		/// <summary>
@@ -161,7 +161,7 @@ namespace ChetoRp
 		/// <returns>The provided <see cref="StringBuilder"/>.</returns>
 		private StringBuilder AppendConfigOption<U>( StringBuilder configDocBuilder, PropertyAttribute configOption, U enclosingObject, int tabsIn )
 		{
-			if ( configOption is not ChetoRpConfigOptionInfoAttribute propertyInfo )
+			if ( configOption is not GameConfigOptionInfoAttribute propertyInfo )
 			{
 				return null;
 			}
@@ -243,7 +243,7 @@ namespace ChetoRp
 		private StringBuilder AppendConfigObject( StringBuilder configDocBuilder, Type type, int tabsIn )
 		{
 			object configObject = Library.Create<object>( type ) ??
-				throw new Exception( $"The config object of type {type} used in this module's config store does not have the ChetoRpConfigObject attribute on it." );
+				throw new Exception( $"The config object of type {type} used in this module's config store does not have the GameConfigObject attribute on it." );
 
 			return AppendConfigObject( configDocBuilder, configObject, tabsIn );
 		}
@@ -289,7 +289,7 @@ namespace ChetoRp
 			}
 
 			IReadOnlyList<PropertyAttribute> configStoreProperties = Library.GetAttribute( type )?.Properties ??
-				throw new Exception( $"The config object of type {type} used in this module's config store does not have the ChetoRpConfigObject attribute on it." );
+				throw new Exception( $"The config object of type {type} used in this module's config store does not have the GameConfigObject attribute on it." );
 
 			if ( configStoreProperties.Count == 0 )
 			{
@@ -314,7 +314,7 @@ namespace ChetoRp
 
 				if ( property.Attributes.Where( ( attr ) => attr.GetType() == typeof( JsonIgnoreAttribute ) ).Any() )
 				{
-					throw new Exception( $"The {property.Name} property within {type} has [JsonIgnore] on it. This attribute is not compatible with [ChetoRpConfigOptionInfo]." );
+					throw new Exception( $"The {property.Name} property within {type} has [JsonIgnore] on it. This attribute is not compatible with [GameConfigOptionInfo]." );
 				}
 
 				bool isConfigOption = AppendConfigOption( docBuilder, property, obj, tabsIn ) != null;
@@ -334,7 +334,7 @@ namespace ChetoRp
 		/// Writes the config store to the disk, overwriting its current contents if there are any.
 		/// This will create a new config file if one is not found in the proper place, writing the documentation 
 		/// first then the contents of the config store. The default path for the config file will be 
-		/// data/cheto-rp-config/&lt;PATH_TO_MODULE_ENTRYPOINT_CLASS&gt;.txt.
+		/// data/game-config/&lt;PATH_TO_MODULE_ENTRYPOINT_CLASS&gt;.txt.
 		/// </summary>
 		private void WriteConfigStoreToDisk( string filePath )
 		{

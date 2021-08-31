@@ -24,12 +24,12 @@ namespace ChetoRp
 
 			foreach ( Type type in moduleTypes )
 			{
-				Event.Run( ChetoRpEvents.PreModuleInit, type );
+				Event.Run( GameEvents.PreModuleInit, type );
 
 				try
 				{
 					Module module = Library.Create<Module>( type );
-					Event.Run( ChetoRpEvents.PostModuleInit, module );
+					Event.Run( GameEvents.PostModuleInit, module );
 				}
 				catch ( Exception e )
 				{
@@ -37,7 +37,7 @@ namespace ChetoRp
 				}
 			}
 
-			Event.Run( ChetoRpEvents.OnAllModulesInit );
+			Event.Run( GameEvents.OnAllModulesInit );
 		}
 
 		/// <summary>

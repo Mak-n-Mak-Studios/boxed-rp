@@ -5,7 +5,7 @@ namespace ChetoRp
 	/// <summary>
 	/// A class that holds a DamageInfo struct.
 	/// </summary>
-	public class ChetoRpDamageInfo
+	public class ModifiableDamageInfo
 	{
 		/// <summary>
 		/// The <see cref="DamageInfo"/>.

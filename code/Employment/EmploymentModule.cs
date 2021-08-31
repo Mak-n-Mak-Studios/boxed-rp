@@ -8,25 +8,25 @@ namespace ChetoRp.Employment
 	/// <summary>
 	/// The config store class for <see cref="EmploymentModule"/>.
 	/// </summary>
-	[ChetoRpConfigObject]
+	[GameConfigObject]
 	public class EmploymentModuleConfig
 	{
 		/// <summary>
 		/// The number of seconds between each salary pay period.
 		/// </summary>
-		[ChetoRpConfigOptionInfo( "The number of seconds between each salary pay period." )]
+		[GameConfigOptionInfo( "The number of seconds between each salary pay period." )]
 		public int SalaryPayPeriod { get; set; } = 300;
 
 		/// <summary>
 		/// The default weapons given to all players.
 		/// </summary>
-		[ChetoRpConfigOptionInfo( "The default weapons given to all players." )]
+		[GameConfigOptionInfo( "The default weapons given to all players." )]
 		public string[] DefaultWeapons { get; set; } = Array.Empty<string>();
 
 		/// <summary>
 		/// The teams in the game. Do not use this directly. Use <see cref="EmploymentModule.Teams"/> instead.
 		/// </summary>
-		[ChetoRpConfigOptionInfo( "The teams in the game." )]
+		[GameConfigOptionInfo( "The teams in the game." )]
 		public TeamConfig[] Teams { get; set; } = new TeamConfig[]
 		{
 			new TeamConfig()
@@ -182,7 +182,7 @@ namespace ChetoRp.Employment
 	/// <summary>
 	/// The <see cref="EmploymentModule"/> entrypoint class.
 	/// </summary>
-	[ChetoRpModule]
+	[GameModule]
 	public class EmploymentModule : Module<EmploymentModuleConfig>
 	{
 		/// <summary>

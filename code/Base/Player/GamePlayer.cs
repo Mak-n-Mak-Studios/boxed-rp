@@ -3,19 +3,19 @@
 namespace ChetoRp
 {
 	/// <summary>
-	/// The main player class for ChetoRP.
+	/// The main player class for the game.
 	/// </summary>
-	internal partial class ChetoRpPlayer : SandboxPlayer, IChetoRpPlayer
+	internal partial class GamePlayer : SandboxPlayer, IGamePlayer
 	{
 		/// <summary>
 		/// Called when a player respawns.
 		/// </summary>
 		public override void Respawn()
 		{
-			Event.Run<IChetoRpPlayer>( ChetoRpEvents.PrePlayerSpawn, this );
+			Event.Run<IGamePlayer>( GameEvents.PrePlayerSpawn, this );
 			base.Respawn();
-			Controller = new ChetoRpWalkController();
-			Event.Run<IChetoRpPlayer>( ChetoRpEvents.PostPlayerSpawn, this );
+			Controller = new GameWalkController();
+			Event.Run<IGamePlayer>( GameEvents.PostPlayerSpawn, this );
 		}
 
 		/// <summary>
@@ -32,11 +32,11 @@ namespace ChetoRp
 		/// <param name="info">The damage info.</param>
 		public override void TakeDamage( DamageInfo info )
 		{
-			ChetoRpDamageInfo modifiableDamageInfo = new();
+			ModifiableDamageInfo modifiableDamageInfo = new();
 			modifiableDamageInfo.DamageInfo = info;
-			Event.Run<IChetoRpPlayer, ChetoRpDamageInfo>( ChetoRpEvents.PrePlayerTakeDamage, this, modifiableDamageInfo );
+			Event.Run<IGamePlayer, ModifiableDamageInfo>( GameEvents.PrePlayerTakeDamage, this, modifiableDamageInfo );
 			base.TakeDamage( modifiableDamageInfo.DamageInfo );
-			Event.Run<IChetoRpPlayer, DamageInfo>( ChetoRpEvents.PostPlayerTakeDamage, this, modifiableDamageInfo.DamageInfo );
+			Event.Run<IGamePlayer, DamageInfo>( GameEvents.PostPlayerTakeDamage, this, modifiableDamageInfo.DamageInfo );
 		}
 
 		/// <summary>
@@ -44,9 +44,9 @@ namespace ChetoRp
 		/// </summary>
 		public override void OnKilled()
 		{
-			Event.Run<IChetoRpPlayer>( ChetoRpEvents.PrePlayerDeath, this );
+			Event.Run<IGamePlayer>( GameEvents.PrePlayerDeath, this );
 			base.OnKilled();
-			Event.Run<IChetoRpPlayer>( ChetoRpEvents.PostPlayerDeath, this );
+			Event.Run<IGamePlayer>( GameEvents.PostPlayerDeath, this );
 		}
 	}
 }

@@ -8,7 +8,7 @@
 		/// <summary>
 		/// The player that is changing teams.
 		/// </summary>
-		public IChetoRpPlayer Player { get; }
+		public IGamePlayer Player { get; }
 
 		/// <summary>
 		/// The team the player is switching from.
@@ -21,7 +21,7 @@
 		public Team NewTeam { get; }
 
 		/// <summary>
-		/// Whether the team change should be allowed to continue. Set to false to disallow the team change. Has no effect if changed in the <see cref="ChetoRpEvents.PostTeamChange"/> event.
+		/// Whether the team change should be allowed to continue. Set to false to disallow the team change. Has no effect if changed in the <see cref="GameEvents.PostTeamChange"/> event.
 		/// </summary>
 		public bool AllowTeamChange { get; set; }
 
@@ -31,7 +31,7 @@
 		/// <param name="player">The player that is changing teams.</param>
 		/// <param name="oldTeam">The team the player is switching from.</param>
 		/// <param name="newTeam">The team the player is switching to.</param>
-		public TeamChange( IChetoRpPlayer player, Team oldTeam, Team newTeam )
+		public TeamChange( IGamePlayer player, Team oldTeam, Team newTeam )
 		{
 			Player = player;
 			OldTeam = oldTeam;

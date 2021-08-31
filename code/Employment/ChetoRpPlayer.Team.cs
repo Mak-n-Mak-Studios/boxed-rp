@@ -20,6 +20,7 @@ namespace ChetoRp
 		/// <summary>
 		/// Sets the team of a player. Does nothing when called on the client.
 		/// </summary>
+		/// <param name="newTeam">The team the player is switching to.</param>
 		/// <returns>Whether the player's team could be set. Will return false if team switching failed.</returns>
 		public bool SetTeam( Team newTeam )
 		{

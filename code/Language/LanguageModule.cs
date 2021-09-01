@@ -76,6 +76,7 @@ namespace ChetoRp.Language
 				return;
 			}
 
+			CurrentLocale = languageDictionary[ ConfigStore.Language ];
 
 			Event.Run( GameEvents.PostLanguageChange, mod.ConfigStore.Language );
 		}

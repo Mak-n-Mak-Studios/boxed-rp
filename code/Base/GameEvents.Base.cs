@@ -100,7 +100,8 @@ namespace ChetoRp
 		public const string PostPlayerDeath = "PostPlayerDeath";
 
 		/// <summary>
-		/// The name of the event run prior to a config change.
+		/// The name of the event run prior to an update to a config file.
+		/// This does not mean that any config options necessarily changed.
 		/// <para/>
 		/// Event Parameters:<br/>
 		/// <see cref="Module{T}"/> module - The module before the config change.
@@ -108,7 +109,8 @@ namespace ChetoRp
 		public const string PreConfigChange = "PreConfigChange";
 
 		/// <summary>
-		/// The name of the event run after a config change.
+		/// The name of the event run after an update to a config file.
+		/// This does not mean that any config options necessarily changed.
 		/// <para/>
 		/// Event Parameters:<br/>
 		/// <see cref="Module{T}"/> module - The module after the config change.

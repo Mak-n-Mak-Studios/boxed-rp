@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 using Sandbox;
@@ -20,7 +21,9 @@ namespace ChetoRp
 		/// </summary>
 		internal static void Start()
 		{
-			IEnumerable<Type> moduleTypes = Library.GetAll<Module>();
+			IEnumerable<Type> moduleTypes = Library.GetAll<Module>()
+				.Where( type => Library.GetAttribute( type ) is GameModuleAttribute )
+				.OrderBy( type => ( Library.GetAttribute( type ) as GameModuleAttribute ).Priority );
 
 			foreach ( Type type in moduleTypes )
 			{

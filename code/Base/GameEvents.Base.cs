@@ -17,11 +17,6 @@ namespace ChetoRp
 		public const string PreGameInit = "PreGameInit";
 
 		/// <summary>
-		/// The name of the event run after the game initializes (before modules are initialized).
-		/// </summary>
-		public const string PostGameInit = "PostGameInit";
-
-		/// <summary>
 		/// The name of the event run when the game shuts down.
 		/// </summary>
 		public const string OnGameShutdown = "OnGameShutdown";

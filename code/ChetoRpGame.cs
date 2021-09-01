@@ -14,10 +14,8 @@ namespace ChetoRp
 		public ChetoRpGame() : base()
 		{
 			Event.Run( GameEvents.PreGameInit );
-			Log.Info( "ChetoRP has started loading..." );
-			Event.Run( GameEvents.PostGameInit );
 			Modules.Start();
-			Log.Info( "ChetoRP and ChetoRP modules have finished loading." );
+			Log.Info( "ChetoRP has finished loading." );
 		}
 
 		/// <summary>

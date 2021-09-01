@@ -22,6 +22,15 @@ namespace ChetoRp.Language
 	[GameModule]
 	public class LanguageModule : Module<LanguageModuleConfig>
 	{
+		private static LanguageModule currentModule;
+
+		/// <summary>
+		/// The current locale to use for all localization purposes.
+		/// This property will return null if the language module has 
+		/// not been initialized yet.
+		/// </summary>
+		public static ILocale Locale => currentModule?.CurrentLocale;
+
 		/// <summary>
 		/// The current locale to use for all localization purposes.
 		/// </summary>
@@ -38,6 +47,7 @@ namespace ChetoRp.Language
 		/// </summary>
 		protected internal override void Run()
 		{
+			currentModule = this;
 			languageDictionary = new();
 
 			languageDictionary.Add( LanguageType.EnUs, new AmericanEnglish() );

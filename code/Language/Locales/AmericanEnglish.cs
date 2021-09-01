@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace ChetoRp.Language
+namespace ChetoRp.Language.Locales
 {
 	/// <summary>
 	/// The locale information for American English.
@@ -10,5 +10,7 @@ namespace ChetoRp.Language
 		public CultureInfo Culture => new( "en-US" );
 
 		public LanguageType Language => LanguageType.EnUs;
+
+		public string FinishedLoading => "ChetoRP has finished loading.";
 	}
 }

@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace ChetoRp.Language
+namespace ChetoRp.Language.Locales
 {
 	/// <summary>
 	/// The locale information for Uruguayan Spanish.

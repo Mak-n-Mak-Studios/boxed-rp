@@ -44,7 +44,9 @@ namespace ChetoRp
 
 				if ( weapon == null )
 				{
-					throw new ArgumentException( $"The provided team has a weapon that does not exist: \"{weaponString}\"." );
+					Log.Error( $"The provided team has a weapon that does not exist: \"{weaponString}\"." );
+
+					continue;
 				}
 
 				Inventory.Add( weapon );

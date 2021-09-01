@@ -54,11 +54,12 @@ namespace ChetoRp
 			configFiles.Watch( configFileName ).OnChangedFile += OnConfigFileModified; // TO-DO: Fix this. File watcher does not seem to be calling the event.
 		}
 
+
 		/// <summary>
 		/// Refreshes the config file on a language change to change its language.
 		/// </summary>
-		[Event( GameEvents.PostLanguageChange )]
-		protected void ReLocalizeConfigFile( LanguageType _ )
+		[Event( GameEvents.OnLanguageChange )]
+		protected void ReLocalizeConfigFile( LanguageType _, LanguageType __ )
 		{
 			WriteConfigStoreToDisk( configFilePath );
 		}

@@ -22,6 +22,7 @@ namespace ChetoRp.Language
 	[GameModule( -10000 )]
 	public class LanguageModule : Module<LanguageModuleConfig>
 	{
+		private LanguageType oldLanguage;
 		private static LanguageModule currentModule;
 
 		/// <summary>
@@ -65,12 +66,12 @@ namespace ChetoRp.Language
 		[Event( GameEvents.PreConfigChange )]
 		protected virtual void PreConfigChange( Module module )
 		{
-			if ( module is not Module<LanguageModuleConfig> mod )
+			if ( module is not Module<LanguageModuleConfig> _ )
 			{
 				return;
 			}
 
-			Event.Run( GameEvents.PreLanguageChange, mod.ConfigStore.Language );
+			oldLanguage = ConfigStore.Language;
 		}
 
 		/// <summary>
@@ -81,14 +82,14 @@ namespace ChetoRp.Language
 		[Event( GameEvents.PostConfigChange )]
 		protected virtual void PostConfigChange( Module module )
 		{
-			if ( module is not Module<LanguageModuleConfig> mod )
+			if ( module is not Module<LanguageModuleConfig> _ || oldLanguage == ConfigStore.Language )
 			{
 				return;
 			}
 
 			CurrentLocale = languageDictionary[ ConfigStore.Language ];
 
-			Event.Run( GameEvents.PostLanguageChange, mod.ConfigStore.Language );
+			Event.Run( GameEvents.OnLanguageChange, oldLanguage, ConfigStore.Language );
 		}
 	}
 

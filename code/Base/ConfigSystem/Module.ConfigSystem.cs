@@ -6,6 +6,8 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
+using ChetoRp.Language;
+
 using Sandbox;
 
 namespace ChetoRp
@@ -50,6 +52,15 @@ namespace ChetoRp
 			WriteConfigStoreToDisk( configFilePath );
 
 			configFiles.Watch( configFileName ).OnChangedFile += OnConfigFileModified; // TO-DO: Fix this. File watcher does not seem to be calling the event.
+		}
+
+		/// <summary>
+		/// Refreshes the config file on a language change to change its language.
+		/// </summary>
+		[Event( GameEvents.PostLanguageChange )]
+		protected void ReLocalizeConfigFile( LanguageType _ )
+		{
+			WriteConfigStoreToDisk( configFilePath );
 		}
 
 		/// <summary>

@@ -59,12 +59,11 @@ namespace ChetoRp.Language
 		}
 
 		/// <summary>
-		/// Fires the PreLanguageChange event prior to a config change that
-		/// changes the language of the game.
+		/// Stores the old language prior to a language config change.
 		/// </summary>
 		/// <param name="module">The module the change will occur in.</param>
 		[Event( GameEvents.PreConfigChange )]
-		protected virtual void PreConfigChange( Module module )
+		protected virtual void StoreOldLanguage( Module module )
 		{
 			if ( module is not Module<LanguageModuleConfig> _ )
 			{
@@ -75,12 +74,11 @@ namespace ChetoRp.Language
 		}
 
 		/// <summary>
-		/// Fires the PostLanguageChange event after a config change that
-		/// changes the language of the game.
+		/// Fires the OnLanguageChange event if the language has changed.
 		/// </summary>
 		/// <param name="module">The module the change occurred in.</param>
 		[Event( GameEvents.PostConfigChange )]
-		protected virtual void PostConfigChange( Module module )
+		protected virtual void OnLanguageChange( Module module )
 		{
 			if ( module is not Module<LanguageModuleConfig> _ || oldLanguage == ConfigStore.Language )
 			{

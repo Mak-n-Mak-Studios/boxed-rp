@@ -1,8 +1,6 @@
-﻿
-using Sandbox;
+﻿using Sandbox;
 
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 
 namespace ChetoRp.Language
 {
@@ -40,7 +38,7 @@ namespace ChetoRp.Language
 		/// <summary>
 		/// A read-only dictionary containing mappings for languages and their locale object.
 		/// </summary>
-		public ReadOnlyDictionary<LanguageType, ILocale> LanguageDictionary { get; private set; }
+		public IReadOnlyDictionary<LanguageType, ILocale> LanguageDictionary { get; private set; } // TO-DO: Change to ReadOnlyDictionary, pending whitelist approval. Issue #841.
 		protected Dictionary<LanguageType, ILocale> languageDictionary;
 
 		/// <summary>
@@ -54,7 +52,7 @@ namespace ChetoRp.Language
 			languageDictionary.Add( LanguageType.EnUs, new AmericanEnglish() );
 			languageDictionary.Add( LanguageType.EsUy, new UruguayanSpanish() );
 
-			LanguageDictionary = new( languageDictionary );
+			LanguageDictionary = languageDictionary;
 			CurrentLocale = languageDictionary[ ConfigStore.Language ];
 		}
 

@@ -59,7 +59,7 @@ namespace ChetoRp
 		/// Refreshes the config file on a language change to change its language.
 		/// </summary>
 		[Event( GameEvents.OnLanguageChange )]
-		protected void ReLocalizeConfigFile( LanguageType _, LanguageType __ )
+		protected virtual void ReLocalizeConfigFile( LanguageType _, LanguageType __ )
 		{
 			WriteConfigStoreToDisk( configFilePath );
 		}
@@ -68,7 +68,7 @@ namespace ChetoRp
 		/// Updates the config store for the module to reflect new changes, calling the PreConfigChange and PostConfigChange.
 		/// </summary>
 		/// <param name="fileName">The config file's name.</param>
-		protected void OnConfigFileModified( string fileName )
+		protected virtual void OnConfigFileModified( string fileName )
 		{
 			Event.Run( GameEvents.PreConfigChange, this );
 
@@ -83,7 +83,7 @@ namespace ChetoRp
 		/// any other exceptions created, retaining the latest available ConfigStore
 		/// unless none is available in which case it will be set to the default one.
 		/// </summary>
-		protected void ReadConfigStoreFromDisk()
+		protected virtual void ReadConfigStoreFromDisk()
 		{
 			string fileContent = null;
 
@@ -171,7 +171,7 @@ namespace ChetoRp
 		/// <param name="enclosingObject">An instance of the object enclosing the config option.</param>
 		/// <param name="tabsIn">The number of tabs in to append everything.</param>
 		/// <returns>The provided <see cref="StringBuilder"/>.</returns>
-		protected StringBuilder AppendConfigOption<U>( StringBuilder configDocBuilder, PropertyAttribute configOption, U enclosingObject, int tabsIn )
+		protected virtual StringBuilder AppendConfigOption<U>( StringBuilder configDocBuilder, PropertyAttribute configOption, U enclosingObject, int tabsIn )
 		{
 			if ( configOption is not GameConfigOptionInfoAttribute propertyInfo )
 			{
@@ -252,7 +252,7 @@ namespace ChetoRp
 		/// <param name="type">The config object type to append.</param>
 		/// <param name="tabsIn">The number of tabs in to append everything.</param>
 		/// <returns>A StringBuilder.</returns>
-		protected StringBuilder AppendConfigObject( StringBuilder configDocBuilder, Type type, int tabsIn )
+		protected virtual StringBuilder AppendConfigObject( StringBuilder configDocBuilder, Type type, int tabsIn )
 		{
 			object configObject = Library.Create<object>( type ) ??
 				throw new Exception( $"The config object of type {type} used in this module's config store does not have the GameConfigObject attribute on it." );
@@ -267,7 +267,7 @@ namespace ChetoRp
 		/// <param name="obj">The config object to append.</param>
 		/// <param name="tabsIn">The number of tabs in to append everything.</param>
 		/// <returns>A StringBuilder.</returns>
-		protected StringBuilder AppendConfigObject<U>( StringBuilder docBuilder, U obj, int tabsIn )
+		protected virtual StringBuilder AppendConfigObject<U>( StringBuilder docBuilder, U obj, int tabsIn )
 		{
 			Type type = obj.GetType();
 			string spaces = new( ' ', tabsIn * 4 );
@@ -348,7 +348,7 @@ namespace ChetoRp
 		/// first then the contents of the config store. The default path for the config file will be 
 		/// data/game-config/&lt;PATH_TO_MODULE_ENTRYPOINT_CLASS&gt;.txt.
 		/// </summary>
-		protected void WriteConfigStoreToDisk( string filePath )
+		protected virtual void WriteConfigStoreToDisk( string filePath )
 		{
 			if ( configDocumentation == null )
 			{

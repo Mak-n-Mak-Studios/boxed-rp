@@ -19,7 +19,7 @@ namespace ChetoRp.Language
 	/// <summary>
 	/// The module responsible for localization.
 	/// </summary>
-	[GameModule]
+	[GameModule( -10000 )]
 	public class LanguageModule : Module<LanguageModuleConfig>
 	{
 		private static LanguageModule currentModule;

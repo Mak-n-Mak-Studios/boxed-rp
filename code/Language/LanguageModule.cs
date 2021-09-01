@@ -12,6 +12,9 @@ namespace ChetoRp.Language
 	[GameConfigObject]
 	public class LanguageModuleConfig
 	{
+		/// <summary>
+		/// The language of the client/server.
+		/// </summary>
 		[GameConfigOptionInfo( "The language to use. By changing this option on the server, configs are regenerated into this language but will not affect the clients' languages. The client can use the console command 'changelanguage'." )]
 		public LanguageType Language { get; set; } = LanguageType.EnUs;
 	}

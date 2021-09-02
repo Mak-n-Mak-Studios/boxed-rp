@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-using ChetoRp.Language;
+using ChetoRp.Localization;
 
 using Sandbox;
 
@@ -58,10 +58,10 @@ namespace ChetoRp
 
 
 		/// <summary>
-		/// Refreshes the config file on a language change to change its language.
+		/// Refreshes the config file on a locale change to change its locale.
 		/// </summary>
-		[Event( GameEvents.OnLanguageChange )]
-		protected virtual void ReLocalizeConfigFile( LanguageType _, LanguageType __ )
+		[Event( GameEvents.OnLocaleChange )]
+		protected virtual void ReLocalizeConfigFile( LocaleType _, LocaleType __ )
 		{
 			WriteConfigStoreToDisk( configFilePath );
 		}

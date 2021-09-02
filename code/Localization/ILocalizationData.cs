@@ -1,4 +1,4 @@
-﻿namespace ChetoRp.Language
+﻿namespace ChetoRp.Localization
 {
 	/// <summary>
 	/// An interface containing the name of a property within <see cref="ILocale"/>.

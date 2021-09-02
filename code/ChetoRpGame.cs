@@ -1,4 +1,4 @@
-﻿using ChetoRp.Language;
+﻿using ChetoRp.Localization;
 
 using Sandbox;
 using Sandbox.UI;
@@ -17,7 +17,7 @@ namespace ChetoRp
 		{
 			Event.Run( GameEvents.PreGameInit );
 			Modules.Start();
-			Log.Info( LanguageModule.Locale.FinishedLoadingMessage );
+			Log.Info( LocalizationModule.Locale.FinishedLoadingMessage );
 		}
 
 		/// <summary>
@@ -25,7 +25,7 @@ namespace ChetoRp
 		/// </summary>
 		public override void ClientJoined( Client client )
 		{
-			string joinedMessage = string.Format( LanguageModule.Locale.ClientJoinedMessage, client.Name );
+			string joinedMessage = string.Format( LocalizationModule.Locale.ClientJoinedMessage, client.Name );
 			Log.Info( joinedMessage );
 			ChatBox.AddInformation( To.Everyone, joinedMessage, $"avatar:{client.SteamId}" );
 			GamePlayer player = new();

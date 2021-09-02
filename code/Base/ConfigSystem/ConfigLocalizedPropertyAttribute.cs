@@ -1,6 +1,6 @@
 ﻿using System;
 
-using ChetoRp.Language;
+using ChetoRp.Localization;
 
 namespace ChetoRp
 {

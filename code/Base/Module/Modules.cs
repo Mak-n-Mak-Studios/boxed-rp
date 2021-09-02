@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using ChetoRp.Language;
+using ChetoRp.Localization;
 
 using Sandbox;
 
@@ -38,7 +38,7 @@ namespace ChetoRp
 				}
 				catch ( Exception e )
 				{
-					Log.Error( e, string.Format( LanguageModule.Locale?.ModuleFailedToLoadMessage ?? "Module of type, {0}, failed to load.", type.FullName ) );
+					Log.Error( e, string.Format( LocalizationModule.Locale?.ModuleFailedToLoadMessage ?? "Module of type, {0}, failed to load.", type.FullName ) );
 				}
 			}
 

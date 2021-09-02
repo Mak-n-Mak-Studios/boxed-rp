@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace ChetoRp.Language.Locales
+namespace ChetoRp.Localization.Locales
 {
 	/// <summary>
 	/// The locale information for American English.
@@ -8,7 +8,7 @@ namespace ChetoRp.Language.Locales
 	public class AmericanEnglish : ILocale
 	{
 		public CultureInfo Culture => new( "en-US" );
-		public LanguageType Language => LanguageType.EnUs;
+		public LocaleType LocaleType => LocaleType.EnUs;
 
 		#region Base
 

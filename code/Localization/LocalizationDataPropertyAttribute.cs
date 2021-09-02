@@ -1,6 +1,6 @@
 ﻿using Sandbox;
 
-namespace ChetoRp.Language
+namespace ChetoRp.Localization
 {
 	/// <summary>
 	/// Subclasses of this attribute should be put on properties within <see cref="ILocale"/> when they

@@ -4,10 +4,10 @@ using ChetoRp.Employment;
 
 using Sandbox;
 
-namespace ChetoRp.Language
+namespace ChetoRp.Localization
 {
 	/// <summary>
-	/// The interface to implement for all localizations.
+	/// The interface to implement for all locales.
 	/// </summary>
 	[Library]
 	public interface ILocale
@@ -23,9 +23,9 @@ namespace ChetoRp.Language
 		public RegionInfo Region => new( Culture.LCID );
 
 		/// <summary>
-		/// The locale's language.
+		/// The locale type.
 		/// </summary>
-		public LanguageType Language { get; }
+		public LocaleType LocaleType { get; }
 
 		#region Base
 

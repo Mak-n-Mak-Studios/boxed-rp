@@ -21,7 +21,7 @@ namespace ChetoRp
 
 		/// <summary>
 		/// Gets the priority of the game module, which can be negative for special
-		/// modules like the language module.
+		/// modules like the localization module.
 		/// </summary>
 		public long Priority { get; }
 

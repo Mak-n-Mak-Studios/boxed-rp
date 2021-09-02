@@ -1,7 +1,7 @@
 ﻿using System;
 
 using ChetoRp.Employment;
-using ChetoRp.Language;
+using ChetoRp.Localization;
 
 using Sandbox;
 
@@ -45,7 +45,7 @@ namespace ChetoRp
 
 				if ( weapon == null )
 				{
-					Log.Error( string.Format( LanguageModule.Locale.WeaponDoesNotExistMessage, weaponString ) );
+					Log.Error( string.Format( LocalizationModule.Locale.WeaponDoesNotExistMessage, weaponString ) );
 
 					continue;
 				}

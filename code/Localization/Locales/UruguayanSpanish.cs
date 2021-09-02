@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace ChetoRp.Language.Locales
+namespace ChetoRp.Localization.Locales
 {
 	/// <summary>
 	/// The locale information for Uruguayan Spanish.
@@ -8,7 +8,7 @@ namespace ChetoRp.Language.Locales
 	public class UruguayanSpanish : ILocale
 	{
 		public CultureInfo Culture => new( "es-UY" );
-		public LanguageType Language => LanguageType.EsUy;
+		public LocaleType LocaleType => LocaleType.EsUy;
 
 		#region Base
 

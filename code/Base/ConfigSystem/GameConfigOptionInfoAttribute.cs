@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.Json.Serialization;
 
-using ChetoRp.Language;
+using ChetoRp.Localization;
 
 using Sandbox;
 

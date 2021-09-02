@@ -1,8 +1,8 @@
-﻿using ChetoRp.Employment;
+﻿using System.Globalization;
+
+using ChetoRp.Employment;
 
 using Sandbox;
-
-using System.Globalization;
 
 namespace ChetoRp.Language
 {

@@ -1,4 +1,6 @@
-﻿using ChetoRp.Language;
+﻿using System;
+
+using ChetoRp.Language;
 
 namespace ChetoRp
 {
@@ -6,5 +8,6 @@ namespace ChetoRp
 	/// The attribute to put on properties within <see cref="ILocale"/> when
 	/// they're localized config option descriptions.
 	/// </summary>
-	class ConfigLocalizedPropertyAttribute : LocalizationDataPropertyAttribute { }
+	[AttributeUsage( AttributeTargets.Property, AllowMultiple = false )]
+	public class ConfigLocalizedPropertyAttribute : LocalizationDataPropertyAttribute { }
 }

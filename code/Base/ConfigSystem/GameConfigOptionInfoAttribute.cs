@@ -15,7 +15,7 @@ namespace ChetoRp
 	/// attached simultaneously.
 	/// </summary>
 	[AttributeUsage( AttributeTargets.Property, AllowMultiple = false )]
-	class GameConfigOptionInfoAttribute : PropertyAttribute, ILocalizationData
+	public class GameConfigOptionInfoAttribute : PropertyAttribute, ILocalizationData
 	{
 		/// <summary>
 		/// The name of the property in <see cref="ILocale"/> containing the 

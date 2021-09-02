@@ -17,7 +17,7 @@ namespace ChetoRp
 		{
 			Event.Run( GameEvents.PreGameInit );
 			Modules.Start();
-			Log.Info( LocalizationModule.Locale.FinishedLoadingMessage );
+			Log.Info( LocalizationModule.Locale.BaseFinishedLoading );
 		}
 
 		/// <summary>
@@ -25,7 +25,7 @@ namespace ChetoRp
 		/// </summary>
 		public override void ClientJoined( Client client )
 		{
-			string joinedMessage = string.Format( LocalizationModule.Locale.ClientJoinedMessage, client.Name );
+			string joinedMessage = string.Format( LocalizationModule.Locale.BaseClientJoined, client.Name );
 			Log.Info( joinedMessage );
 			ChatBox.AddInformation( To.Everyone, joinedMessage, $"avatar:{client.SteamId}" );
 			GamePlayer player = new();

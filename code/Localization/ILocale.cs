@@ -32,98 +32,98 @@ namespace ChetoRp.Localization
 		/// <summary>
 		/// The message for when the gamemode finishes loading.
 		/// </summary>
-		public string FinishedLoadingMessage { get; }
+		public string BaseFinishedLoading { get; }
 
 		/// <summary>
 		/// The message for when a player joins.
 		/// </summary>
-		public string ClientJoinedMessage { get; }
+		public string BaseClientJoined { get; }
 
 		/// <summary>
 		/// The message for when a module fails to load.
 		/// </summary>
-		public string ModuleFailedToLoadMessage { get; }
+		public string BaseFailedToLoadModule { get; }
 
 		#endregion
 
-		#region Team
+		#region Employment
 
 		/// <summary>
-		/// The message for when the team module tries to give a weapon that does not exist.
+		/// The message for when the employment module tries to give a weapon that does not exist.
 		/// </summary>
-		public string WeaponDoesNotExistMessage { get; }
+		public string EmploymentWeaponDoesNotExist { get; }
 
 		/// <summary>
-		/// The description of the Category option in a <see cref="TeamConfig"/>.
-		/// </summary>
-		[ConfigLocalizedProperty]
-		public string TeamCategoryOptionDescription { get; }
-
-		/// <summary>
-		/// The description of PrettyName in a <see cref="TeamConfig"/>.
+		/// The description of the <see cref="TeamConfig.Category"/> option.
 		/// </summary>
 		[ConfigLocalizedProperty]
-		public string TeamPrettyNameOptionDescription { get; }
+		public string TeamConfigCategory { get; }
 
 		/// <summary>
-		/// The description of the Description option in a <see cref="TeamConfig"/>.
+		/// The description of <see cref="TeamConfig.PrettyName"/> option.
 		/// </summary>
 		[ConfigLocalizedProperty]
-		public string TeamDescriptionOptionDescription { get; }
+		public string TeamConfigPrettyName { get; }
 
 		/// <summary>
-		/// The description of the Models option in a <see cref="TeamConfig"/>.
+		/// The description of the <see cref="TeamConfig.Description"/> option.
 		/// </summary>
 		[ConfigLocalizedProperty]
-		public string TeamModelsOptionDescription { get; }
+		public string TeamConfigDescription { get; }
 
 		/// <summary>
-		/// The description of the Weapons option in a <see cref="TeamConfig"/>.
+		/// The description of the <see cref="TeamConfig.Models"/> option.
 		/// </summary>
 		[ConfigLocalizedProperty]
-		public string TeamWeaponsOptionDescription { get; }
+		public string TeamConfigModels { get; }
 
 		/// <summary>
-		/// The description of the ShouldGetDefaultWeapons option in a <see cref="TeamConfig"/>.
+		/// The description of the <see cref="TeamConfig.Weapons"/> option.
 		/// </summary>
 		[ConfigLocalizedProperty]
-		public string TeamShouldGetDefaultWeaponsOptionDescription { get; }
+		public string TeamConfigWeapons { get; }
 
 		/// <summary>
-		/// The description of the MaxPlayers option in a <see cref="TeamConfig"/>.
+		/// The description of the <see cref="TeamConfig.ShouldGetDefaultWeapons"/> option.
 		/// </summary>
 		[ConfigLocalizedProperty]
-		public string TeamMaxPlayersOptionDescription { get; }
+		public string TeamConfigShouldGetDefaultWeapons { get; }
 
 		/// <summary>
-		/// The description of the TeamSalary option in a <see cref="TeamConfig"/>.
+		/// The description of the <see cref="TeamConfig.MaxPlayers"/> option.
 		/// </summary>
 		[ConfigLocalizedProperty]
-		public string TeamSalaryOptionDescription { get; }
+		public string TeamConfigMaxPlayers { get; }
 
 		/// <summary>
-		/// The description of the IsVoteRequired option in a <see cref="TeamConfig"/>.
+		/// The description of the <see cref="TeamConfig.Salary"/> option.
 		/// </summary>
 		[ConfigLocalizedProperty]
-		public string TeamIsVoteRequiredOptionDescription { get; }
+		public string TeamConfigSalary { get; }
 
 		/// <summary>
-		/// The description of the TeamCanBeDemoted option in a <see cref="TeamConfig"/>.
+		/// The description of the <see cref="TeamConfig.IsVoteRequired"/> option.
 		/// </summary>
 		[ConfigLocalizedProperty]
-		public string TeamCanBeDemotedOptionDescription { get; }
+		public string TeamConfigIsVoteRequired { get; }
 
 		/// <summary>
-		/// The description of the IsDefault option in a <see cref="TeamConfig"/>.
+		/// The description of the <see cref="TeamConfig.CanBeDemoted"/> option.
 		/// </summary>
 		[ConfigLocalizedProperty]
-		public string TeamIsDefaultOptionDescription { get; }
+		public string TeamConfigCanBeDemoted { get; }
 
 		/// <summary>
-		/// The description of the IsSpecialTeam option in a <see cref="TeamConfig"/>.
+		/// The description of the <see cref="TeamConfig.IsDefault"/> option.
 		/// </summary>
 		[ConfigLocalizedProperty]
-		public string TeamIsSpecialTeamOptionDescription { get; }
+		public string TeamConfigIsDefault { get; }
+
+		/// <summary>
+		/// The description of the <see cref="TeamConfig.IsSpecialTeam"/> option.
+		/// </summary>
+		[ConfigLocalizedProperty]
+		public string TeamConfigIsSpecialTeam { get; }
 
 		#endregion
 	}

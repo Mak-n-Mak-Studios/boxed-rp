@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
+using ChetoRp.Language;
+
 using Sandbox;
 
 namespace ChetoRp
@@ -36,7 +38,7 @@ namespace ChetoRp
 				}
 				catch ( Exception e )
 				{
-					Log.Error( e, $"Module of type, {type.FullName}, failed to load." );
+					Log.Error( e, string.Format( LanguageModule.Locale?.ModuleFailedToLoadMessage ?? "Module of type, {0}, failed to load.", type.FullName ) );
 				}
 			}
 

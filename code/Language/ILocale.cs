@@ -12,7 +12,6 @@ namespace ChetoRp.Language
 	[Library]
 	public interface ILocale
 	{
-
 		/// <summary>
 		/// The locale's culture.
 		/// </summary>
@@ -28,6 +27,8 @@ namespace ChetoRp.Language
 		/// </summary>
 		public LanguageType Language { get; }
 
+		#region Base
+
 		/// <summary>
 		/// The message for when the gamemode finishes loading.
 		/// </summary>
@@ -37,6 +38,20 @@ namespace ChetoRp.Language
 		/// The message for when a player joins.
 		/// </summary>
 		public string ClientJoinedMessage { get; }
+
+		/// <summary>
+		/// The message for when a module fails to load.
+		/// </summary>
+		public string ModuleFailedToLoadMessage { get; }
+
+		#endregion
+
+		#region Team
+
+		/// <summary>
+		/// The message for when the team module tries to give a weapon that does not exist.
+		/// </summary>
+		public string WeaponDoesNotExistMessage { get; }
 
 		/// <summary>
 		/// The description of the Category option in a <see cref="TeamConfig"/>.
@@ -109,5 +124,7 @@ namespace ChetoRp.Language
 		/// </summary>
 		[ConfigLocalizedProperty]
 		public string TeamIsSpecialTeamOptionDescription { get; }
+
+		#endregion
 	}
 }

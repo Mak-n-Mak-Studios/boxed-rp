@@ -1,6 +1,7 @@
 ﻿using System;
 
 using ChetoRp.Employment;
+using ChetoRp.Language;
 
 using Sandbox;
 
@@ -44,7 +45,7 @@ namespace ChetoRp
 
 				if ( weapon == null )
 				{
-					Log.Error( $"The provided team has a weapon that does not exist: \"{weaponString}\"." );
+					Log.Error( string.Format( LanguageModule.Locale.WeaponDoesNotExistMessage, weaponString ) );
 
 					continue;
 				}

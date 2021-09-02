@@ -126,5 +126,15 @@ namespace ChetoRp.Localization
 		public string TeamConfigIsSpecialTeam { get; }
 
 		#endregion
+
+		#region Localization
+
+		/// <summary>
+		/// The description of the <see cref="LocalizationModuleConfig.Locale"/> option.
+		/// </summary>
+		[ConfigLocalizedProperty]
+		public string LocalizationConfigLocale { get; }
+
+		#endregion
 	}
 }

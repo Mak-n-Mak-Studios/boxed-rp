@@ -15,7 +15,7 @@ namespace ChetoRp.Localization
 		/// <summary>
 		/// The locale of the client/server.
 		/// </summary>
-		[GameConfigOptionInfo( "The locale to use. By changing this option on the server, configs are regenerated into this locale but will not affect the clients' locales. The client can use the /changelanguage command." )]
+		[GameConfigOptionInfo( "LocalizationConfigLocale" )]
 		public LocaleType Locale { get; set; } = LocaleType.EnUs;
 	}
 
@@ -68,7 +68,7 @@ namespace ChetoRp.Localization
 		[Event( GameEvents.PreConfigChange )]
 		protected virtual void StoreOldLocale( Module module )
 		{
-			if ( module is not Module<LocalizationModuleConfig> _ )
+			if ( module is not Module<LocalizationModuleConfig> )
 			{
 				return;
 			}

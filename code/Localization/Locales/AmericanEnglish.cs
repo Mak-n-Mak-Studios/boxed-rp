@@ -35,5 +35,11 @@ namespace ChetoRp.Localization.Locales
 		public string TeamConfigIsSpecialTeam => "Whether this team is a special team.";
 
 		#endregion
+
+		#region Localization
+
+		public string LocalizationConfigLocale => "The locale to use. By changing this option on the server, configs are regenerated into this locale but will not affect the clients' locales. The client can use the /changelanguage command.";
+
+		#endregion
 	}
 }

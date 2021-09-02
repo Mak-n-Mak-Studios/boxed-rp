@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 
+using ChetoRp.Language.Locales;
+
 using Sandbox;
 
 namespace ChetoRp.Language

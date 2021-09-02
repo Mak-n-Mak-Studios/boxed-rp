@@ -66,6 +66,24 @@ namespace ChetoRp.Localization
 		public string EmploymentWeaponDoesNotExist { get; }
 
 		/// <summary>
+		/// The description of the <see cref="EmploymentModuleConfig.SalaryPayPeriod"/> option.
+		/// </summary>
+		[ConfigLocalizedProperty]
+		public string EmploymentConfigSalaryPayPeriod { get; }
+
+		/// <summary>
+		/// The description of the <see cref="EmploymentModuleConfig.DefaultWeapons"/> option.
+		/// </summary>
+		[ConfigLocalizedProperty]
+		public string EmploymentConfigDefaultWeapons { get; }
+
+		/// <summary>
+		/// The description of the <see cref="EmploymentModuleConfig.Teams"/> option.
+		/// </summary>
+		[ConfigLocalizedProperty]
+		public string EmploymentConfigTeams { get; }
+
+		/// <summary>
 		/// The description of the <see cref="TeamConfig.Category"/> option.
 		/// </summary>
 		[ConfigLocalizedProperty]

@@ -14,19 +14,19 @@ namespace ChetoRp.Employment
 		/// <summary>
 		/// The number of seconds between each salary pay period.
 		/// </summary>
-		[GameConfigOptionInfo( "The number of seconds between each salary pay period." )]
+		[GameConfigOptionInfo( "EmploymentConfigSalaryPayPeriod" )]
 		public int SalaryPayPeriod { get; set; } = 300;
 
 		/// <summary>
 		/// The default weapons given to all players.
 		/// </summary>
-		[GameConfigOptionInfo( "The default weapons given to all players." )]
+		[GameConfigOptionInfo( "EmploymentConfigDefaultWeapons" )]
 		public string[] DefaultWeapons { get; set; } = Array.Empty<string>();
 
 		/// <summary>
 		/// The teams in the game. Do not use this directly. Use <see cref="EmploymentModule.Teams"/> instead.
 		/// </summary>
-		[GameConfigOptionInfo( "The teams in the game." )]
+		[GameConfigOptionInfo( "EmploymentConfigTeams" )]
 		public TeamConfig[] Teams { get; set; } = new TeamConfig[]
 		{
 			new TeamConfig()

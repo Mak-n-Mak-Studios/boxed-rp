@@ -23,6 +23,9 @@ namespace ChetoRp.Localization.Locales
 		#region Employment
 
 		public string EmploymentWeaponDoesNotExist => "The provided team has a weapon that does not exist: \"{0}\".";
+		public string EmploymentConfigSalaryPayPeriod => "The number of seconds between each salary pay period.";
+		public string EmploymentConfigDefaultWeapons => "The default weapons given to all players.";
+		public string EmploymentConfigTeams => "The teams in the game.";
 		public string TeamConfigCategory => "The category of the team.";
 		public string TeamConfigPrettyName => "The pretty name of the team.";
 		public string TeamConfigDescription => "The description of the team.";

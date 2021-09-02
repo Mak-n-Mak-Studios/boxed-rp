@@ -5,7 +5,7 @@
 	/// </summary>
 	public enum LanguageType
 	{
-		EnUs,
+		EnUs = 0,
 		EsUy
 	}
 }

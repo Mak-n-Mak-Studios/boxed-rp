@@ -45,7 +45,7 @@ namespace ChetoRp.Language
 		/// when the language changes.
 		/// </summary>
 		[Event( GameEvents.OnLanguageChange )]
-		public void RefreshAllLocalizationData( LanguageType _, LanguageType _ )
+		public void RefreshAllLocalizationData( LanguageType _, LanguageType __ )
 		{
 			foreach ( T property in properties )
 			{

@@ -29,6 +29,7 @@ namespace ChetoRp
 			WriteIndented = true
 		};
 
+		private LocalizationManager<ConfigLocalizedPropertyAttribute> localizedConfigOptions;
 		private string configFileName;
 		private string configFilePath;
 		private string configDocumentation;
@@ -39,6 +40,7 @@ namespace ChetoRp
 		/// <returns>The initialized config store.</returns>
 		private void InitializeConfig()
 		{
+			localizedConfigOptions = new();
 			configFileName = GetType().FullName + ".txt";
 			configFilePath = ConfigFolderName + "/" + configFileName;
 
@@ -202,23 +204,34 @@ namespace ChetoRp
 				}
 			}
 
-			configDocBuilder.Append( spaces )
-				.Append( propertyInfo.Name )
-				.Append( " - " )
-				.Append( propertyPrimitiveTypeString ?? propertyCustomTypeString )
-				.Append( ":\n\n" )
-				.Append( spaces )
-				.Append( "Description:" )
-				.Append( '\n' )
-				.Append( spaces )
-				.Append( propertyInfo.Description.Replace( "\n", "\n" + spaces ) )
-				.Append( "\n\n" )
-				.Append( spaces )
-				.Append( "Default value of " )
-				.Append( propertyInfo.Name )
-				.Append( ":\n" )
-				.Append( spaces )
-				.Append( JsonSerializer.Serialize( propertyDefaultValue, serializerOptions ).Replace( "\n", "\n" + spaces ) );
+			try
+			{
+				configDocBuilder.Append( spaces )
+					.Append( propertyInfo.Name )
+					.Append( " - " )
+					.Append( propertyPrimitiveTypeString ?? propertyCustomTypeString )
+					.Append( ":\n\n" )
+					.Append( spaces )
+					.Append( "Description:" )
+					.Append( '\n' )
+					.Append( spaces )
+					.Append( localizedConfigOptions[ propertyInfo ].Replace( "\n", "\n" + spaces ) )
+					.Append( "\n\n" )
+					.Append( spaces )
+					.Append( "Default value of " )
+					.Append( propertyInfo.Name )
+					.Append( ":\n" )
+					.Append( spaces )
+					.Append( JsonSerializer.Serialize( propertyDefaultValue, serializerOptions ).Replace( "\n", "\n" + spaces ) );
+			}
+			catch ( KeyNotFoundException )
+			{
+				throw new Exception( "The property name given on the [ConfigLocalizedProperty] attribute on the property " +
+					$"{propertyInfo.Name} in {enclosingObject.GetType().Name} isn't valid. Check that the property name " +
+					"has been typed properly and that the property that the property name refers to has a subclass of the " +
+					"[LocalizationDataProperty] attached to it." );
+			}
+
 
 			if ( propertyCustomTypeString != null )
 			{

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Text.Json.Serialization;
 
+using ChetoRp.Language;
+
 using Sandbox;
 
 namespace ChetoRp
@@ -13,20 +15,22 @@ namespace ChetoRp
 	/// attached simultaneously.
 	/// </summary>
 	[AttributeUsage( AttributeTargets.Property, AllowMultiple = false )]
-	class GameConfigOptionInfoAttribute : PropertyAttribute
+	class GameConfigOptionInfoAttribute : PropertyAttribute, ILocalizationData
 	{
 		/// <summary>
-		/// The description of the config option that this attribute is applied to.
+		/// The name of the property in <see cref="ILocale"/> containing the 
+		/// localized description of this config option.
 		/// </summary>
-		public string Description { get; }
+		public string PropertyName { get; }
 
 		/// <summary>
 		/// Initializes a new <see cref="GameConfigOptionInfoAttribute"/>.
 		/// </summary>
-		/// <param name="description">The config option description.</param>
-		public GameConfigOptionInfoAttribute( string description )
+		/// <param name="propertyName">The name of the property in <see cref="ILocale"/> 
+		/// containing the localized description of this config option.</param>
+		public GameConfigOptionInfoAttribute( string propertyName )
 		{
-			Description = description;
+			PropertyName = propertyName;
 		}
 	}
 }

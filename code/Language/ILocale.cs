@@ -27,5 +27,15 @@ namespace ChetoRp.Language
 		/// The locale's language.
 		/// </summary>
 		public LanguageType Language { get; }
+
+		/// <summary>
+		/// The message for when the gamemode finishes loading.
+		/// </summary>
+		public string FinishedLoadingMessage { get; }
+
+		/// <summary>
+		/// The message for when a player joins.
+		/// </summary>
+		public string ClientJoinedMessage { get; }
 	}
 }

@@ -1,4 +1,6 @@
-﻿using Sandbox;
+﻿using ChetoRp.Language;
+
+using Sandbox;
 using Sandbox.UI;
 
 namespace ChetoRp
@@ -15,7 +17,7 @@ namespace ChetoRp
 		{
 			Event.Run( GameEvents.PreGameInit );
 			Modules.Start();
-			Log.Info( "ChetoRP has finished loading." );
+			Log.Info( LanguageModule.Locale.FinishedLoadingMessage );
 		}
 
 		/// <summary>
@@ -23,8 +25,9 @@ namespace ChetoRp
 		/// </summary>
 		public override void ClientJoined( Client client )
 		{
-			Log.Info( $"\"{client.Name}\" has joined the game" );
-			ChatBox.AddInformation( To.Everyone, $"{client.Name} has joined", $"avatar:{client.SteamId}" );
+			string joinedMessage = string.Format( LanguageModule.Locale.ClientJoinedMessage, client.Name );
+			Log.Info( joinedMessage );
+			ChatBox.AddInformation( To.Everyone, joinedMessage, $"avatar:{client.SteamId}" );
 			GamePlayer player = new();
 			client.Pawn = player;
 			player.Respawn();

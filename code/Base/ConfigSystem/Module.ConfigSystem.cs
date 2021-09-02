@@ -114,7 +114,7 @@ namespace ChetoRp
 		private static string TypeToString( Type type )
 		{
 			type = GetArrayElementType( type, out int deep );
-			StringBuilder arrayOfText = new StringBuilder( deep * 9 + 15 ).
+			StringBuilder arrayOfText = new StringBuilder( deep * 9 + 25 ). // deep * 9 = how deep the array is * "array of " length. Add 25 for the length of the type string in the array.
 				Insert( 0, "array of ", deep );
 
 			if ( type == typeof( bool ) )

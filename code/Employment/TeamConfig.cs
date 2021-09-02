@@ -12,73 +12,73 @@ namespace ChetoRp.Employment
 		/// <summary>
 		/// The category of the team.
 		/// </summary>
-		[GameConfigOptionInfo( "The category of the team." )]
+		[GameConfigOptionInfo( "TeamCategoryOptionDescription" )]
 		public string Category { get; set; } = "Uncategorized";
 
 		/// <summary>
 		/// The pretty name of the team.
 		/// </summary>
-		[GameConfigOptionInfo( "The pretty name of the team." )]
+		[GameConfigOptionInfo( "TeamPrettyNameOptionDescription" )]
 		public string PrettyName { get; set; } = "";
 
 		/// <summary>
 		/// The description of the team.
 		/// </summary>
-		[GameConfigOptionInfo( "The description of the team." )]
+		[GameConfigOptionInfo( "TeamDescriptionOptionDescription" )]
 		public string Description { get; set; } = "";
 
 		/// <summary>
 		/// The possible models of the players in the team.
 		/// </summary>
-		[GameConfigOptionInfo( "The possible models of the players in the team." )]
+		[GameConfigOptionInfo( "TeamModelsOptionDescription" )]
 		public string[] Models { get; set; } = Array.Empty<string>();
 
 		/// <summary>
 		/// The weapons given to players in the team on spawn.
 		/// </summary>
-		[GameConfigOptionInfo( "The weapons given to players in the team on spawn." )]
+		[GameConfigOptionInfo( "TeamWeaponsOptionDescription" )]
 		public string[] Weapons { get; set; } = Array.Empty<string>();
 
 		/// <summary>
 		/// Whether the default weapons should be given to this team.
 		/// </summary>
-		[GameConfigOptionInfo( "Whether the default weapons should be given to this team." )]
+		[GameConfigOptionInfo( "TeamShouldGetDefaultWeaponsOptionDescription" )]
 		public bool ShouldGetDefaultWeapons { get; set; } = true;
 
 		/// <summary>
 		/// The max number of players that can be in this team at a time. 0 = unlimited players.
 		/// </summary>
-		[GameConfigOptionInfo( "The max number of players that can be in this team at a time. 0 = unlimited players." )]
+		[GameConfigOptionInfo( "TeamMaxPlayersOptionDescription" )]
 		public uint MaxPlayers { get; set; } = 0;
 
 		/// <summary>
 		/// The salary given to the player every pay period.
 		/// </summary>
-		[GameConfigOptionInfo( "The salary given to the player every pay period." )]
+		[GameConfigOptionInfo( "TeamSalaryOptionDescription" )]
 		public ulong Salary { get; set; } = 100;
 
 		/// <summary>
 		/// Whether a player needs to be voted into the team.
 		/// </summary>
-		[GameConfigOptionInfo( "Whether a player needs to be voted into the team." )]
+		[GameConfigOptionInfo( "TeamIsVoteRequiredOptionDescription" )]
 		public bool IsVoteRequired { get; set; } = false;
 
 		/// <summary>
 		/// Whether players in the team can be demoted out of the team.
 		/// </summary>
-		[GameConfigOptionInfo( "Whether players in the team can be demoted out of the team." )]
+		[GameConfigOptionInfo( "TeamCanBeDemotedOptionDescription" )]
 		public bool CanBeDemoted { get; set; } = true;
 
 		/// <summary>
 		/// Whether this team should be the default team given when a player joins. The first default team in the configuration file will be the default team.
 		/// </summary>
-		[GameConfigOptionInfo( "Whether this team should be the default team given when a player joins. The first default team in the configuration file will be the default team." )]
+		[GameConfigOptionInfo( "TeamIsDefaultOptionDescription" )]
 		public bool IsDefault { get; set; } = false;
 
 		/// <summary>
 		/// Whether this team is a special team.
 		/// </summary>
-		[GameConfigOptionInfo( "Whether this team is a special team." )]
+		[GameConfigOptionInfo( "TeamIsSpecialTeamOptionDescription" )]
 		[JsonConverter( typeof( JsonStringEnumConverter ) )]
 		public SpecialTeam IsSpecialTeam { get; set; } = SpecialTeam.None;
 

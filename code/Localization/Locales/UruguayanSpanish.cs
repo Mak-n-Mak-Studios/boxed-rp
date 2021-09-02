@@ -14,13 +14,15 @@ namespace ChetoRp.Localization.Locales
 
 		public string BaseFinishedLoading => "Se cargó ChetoRP.";
 		public string BaseClientJoined => "\"{0}\" se unió a la partida.";
-		public string BaseFailedToLoadModule => "Module of type, {0}, failed to load."; // TO-DO: Localize.
+		public string BaseFailedToLoadModule => "Module of type, {0}, failed to load."; // TO-DO: Translate.
+		public string BaseConfigMinFallDamageSpeed => "The minimum speed the player needs to be going down vertically to take damage."; // TO-DO: Translate.
+		public string BaseConfigFallDamageDamping => "The damping of the fall damage value. The formula for fall damage is FallSpeed / FallDamageDamping."; // TO-DO: Translate.
 
 		#endregion
 
 		#region Employment
 
-		public string EmploymentWeaponDoesNotExist => "The provided team has a weapon that does not exist: \"{0}\"."; // TO-DO: Localize.
+		public string EmploymentWeaponDoesNotExist => "The provided team has a weapon that does not exist: \"{0}\"."; // TO-DO: Translate.
 		public string TeamConfigCategory => "La categoría del equipo.";
 		public string TeamConfigPrettyName => "El nombre para mostrar del equipo.";
 		public string TeamConfigDescription => "La descripción del equipo.";
@@ -38,7 +40,7 @@ namespace ChetoRp.Localization.Locales
 
 		#region Localization
 
-		public string LocalizationConfigLocale => "The locale to use. By changing this option on the server, configs are regenerated into this locale but will not affect the clients' locales. The client can use the /changelanguage command."; // TO-DO: Localize.
+		public string LocalizationConfigLocale => "The locale to use. By changing this option on the server, configs are regenerated into this locale but will not affect the clients' locales. The client can use the /changelanguage command."; // TO-DO: Translate.
 
 		#endregion
 	}

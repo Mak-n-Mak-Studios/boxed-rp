@@ -9,13 +9,13 @@
 		/// <summary>
 		/// The minimum speed the player needs to be going down vertically to take damage.
 		/// </summary>
-		[GameConfigOptionInfo( "The minimum speed the player needs to be going down vertically to take damage." )]
+		[GameConfigOptionInfo( "BaseConfigMinFallDamageSpeed" )]
 		public float MinFallDamageSpeed { get; set; } = 500;
 
 		/// <summary>
 		/// The damping of the fall damage value. The formula for fall damage is FallSpeed / FallDamageDamping.
 		/// </summary>
-		[GameConfigOptionInfo( "The damping of the fall damage value. The formula for fall damage is FallSpeed / FallDamageDamping." )]
+		[GameConfigOptionInfo( "BaseConfigFallDamageDamping" )]
 		public int FallDamageDamping { get; set; } = 20;
 	}
 

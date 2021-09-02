@@ -15,6 +15,8 @@ namespace ChetoRp.Localization.Locales
 		public string BaseFinishedLoading => "ChetoRP has finished loading.";
 		public string BaseClientJoined => "\"{0}\" has joined the game.";
 		public string BaseFailedToLoadModule => "Module of type, {0}, failed to load.";
+		public string BaseConfigMinFallDamageSpeed => "The minimum speed the player needs to be going down vertically to take damage.";
+		public string BaseConfigFallDamageDamping => "The damping of the fall damage value. The formula for fall damage is FallSpeed / FallDamageDamping.";
 
 		#endregion
 

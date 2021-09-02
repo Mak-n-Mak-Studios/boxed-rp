@@ -44,6 +44,18 @@ namespace ChetoRp.Localization
 		/// </summary>
 		public string BaseFailedToLoadModule { get; }
 
+		/// <summary>
+		/// The description of the <see cref="BaseModuleConfig.MinFallDamageSpeed"/> option.
+		/// </summary>
+		[ConfigLocalizedProperty]
+		public string BaseConfigMinFallDamageSpeed { get; }
+
+		/// <summary>
+		/// The description of the <see cref="BaseModuleConfig.FallDamageDamping"/> option.
+		/// </summary>
+		[ConfigLocalizedProperty]
+		public string BaseConfigFallDamageDamping { get; }
+
 		#endregion
 
 		#region Employment

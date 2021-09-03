@@ -10,6 +10,12 @@ namespace ChetoRp.Localization.Locales
 		public CultureInfo Culture => new( "es-UY" );
 		public LocaleType LocaleType => LocaleType.EsUy;
 
+		#region Punctuation
+
+		public string ColonPlacement => "{0}:";
+
+		#endregion
+
 		#region Base
 
 		public string BaseFinishedLoading => "Se cargó ChetoRP.";
@@ -32,7 +38,7 @@ namespace ChetoRp.Localization.Locales
 		public string TeamConfigModels => "Los modelos posibles para el equipo.";
 		public string TeamConfigWeapons => "Las armas que se le dan a los del equipo cuando spawnean.";
 		public string TeamConfigShouldGetDefaultWeapons => "Si se le deberían dar las armas por defecto al equipo.";
-		public string TeamConfigMaxPlayers => "La cantidad máxima de jugadores que pueden ser de este equipo a la vez. 0 = sin límite.";
+		public string TeamConfigMaxPlayers => "La cantidad máxima de jugadores que pueden ser de este equipo a la vez. 0 = sin límite. Will be ignored if the team is the default team."; // TO-DO: Translate.
 		public string TeamConfigSalary => "El sueldo que se le da a los jugadores después de cada período de pago.";
 		public string TeamConfigIsVoteRequired => "Si se necesita votar para entrar al equipo.";
 		public string TeamConfigCanBeDemoted => "Si se pueden rebajar los jugadores del equipo.";

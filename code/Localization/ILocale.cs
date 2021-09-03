@@ -27,6 +27,15 @@ namespace ChetoRp.Localization
 		/// </summary>
 		public LocaleType LocaleType { get; }
 
+		#region Punctuation
+
+		/// <summary>
+		/// The colon placement in a string.
+		/// </summary>
+		public string ColonPlacement { get; }
+
+		#endregion
+
 		#region Base
 
 		/// <summary>

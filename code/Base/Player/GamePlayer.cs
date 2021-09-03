@@ -14,6 +14,7 @@ namespace ChetoRp
 		{
 			Event.Run<IGamePlayer>( GameEvents.PrePlayerSpawn, this );
 			base.Respawn();
+			TeamRespawn();
 			Controller = new GameWalkController();
 			Event.Run<IGamePlayer>( GameEvents.PostPlayerSpawn, this );
 		}

@@ -83,16 +83,6 @@ namespace ChetoRp.Employment
 		/// <param name="teamConfig">The <see cref="TeamConfig"/>.</param>
 		internal Team( TeamConfig teamConfig )
 		{
-			if ( DefaultTeam == null && IsDefault )
-			{
-				DefaultTeam = this;
-				MaxPlayers = 0;
-			}
-			else
-			{
-				MaxPlayers = teamConfig.MaxPlayers;
-			}
-
 			Category = teamConfig.Category;
 			PrettyName = teamConfig.PrettyName;
 			Description = teamConfig.Description;
@@ -104,6 +94,16 @@ namespace ChetoRp.Employment
 			IsDefault = teamConfig.IsDefault;
 			TeamType = teamConfig.TeamType;
 			CurrentPlayerCount = 0;
+
+			if ( DefaultTeam == null && IsDefault )
+			{
+				DefaultTeam = this;
+				MaxPlayers = 0;
+			}
+			else
+			{
+				MaxPlayers = teamConfig.MaxPlayers;
+			}
 
 			if ( ShouldGetDefaultWeapons )
 			{
@@ -121,7 +121,7 @@ namespace ChetoRp.Employment
 		/// <returns>Whether the team's max players has been reached.</returns>
 		public bool IsFull()
 		{
-			return MaxPlayers == 0 || CurrentPlayerCount == MaxPlayers;
+			return MaxPlayers != 0 && CurrentPlayerCount == MaxPlayers;
 		}
 	}
 }

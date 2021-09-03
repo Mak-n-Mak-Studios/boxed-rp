@@ -45,7 +45,7 @@ namespace ChetoRp
 
 				if ( weapon == null )
 				{
-					Log.Error( string.Format( LocalizationModule.Locale.EmploymentWeaponDoesNotExist, weaponString ) );
+					Log.Error( LocalizationModule.Locale.EmploymentWeaponDoesNotExist.Format( weaponString ) );
 
 					continue;
 				}

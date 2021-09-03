@@ -33,7 +33,7 @@ namespace ChetoRp.Localization
 			{
 				if ( property.PropertyType != typeof( string ) )
 				{
-					throw new Exception( $"The property {property.Name} in {typeof( ILocale ).Name} is not a string" );
+					throw new Exception( $"The property {property.Name} in {typeof( ILocale ).FullName} is not a string" );
 				}
 
 				propertyToData.Add( property.Name, property.GetValue<string>( LocalizationModule.Locale ) );

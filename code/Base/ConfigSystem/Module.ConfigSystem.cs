@@ -227,11 +227,10 @@ namespace ChetoRp
 			catch ( KeyNotFoundException )
 			{
 				throw new Exception( "The property name given on the [ConfigLocalizedProperty] attribute on the property " +
-					$"{propertyInfo.Name} in {enclosingObject.GetType().Name} isn't valid. Check that the property name " +
+					$"{propertyInfo.Name} in {enclosingObject.GetType().FullName} isn't valid. Check that the property name " +
 					"has been typed properly and that the property that the property name refers to has a subclass of the " +
 					"[LocalizationDataProperty] attached to it." );
 			}
-
 
 			if ( propertyCustomTypeString != null )
 			{

@@ -81,6 +81,11 @@ namespace ChetoRp.Employment
 			if ( DefaultTeam == null && IsDefault )
 			{
 				DefaultTeam = this;
+				MaxPlayers = 0;
+			}
+			else
+			{
+				MaxPlayers = teamConfig.MaxPlayers;
 			}
 
 			Category = teamConfig.Category;
@@ -88,7 +93,6 @@ namespace ChetoRp.Employment
 			Description = teamConfig.Description;
 			Models = teamConfig.Models.ToArray();
 			ShouldGetDefaultWeapons = teamConfig.ShouldGetDefaultWeapons;
-			MaxPlayers = teamConfig.MaxPlayers;
 			Salary = teamConfig.Salary;
 			IsVoteRequired = teamConfig.IsVoteRequired;
 			CanBeDemoted = teamConfig.CanBeDemoted;

@@ -402,7 +402,7 @@ namespace ChetoRp
 					.Append( @" \\\\\\\\\\\\" )
 					.Append( "\n\n" );
 
-				AppendConfigObject( configDocBuilder, ConfigStore, 0 )
+				AppendConfigObject( configDocBuilder, new T(), 0 )
 					.Append( "\n\n" )
 					.Append( @$"/////////////// " )
 					.Append( LocalizationModule.Locale.BaseEndOfTypeDocumentation.Format( typeName ) )

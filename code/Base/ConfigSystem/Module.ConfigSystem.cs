@@ -114,34 +114,35 @@ namespace ChetoRp
 		private static string TypeToString( Type type )
 		{
 			type = GetArrayElementType( type, out int deep );
-			StringBuilder arrayOfText = new StringBuilder( deep * 9 + 25 ). // deep * 9 = how deep the array is * "array of " length. Add 25 for the length of the type string in the array.
-				Insert( 0, "array of ", deep );
+			StringBuilder arrayOfText = new( 25 + deep * 2 ); // deep * 2 = how deep the array is * "[]" length. Add 25 for the length of the type string in the array.
 
 			if ( type == typeof( bool ) )
 			{
-				return arrayOfText.Append( "true/false" ).ToString();
+				arrayOfText.Append( LocalizationModule.Locale.BaseTrueFalse );
 			}
 			else if ( type == typeof( uint ) || type == typeof( int ) || type == typeof( ushort ) || type == typeof( short ) ||
 				type == typeof( ulong ) || type == typeof( long ) || type == typeof( byte ) || type == typeof( sbyte ) )
 			{
-				return arrayOfText.Append( "integer" ).ToString();
+				arrayOfText.Append( LocalizationModule.Locale.BaseInteger );
 			}
 			else if ( type == typeof( float ) || type == typeof( double ) || type == typeof( decimal ) )
 			{
-				return arrayOfText.Append( "integer/decimal" ).ToString();
+				arrayOfText.Append( LocalizationModule.Locale.BaseIntegerDecimal );
 			}
 			else if ( type == typeof( char ) )
 			{
-				return arrayOfText.Append( "character" ).ToString();
+				arrayOfText.Append( LocalizationModule.Locale.BaseCharacter );
 			}
 			else if ( type == typeof( string ) )
 			{
-				return arrayOfText.Append( "text" ).ToString();
+				arrayOfText.Append( LocalizationModule.Locale.BaseText );
 			}
 			else
 			{
 				return null;
 			}
+
+			return arrayOfText.Insert( arrayOfText.Length, "[]", deep ).ToString();
 		}
 
 		/// <summary>
@@ -209,18 +210,17 @@ namespace ChetoRp
 				configDocBuilder.Append( spaces )
 					.Append( propertyInfo.Name )
 					.Append( " - " )
-					.Append( propertyPrimitiveTypeString ?? propertyCustomTypeString )
-					.Append( ":\n\n" )
+					.Append( LocalizationModule.Locale.ColonPlacement.Format( propertyPrimitiveTypeString ?? propertyCustomTypeString ) )
+					.Append( "\n\n" )
 					.Append( spaces )
-					.Append( "Description:" )
+					.Append( LocalizationModule.Locale.ColonPlacement.Format( LocalizationModule.Locale.BaseDescription ) )
 					.Append( '\n' )
 					.Append( spaces )
 					.Append( localizedConfigOptions[ propertyInfo ].Replace( "\n", "\n" + spaces ) )
 					.Append( "\n\n" )
 					.Append( spaces )
-					.Append( "Default value of " )
-					.Append( propertyInfo.Name )
-					.Append( ":\n" )
+					.Append( LocalizationModule.Locale.ColonPlacement.Format( LocalizationModule.Locale.BaseDefaultValueOfProperty.Format( propertyInfo.Name ) ) )
+					.Append( '\n' )
 					.Append( spaces )
 					.Append( JsonSerializer.Serialize( propertyDefaultValue, serializerOptions ).Replace( "\n", "\n" + spaces ) );
 			}
@@ -238,9 +238,8 @@ namespace ChetoRp
 					.Append( spaces )
 					.Append( "-----------------------------------------------------------------\n\n" )
 					.Append( spaces )
-					.Append( "Layout of " )
-					.Append( propertyCustomBaseTypeString )
-					.Append( ":\n" );
+					.Append( LocalizationModule.Locale.ColonPlacement.Format( LocalizationModule.Locale.BaseLayoutOfType.Format( propertyCustomBaseTypeString ) ) )
+					.Append( '\n' );
 
 				if ( deep == 0 )
 				{
@@ -293,7 +292,7 @@ namespace ChetoRp
 					string typeString = type.ToString();
 
 					return docBuilder.Append( spaces )
-						.Append( $"{typeString[ ( typeString.LastIndexOf( '.' ) + 1 ).. ]} contains nothing." );
+						.Append( LocalizationModule.Locale.BaseTypeContainsNothing.Format( typeString[ ( typeString.LastIndexOf( '.' ) + 1 ).. ] ) );
 				}
 
 				string lastEnumConstant = enumNames[ ^1 ];
@@ -320,7 +319,7 @@ namespace ChetoRp
 				string typeString = type.ToString();
 
 				return docBuilder.Append( spaces )
-					.Append( $"{typeString[ ( typeString.LastIndexOf( '.' ) + 1 ).. ]} contains no fields." );
+					.Append( LocalizationModule.Locale.BaseTypeContainsNothing.Format( typeString[ ( typeString.LastIndexOf( '.' ) + 1 ).. ] ) );
 			}
 
 			PropertyAttribute lastProperty = configStoreProperties[ ^1 ];
@@ -367,12 +366,16 @@ namespace ChetoRp
 				string qualifiedTypeName = GetType().ToString();
 				string typeName = qualifiedTypeName[ ( qualifiedTypeName.LastIndexOf( '.' ) + 1 ).. ];
 
-				StringBuilder configDocBuilder = new StringBuilder( @$"/*//////////// BEGINNING OF {typeName} DOCUMENTATION \\\\\\\\\\\\" )
+				StringBuilder configDocBuilder = new StringBuilder( "/*//////////// " )
+					.Append( LocalizationModule.Locale.BaseBeginningOfTypeDocumentation.Format( typeName ) )
+					.Append( @" \\\\\\\\\\\\" )
 					.Append( "\n\n" );
 
 				AppendConfigObject( configDocBuilder, ConfigStore, 0 )
 					.Append( "\n\n" )
-					.Append( @$"/////////////// END OF {typeName} DOCUMENTATION \\\\\\\\\\\\\\\*/" )
+					.Append( @$"/////////////// " )
+					.Append( LocalizationModule.Locale.BaseEndOfTypeDocumentation.Format( typeName ) )
+					.Append( @" \\\\\\\\\\\\\\\*/" )
 					.Append( "\n\n\n" );
 
 				configDocumentation = configDocBuilder.ToString();

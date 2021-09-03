@@ -54,6 +54,61 @@ namespace ChetoRp.Localization
 		public string BaseFailedToLoadModule { get; }
 
 		/// <summary>
+		/// The string to describe boolean types in config files.
+		/// </summary>
+		public string BaseTrueFalse { get; }
+
+		/// <summary>
+		/// The string to describe integer types in config files.
+		/// </summary>
+		public string BaseInteger { get; }
+
+		/// <summary>
+		/// The string to describe integer/decimal types in config files.
+		/// </summary>
+		public string BaseIntegerDecimal { get; }
+
+		/// <summary>
+		/// The string to describe character types in config files.
+		/// </summary>
+		public string BaseCharacter { get; }
+
+		/// <summary>
+		/// The string to describe string types in config files.
+		/// </summary>
+		public string BaseText { get; }
+
+		/// <summary>
+		/// The string for "Description" in config files.
+		/// </summary>
+		public string BaseDescription { get; }
+
+		/// <summary>
+		/// The string for "Default value of [property]" in config files.
+		/// </summary>
+		public string BaseDefaultValueOfProperty { get; }
+
+		/// <summary>
+		/// The string for "Layout of [type]" in config files.
+		/// </summary>
+		public string BaseLayoutOfType { get; }
+
+		/// <summary>
+		/// The string for "[type] contains nothing." in config files.
+		/// </summary>
+		public string BaseTypeContainsNothing { get; }
+
+		/// <summary>
+		/// The string for "BEGINNING OF [type] DOCUMENTATION" in config files.
+		/// </summary>
+		public string BaseBeginningOfTypeDocumentation { get; }
+
+		/// <summary>
+		/// The string for "END OF [type] DOCUMENTATION" in config files.
+		/// </summary>
+		public string BaseEndOfTypeDocumentation { get; }
+
+		/// <summary>
 		/// The description of the <see cref="BaseModuleConfig.MinFallDamageSpeed"/> option.
 		/// </summary>
 		[ConfigLocalizedProperty]

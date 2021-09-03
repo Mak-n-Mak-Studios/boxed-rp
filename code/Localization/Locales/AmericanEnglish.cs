@@ -21,6 +21,17 @@ namespace ChetoRp.Localization.Locales
 		public string BaseFinishedLoading => "ChetoRP has finished loading.";
 		public string BaseClientJoined => "\"{0}\" has joined the game.";
 		public string BaseFailedToLoadModule => "Module of type, {0}, failed to load.";
+		public string BaseTrueFalse => "true/false";
+		public string BaseInteger => "integer";
+		public string BaseIntegerDecimal => "integer/decimal";
+		public string BaseCharacter => "character";
+		public string BaseText => "text";
+		public string BaseDescription => "Description";
+		public string BaseDefaultValueOfProperty => "Default value of {0}";
+		public string BaseLayoutOfType => "Layout of {0}";
+		public string BaseTypeContainsNothing => "{0} contains nothing.";
+		public string BaseBeginningOfTypeDocumentation => "BEGINNING OF {0} DOCUMENTATION";
+		public string BaseEndOfTypeDocumentation => "END OF {0} DOCUMENTATION";
 		public string BaseConfigMinFallDamageSpeed => "The minimum speed the player needs to be going down vertically to take damage.";
 		public string BaseConfigFallDamageDamping => "The damping of the fall damage value. The formula for fall damage is FallSpeed / FallDamageDamping.";
 

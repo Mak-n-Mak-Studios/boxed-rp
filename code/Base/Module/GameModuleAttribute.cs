@@ -7,7 +7,7 @@ namespace ChetoRp
 	/// <summary>
 	/// The attribute to declare game modules. Modules with
 	/// lower priority values run before those with higher ones.
-	/// The default priority is <code>GameModuleAttribute.DefaultPriority</code>
+	/// The default priority is <see cref="DefaultPriority"/>.
 	/// When writing priorities, it's recommended to go relative to the above constant
 	/// like <code>GameModuleAttribute.DefaultPriority - 100</code>
 	/// </summary>

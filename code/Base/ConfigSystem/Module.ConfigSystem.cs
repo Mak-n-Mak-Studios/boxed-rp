@@ -252,7 +252,8 @@ namespace ChetoRp
 
 				if ( baseType != typeof( LocaleStrings ) )
 				{
-					configDocBuilder.Append( LocalizationModule.Locale.ColonPlacement.Format( LocalizationModule.Locale.BaseLayoutOfType.Format( propertyCustomBaseTypeString ) ) );
+					configDocBuilder.Append( LocalizationModule.Locale.ColonPlacement.Format( LocalizationModule.Locale.BaseLayoutOfType.Format( propertyCustomBaseTypeString ) ) )
+						.Append( '\n' );
 
 					if ( deep == 0 )
 					{

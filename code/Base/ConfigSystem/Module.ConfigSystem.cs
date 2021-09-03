@@ -233,7 +233,7 @@ namespace ChetoRp
 					.Append( LocalizationModule.Locale.ColonPlacement.Format( LocalizationModule.Locale.BaseDefaultValueOfProperty.Format( propertyInfo.Name ) ) )
 					.Append( '\n' )
 					.Append( spaces )
-					.Append( JsonSerializer.Serialize( propertyDefaultValue, serializerOptions ).Replace( "\n", "\n" + spaces ) );
+					.Append( JsonSerializer.Serialize( propertyDefaultValue, propertyInfo.PropertyType, serializerOptions ).Replace( "\n", "\n" + spaces ) );
 			}
 			catch ( KeyNotFoundException )
 			{

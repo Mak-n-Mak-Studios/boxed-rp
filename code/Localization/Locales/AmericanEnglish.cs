@@ -56,6 +56,9 @@ namespace ChetoRp.Localization.Locales
 		public string TeamConfigCanBeDemoted => "Whether players in the team can be demoted out of the team.";
 		public string TeamConfigIsDefault => "Whether this team should be the default team given when a player joins. The first default team in the configuration file will be the default team.";
 		public string TeamConfigTeamType => "The type of the team.";
+		public string TeamConfigStringDefaultCategory => "Uncategorized";
+		public string TeamConfigStringDefaultPrettyName => "";
+		public string TeamConfigStringDefaultDescription => "";
 
 		#endregion
 

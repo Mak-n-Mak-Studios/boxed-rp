@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Text.Json.Serialization;
 
+using ChetoRp.Localization;
+
 namespace ChetoRp.Employment
 {
 	/// <summary>
@@ -13,19 +15,19 @@ namespace ChetoRp.Employment
 		/// The category of the team.
 		/// </summary>
 		[GameConfigOptionInfo( "TeamConfigCategory" )]
-		public string Category { get; set; } = "Uncategorized";
+		public LocaleStrings Category { get; set; } = new( "TeamConfigStringDefaultCategory" );
 
 		/// <summary>
 		/// The pretty name of the team.
 		/// </summary>
 		[GameConfigOptionInfo( "TeamConfigPrettyName" )]
-		public string PrettyName { get; set; } = "";
+		public LocaleStrings PrettyName { get; set; } = new( "TeamConfigStringDefaultPrettyName" );
 
 		/// <summary>
 		/// The description of the team.
 		/// </summary>
 		[GameConfigOptionInfo( "TeamConfigDescription" )]
-		public string Description { get; set; } = "";
+		public LocaleStrings Description { get; set; } = new( "TeamConfigStringDefaultDescription" );
 
 		/// <summary>
 		/// The possible models of the players in the team.

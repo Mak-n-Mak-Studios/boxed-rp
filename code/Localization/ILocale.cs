@@ -224,6 +224,24 @@ namespace ChetoRp.Localization
 		[ConfigLocalizedProperty]
 		public string TeamConfigTeamType { get; }
 
+		/// <summary>
+		/// The locale string for the default value of the <see cref="TeamConfig.Category"/> option.
+		/// </summary>
+		[LocaleStringsProperty]
+		public string TeamConfigStringDefaultCategory { get; }
+
+		/// <summary>
+		/// The locale string for the default value of the <see cref="TeamConfig.PrettyName"/> option.
+		/// </summary>
+		[LocaleStringsProperty]
+		public string TeamConfigStringDefaultPrettyName { get; }
+
+		/// <summary>
+		/// The locale string for the default value of the <see cref="TeamConfig.Description"/> option.
+		/// </summary>
+		[LocaleStringsProperty]
+		public string TeamConfigStringDefaultDescription { get; }
+
 		#endregion
 
 		#region Localization

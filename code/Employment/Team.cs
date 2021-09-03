@@ -1,5 +1,7 @@
 ﻿using System.Linq;
 
+using ChetoRp.Localization;
+
 namespace ChetoRp.Employment
 {
 	/// <summary>
@@ -15,17 +17,17 @@ namespace ChetoRp.Employment
 		/// <summary>
 		/// The category of the team.
 		/// </summary>
-		public string Category { get; }
+		public LocaleStrings Category { get; }
 
 		/// <summary>
 		/// The pretty name of the team.
 		/// </summary>
-		public string PrettyName { get; }
+		public LocaleStrings PrettyName { get; }
 
 		/// <summary>
 		/// The description of the team.
 		/// </summary>
-		public string Description { get; }
+		public LocaleStrings Description { get; }
 
 		/// <summary>
 		/// The possible models of the players in the team.

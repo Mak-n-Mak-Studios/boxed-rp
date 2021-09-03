@@ -56,6 +56,9 @@ namespace ChetoRp.Localization.Locales
 		public string TeamConfigCanBeDemoted => "Si se pueden rebajar los jugadores del equipo.";
 		public string TeamConfigIsDefault => "Si el equipo por defecto debería ser este cuando se une un jugador. El primer equipo encontrado con esta configuración activada en el archivo de configuración va a ser el equipo por defecto.";
 		public string TeamConfigTeamType => "El tipo del equipo.";
+		public string TeamConfigStringDefaultCategory => "Sin categoría";
+		public string TeamConfigStringDefaultPrettyName => "";
+		public string TeamConfigStringDefaultDescription => "";
 
 		#endregion
 

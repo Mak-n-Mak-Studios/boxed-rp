@@ -30,7 +30,8 @@ namespace ChetoRp
 			Converters =
 			{
 				new JsonStringEnumConverter()
-			}
+			},
+			// TO-DO: Add JavaScriptEncoder.UnsafeRelaxedJsonEscaping as the default encoder once it's whitelisted. Issue #858.
 		};
 
 		private static LocalizationManager<ConfigLocalizedPropertyAttribute> localizedConfigOptions;

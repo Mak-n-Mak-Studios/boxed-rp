@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 using ChetoRp.Localization.Locales;
 
@@ -16,6 +17,7 @@ namespace ChetoRp.Localization
 		/// The locale of the client/server.
 		/// </summary>
 		[GameConfigOptionInfo( "LocalizationConfigLocale" )]
+		[JsonConverter( typeof( JsonStringEnumConverter ) )]
 		public LocaleType Locale { get; set; } = LocaleType.EnUs;
 	}
 

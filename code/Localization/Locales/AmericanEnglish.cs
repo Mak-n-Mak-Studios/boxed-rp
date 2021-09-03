@@ -39,7 +39,7 @@ namespace ChetoRp.Localization.Locales
 
 		#region Employment
 
-		public string EmploymentWeaponDoesNotExist => "The provided team has a weapon that does not exist: \"{0}\".";
+		public string EmploymentWeaponDoesNotExist => "The provided team, {0}, has a weapon that does not exist: \"{1}\".";
 		public string EmploymentConfigSalaryPayPeriod => "The number of seconds between each salary pay period.";
 		public string EmploymentConfigDefaultWeapons => "The default weapons given to all players.";
 		public string EmploymentConfigTeams => "The teams in the game.";
@@ -54,7 +54,7 @@ namespace ChetoRp.Localization.Locales
 		public string TeamConfigIsVoteRequired => "Whether a player needs to be voted into the team.";
 		public string TeamConfigCanBeDemoted => "Whether players in the team can be demoted out of the team.";
 		public string TeamConfigIsDefault => "Whether this team should be the default team given when a player joins. The first default team in the configuration file will be the default team.";
-		public string TeamConfigTeamType => "Whether this team is a special team.";
+		public string TeamConfigTeamType => "The type of the team.";
 
 		#endregion
 

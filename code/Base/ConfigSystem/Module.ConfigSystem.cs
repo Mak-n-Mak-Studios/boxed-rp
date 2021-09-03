@@ -26,7 +26,11 @@ namespace ChetoRp
 		{
 			AllowTrailingCommas = true,
 			ReadCommentHandling = JsonCommentHandling.Skip,
-			WriteIndented = true
+			WriteIndented = true,
+			Converters =
+			{
+				new JsonStringEnumConverter()
+			}
 		};
 
 		private LocalizationManager<ConfigLocalizedPropertyAttribute> localizedConfigOptions;

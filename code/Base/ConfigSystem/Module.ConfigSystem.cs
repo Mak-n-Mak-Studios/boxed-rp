@@ -376,7 +376,7 @@ namespace ChetoRp
 		/// Writes the config store to the disk, overwriting its current contents if there are any.
 		/// This will create a new config file if one is not found in the proper place, writing the documentation 
 		/// first then the contents of the config store. The default path for the config file will be 
-		/// data/game-config/&lt;PATH_TO_MODULE_ENTRYPOINT_CLASS&gt;.txt.
+		/// data/local/cheto-rp/game-config/&lt;PATH_TO_MODULE_ENTRYPOINT_CLASS&gt;.txt.
 		/// </summary>
 		protected virtual void WriteConfigStoreToDisk( string filePath )
 		{

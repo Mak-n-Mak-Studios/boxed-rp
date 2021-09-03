@@ -278,7 +278,7 @@ namespace ChetoRp
 				}
 				else // Handle LocaleStrings specially
 				{
-					configDocBuilder.Append( "LocaleStrings contains the text to use based on the language. All locale strings must have at least an EnUs mapping, which is American English." );
+					configDocBuilder.Append( LocalizationModule.Locale.BaseLocaleStringsDescription );
 				}
 			}
 

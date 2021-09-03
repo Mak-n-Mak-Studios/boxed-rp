@@ -268,7 +268,7 @@ namespace ChetoRp
 
 					if ( deep == 0 )
 					{
-						AppendConfigObject( configDocBuilder, propertyDefaultValue, tabsIn + 1 );
+						AppendConfigObject( configDocBuilder, propertyDefaultValue, tabsIn + 1, propertyInfo.Name );
 					}
 					else
 					{
@@ -279,8 +279,6 @@ namespace ChetoRp
 				{
 					configDocBuilder.Append( "LocaleStrings contains the text to use based on the language. All locale strings must have at least an EnUs mapping, which is American English." );
 				}
-
-				configDocBuilder.Append( '\n' );
 			}
 
 			return configDocBuilder;
@@ -308,9 +306,15 @@ namespace ChetoRp
 		/// <param name="docBuilder">The string builder to append the config object to.</param>
 		/// <param name="obj">The config object to append.</param>
 		/// <param name="tabsIn">The number of tabs in to append everything.</param>
+		/// <param name="propertyName">The name of the config object.</param>
 		/// <returns>A StringBuilder.</returns>
-		protected virtual StringBuilder AppendConfigObject<U>( StringBuilder docBuilder, U obj, int tabsIn )
+		protected virtual StringBuilder AppendConfigObject<U>( StringBuilder docBuilder, U obj, int tabsIn, string propertyName = null )
 		{
+			if ( obj == null )
+			{
+				throw new ArgumentNullException( nameof( obj ), "Custom config object properties cannot be null. Property name: " + propertyName );
+			}
+
 			Type type = obj.GetType();
 			string spaces = new( ' ', tabsIn * 4 );
 

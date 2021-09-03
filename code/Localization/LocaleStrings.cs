@@ -67,7 +67,7 @@ namespace ChetoRp.Localization
 		internal Dictionary<LocaleType, string> LocalizedStrings { get; set; }
 
 		private static LocalizationModule localizationModule;
-		private static Dictionary<LocaleType, Dictionary<string, LocaleStringsPropertyAttribute>> propertyCache;
+		private static Dictionary<string, LocaleStringsPropertyAttribute> propertyCache;
 
 		/// <summary>
 		/// Gets the current string.
@@ -84,15 +84,10 @@ namespace ChetoRp.Localization
 
 			if ( propertyCache == null && localizationModule != null )
 			{
-				propertyCache = typeof( LocaleType ).GetEnumValues()
-					.Cast<LocaleType>()
-					.ToDictionary( localeType => localeType, localeType =>
-					 {
-						 return Library.GetAttribute( localizationModule.LocaleDictionary[ localeType ].GetType() ).Properties
+				propertyCache = Library.GetAttribute( typeof( ILocale ) ).Properties
 								.Where( propertyAttribute => propertyAttribute is LocaleStringsPropertyAttribute )
 								.Cast<LocaleStringsPropertyAttribute>()
 								.ToDictionary( propertyAttribute => propertyAttribute.Name, propertyAttribute => propertyAttribute );
-					 } );
 			}
 			else if ( LocalizationModule.Locale == null )
 			{
@@ -108,7 +103,7 @@ namespace ChetoRp.Localization
 		{
 			foreach ( LocaleType localeType in typeof( LocaleType ).GetEnumValues() )
 			{
-				if ( propertyCache[ localeType ].TryGetValue( propertyName, out LocaleStringsPropertyAttribute propertyAttribute ) )
+				if ( propertyCache.TryGetValue( propertyName, out LocaleStringsPropertyAttribute propertyAttribute ) )
 				{
 					LocalizedStrings.Add( localeType, propertyAttribute.GetValue<string>( Modules.Get<LocalizationModule>().LocaleDictionary[ localeType ] ) );
 				}

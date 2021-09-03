@@ -248,19 +248,27 @@ namespace ChetoRp
 				configDocBuilder.Append( "\n\n" )
 					.Append( spaces )
 					.Append( "-----------------------------------------------------------------\n\n" )
-					.Append( spaces )
-					.Append( LocalizationModule.Locale.ColonPlacement.Format( LocalizationModule.Locale.BaseLayoutOfType.Format( propertyCustomBaseTypeString ) ) )
-					.Append( '\n' );
+					.Append( spaces );
 
-				if ( deep == 0 )
+				if ( baseType != typeof( LocaleStrings ) )
 				{
-					AppendConfigObject( configDocBuilder, propertyDefaultValue, tabsIn + 1 );
+					configDocBuilder.Append( LocalizationModule.Locale.ColonPlacement.Format( LocalizationModule.Locale.BaseLayoutOfType.Format( propertyCustomBaseTypeString ) ) );
+
+					if ( deep == 0 )
+					{
+						AppendConfigObject( configDocBuilder, propertyDefaultValue, tabsIn + 1 );
+					}
+					else
+					{
+						AppendConfigObject( configDocBuilder, baseType, tabsIn + 1 );
+					}
 				}
-				else
+				else // Handle LocaleStrings specially
 				{
-					AppendConfigObject( configDocBuilder, baseType, tabsIn + 1 );
+					configDocBuilder.Append( "LocaleStrings contains the text to use based on the language. All locale strings must have at least an EnUs mapping, which is American English." );
 				}
 
+				configDocBuilder.Append( '\n' );
 			}
 
 			return configDocBuilder;

@@ -109,6 +109,11 @@ namespace ChetoRp.Localization
 		public string BaseEndOfTypeDocumentation { get; }
 
 		/// <summary>
+		/// The string to describe <see cref="LocaleStrings"/> in config files.
+		/// </summary>
+		public string BaseLocaleStringsDescription { get; }
+
+		/// <summary>
 		/// The description of the <see cref="BaseModuleConfig.MinFallDamageSpeed"/> option.
 		/// </summary>
 		[ConfigLocalizedProperty]

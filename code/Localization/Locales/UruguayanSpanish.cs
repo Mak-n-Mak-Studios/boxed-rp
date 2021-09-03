@@ -32,6 +32,7 @@ namespace ChetoRp.Localization.Locales
 		public string BaseTypeContainsNothing => "{0} no tiene nada.";
 		public string BaseBeginningOfTypeDocumentation => "COMIENZO DE LA DOCUMENTACIÓN DE {0}";
 		public string BaseEndOfTypeDocumentation => "FIN DE LA DOCUMENTACIÓN DE {0}";
+		public string BaseLocaleStringsDescription => "LocaleStrings tiene el texto para usar en cada idioma disponible. Todos los LocaleStrings al menos tienen que tener una opción para EnUs (inglés estadounidense).";
 		public string BaseConfigMinFallDamageSpeed => "La velocidad mínima para abajo que tiene que ir el jugador para dañarse.";
 		public string BaseConfigFallDamageDamping => "Cuánto se va a reducir el daño de caída. La fórmula para daño de caída es Velocidad / FallDamageDamping (reducción de daño de caída).";
 

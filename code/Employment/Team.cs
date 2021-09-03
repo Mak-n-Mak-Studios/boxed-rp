@@ -73,6 +73,11 @@ namespace ChetoRp.Employment
 		public TeamType TeamType { get; }
 
 		/// <summary>
+		/// The number of people currently in the team.
+		/// </summary>
+		public int CurrentPlayerCount { get; internal set; }
+
+		/// <summary>
 		/// Initializes a new instance of the <see cref="Team"/> class based on a <see cref="TeamConfig"/>.
 		/// </summary>
 		/// <param name="teamConfig">The <see cref="TeamConfig"/>.</param>
@@ -98,6 +103,7 @@ namespace ChetoRp.Employment
 			CanBeDemoted = teamConfig.CanBeDemoted;
 			IsDefault = teamConfig.IsDefault;
 			TeamType = teamConfig.TeamType;
+			CurrentPlayerCount = 0;
 
 			if ( ShouldGetDefaultWeapons )
 			{
@@ -107,6 +113,15 @@ namespace ChetoRp.Employment
 			{
 				Weapons = teamConfig.Weapons.ToArray();
 			}
+		}
+
+		/// <summary>
+		/// Checks whether the team's max players has been reached.
+		/// </summary>
+		/// <returns>Whether the team's max players has been reached.</returns>
+		public bool IsFull()
+		{
+			return MaxPlayers == 0 || CurrentPlayerCount == MaxPlayers;
 		}
 	}
 }

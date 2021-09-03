@@ -61,6 +61,7 @@ namespace ChetoRp.Localization
 
 			LocaleDictionary = localeDictionary;
 			CurrentLocale = localeDictionary[ ConfigStore.Locale ];
+			RefreshLocalizationConfig( this ); // TO-DO: Temporary, pending event system fix. See Module.ConfigSystem TO-DOs.
 		}
 
 		/// <summary>

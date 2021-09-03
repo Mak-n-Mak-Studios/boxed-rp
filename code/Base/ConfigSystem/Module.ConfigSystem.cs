@@ -33,7 +33,7 @@ namespace ChetoRp
 			}
 		};
 
-		private LocalizationManager<ConfigLocalizedPropertyAttribute> localizedConfigOptions;
+		private static LocalizationManager<ConfigLocalizedPropertyAttribute> localizedConfigOptions;
 		private string configFileName;
 		private string configFilePath;
 		private string configDocumentation;
@@ -61,15 +61,22 @@ namespace ChetoRp
 			// Write regardless of whether the file exists or not to update any fields that are missing or get rid of outdated fields.
 			WriteConfigStoreToDisk( configFilePath );
 
-			if ( typeof( T ) != typeof( LocalizationModuleConfig ) )
-			{
-				// A bit of a hack to refresh localization data manually for the localization config
-
-				localizedConfigOptions.RefreshAllLocalizationData( default, default );
-				WriteConfigStoreToDisk( configFilePath );
-			}
-
 			configFiles.Watch( configFileName ).OnChangedFile += OnConfigFileModified; // TO-DO: Fix this. File watcher does not seem to be calling the event.
+		}
+
+		/// <summary>
+		/// Refreshes the localization config.
+		/// </summary>
+		/// <param name="module">The module.</param>
+		// [Event( GameEvents.PostModuleInit )] // TO-DO: When event system is fixed, uncomment and remove refresh call from LocalizationModule.
+		internal static void RefreshLocalizationConfig( Module module )
+		{
+			if ( module is LocalizationModule localizationModule )
+			{
+				localizationModule.configDocumentation = null; // Flushes config documentation cache.
+				localizedConfigOptions.RefreshAllLocalizationData();
+				localizationModule.WriteConfigStoreToDisk( localizationModule.configFilePath );
+			}
 		}
 
 		/// <summary>

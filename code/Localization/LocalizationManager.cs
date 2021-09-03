@@ -46,14 +46,24 @@ namespace ChetoRp.Localization
 		/// Refreshes the localization data. This method is called
 		/// when the locale changes.
 		/// </summary>
-		[System.Diagnostics.CodeAnalysis.SuppressMessage( "Style", "IDE0060:Remove unused parameter", Justification = "So the usage of __ doesn't throw a warning." )]
-		[Event( GameEvents.OnLocaleChange )]
-		public void RefreshAllLocalizationData( LocaleType _, LocaleType __ )
+		internal void RefreshAllLocalizationData()
 		{
 			foreach ( T property in properties )
 			{
 				propertyToData[ property.Name ] = property.GetValue<string>( LocalizationModule.Locale );
 			}
+		}
+
+		/// <summary>
+		/// Refreshes the localization data. This method is called
+		/// when the locale changes.
+		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage( "Style", "IDE0060:Remove unused parameter", Justification = "So the usage of __ doesn't throw a warning." )]
+		[System.Diagnostics.CodeAnalysis.SuppressMessage( "CodeQuality", "IDE0051:Remove unused private members", Justification = "Used for event." )]
+		[Event( GameEvents.OnLocaleChange )]
+		private void RefreshAllLocalizationData( LocaleType _, LocaleType __ )
+		{
+			RefreshAllLocalizationData();
 		}
 	}
 }

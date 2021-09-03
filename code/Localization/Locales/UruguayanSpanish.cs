@@ -54,7 +54,7 @@ namespace ChetoRp.Localization.Locales
 		public string TeamConfigIsVoteRequired => "Si se necesita votar para entrar al equipo.";
 		public string TeamConfigCanBeDemoted => "Si se pueden rebajar los jugadores del equipo.";
 		public string TeamConfigIsDefault => "Si el equipo por defecto debería ser este cuando se une un jugador. El primer equipo encontrado con esta configuración activada en el archivo de configuración va a ser el equipo por defecto.";
-		public string TeamConfigIsSpecialTeam => "Si el equipo es especial.";
+		public string TeamConfigTeamType => "Si el equipo es especial.";
 
 		#endregion
 

@@ -68,9 +68,9 @@ namespace ChetoRp.Employment
 		public bool IsDefault { get; }
 
 		/// <summary>
-		/// Whether this team is a special team.
+		/// The type of team.
 		/// </summary>
-		public SpecialTeam IsSpecialTeam { get; }
+		public TeamType TeamType { get; }
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="Team"/> class based on a <see cref="TeamConfig"/>.
@@ -97,7 +97,7 @@ namespace ChetoRp.Employment
 			IsVoteRequired = teamConfig.IsVoteRequired;
 			CanBeDemoted = teamConfig.CanBeDemoted;
 			IsDefault = teamConfig.IsDefault;
-			IsSpecialTeam = teamConfig.IsSpecialTeam;
+			TeamType = teamConfig.TeamType;
 
 			if ( ShouldGetDefaultWeapons )
 			{

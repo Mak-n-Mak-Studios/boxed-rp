@@ -76,11 +76,11 @@ namespace ChetoRp.Employment
 		public bool IsDefault { get; set; } = false;
 
 		/// <summary>
-		/// Whether this team is a special team.
+		/// The type of team.
 		/// </summary>
-		[GameConfigOptionInfo( "TeamConfigIsSpecialTeam" )]
+		[GameConfigOptionInfo( "TeamConfigTeamType" )]
 		[JsonConverter( typeof( JsonStringEnumConverter ) )]
-		public SpecialTeam IsSpecialTeam { get; set; } = SpecialTeam.None;
+		public TeamType TeamType { get; set; } = TeamType.Normal;
 
 		/// <summary>
 		/// Converts the <see cref="TeamConfig"/> to a <see cref="Team"/>.

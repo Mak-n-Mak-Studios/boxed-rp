@@ -214,10 +214,10 @@ namespace ChetoRp.Localization
 		public string TeamConfigIsDefault { get; }
 
 		/// <summary>
-		/// The description of the <see cref="TeamConfig.IsSpecialTeam"/> option.
+		/// The description of the <see cref="TeamConfig.TeamType"/> option.
 		/// </summary>
 		[ConfigLocalizedProperty]
-		public string TeamConfigIsSpecialTeam { get; }
+		public string TeamConfigTeamType { get; }
 
 		#endregion
 

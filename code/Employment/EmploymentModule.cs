@@ -60,7 +60,7 @@ namespace ChetoRp.Employment
 				MaxPlayers = 5,
 				Salary = 200,
 				IsVoteRequired = true,
-				IsSpecialTeam = SpecialTeam.Police
+				TeamType = TeamType.Police
 			},
 			new TeamConfig()
 			{
@@ -79,7 +79,7 @@ namespace ChetoRp.Employment
 				MaxPlayers = 5,
 				Salary = 225,
 				IsVoteRequired = true,
-				IsSpecialTeam = SpecialTeam.Police
+				TeamType = TeamType.Police
 			},
 			new TeamConfig()
 			{
@@ -99,7 +99,7 @@ namespace ChetoRp.Employment
 				MaxPlayers = 5,
 				Salary = 250,
 				IsVoteRequired = true,
-				IsSpecialTeam = SpecialTeam.Police
+				TeamType = TeamType.Police
 			},
 			new TeamConfig()
 			{
@@ -120,7 +120,7 @@ namespace ChetoRp.Employment
 				MaxPlayers = 1,
 				Salary = 300,
 				IsVoteRequired = true,
-				IsSpecialTeam = SpecialTeam.Police
+				TeamType = TeamType.Police
 			},
 			new TeamConfig()
 			{
@@ -141,7 +141,7 @@ namespace ChetoRp.Employment
 				MaxPlayers = 1,
 				Salary = 300,
 				IsVoteRequired = true,
-				IsSpecialTeam = SpecialTeam.Police
+				TeamType = TeamType.Police
 			},
 			new TeamConfig()
 			{
@@ -159,7 +159,7 @@ namespace ChetoRp.Employment
 				},
 				MaxPlayers = 5,
 				Salary = 250,
-				IsSpecialTeam = SpecialTeam.Ems
+				TeamType = TeamType.Ems
 			},
 			new TeamConfig()
 			{
@@ -174,7 +174,7 @@ namespace ChetoRp.Employment
 				MaxPlayers = 1,
 				Salary = 350,
 				IsVoteRequired = true,
-				IsSpecialTeam = SpecialTeam.Governor
+				TeamType = TeamType.Governor
 			},
 		};
 	}

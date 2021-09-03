@@ -1,11 +1,11 @@
 ﻿namespace ChetoRp.Employment
 {
 	/// <summary>
-	/// The enum for special teams.
+	/// The enum for team types.
 	/// </summary>
-	public enum SpecialTeam
+	public enum TeamType
 	{
-		None,
+		Normal,
 		Police,
 		Ems,
 		Governor

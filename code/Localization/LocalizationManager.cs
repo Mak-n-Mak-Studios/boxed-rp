@@ -29,6 +29,8 @@ namespace ChetoRp.Localization
 
 			propertyToData = new Dictionary<string, string>( properties.Count );
 
+			ILocale currentLocale = LocalizationModule.Locale;
+
 			foreach ( T property in properties )
 			{
 				if ( property.PropertyType != typeof( string ) )
@@ -36,7 +38,7 @@ namespace ChetoRp.Localization
 					throw new Exception( $"The property {property.Name} in {typeof( ILocale ).FullName} is not a string" );
 				}
 
-				propertyToData.Add( property.Name, property.GetValue<string>( LocalizationModule.Locale ) );
+				propertyToData.Add( property.Name, property.GetValue<string>( currentLocale ) );
 			}
 		}
 

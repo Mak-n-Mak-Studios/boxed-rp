@@ -30,10 +30,10 @@ namespace ChetoRp.Localization
 
 		/// <summary>
 		/// The current locale to use for all localization purposes.
-		/// This property will return null if the locale module has 
-		/// not been initialized yet.
+		/// This property will be American English if the locale module
+		/// has not been initialized yet.
 		/// </summary>
-		public static ILocale Locale => currentModule?.CurrentLocale;
+		public static ILocale Locale => currentModule?.CurrentLocale ?? new AmericanEnglish();
 
 		/// <summary>
 		/// The current locale to use for all localization purposes.

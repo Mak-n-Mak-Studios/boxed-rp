@@ -38,7 +38,7 @@ namespace ChetoRp
 				}
 				catch ( Exception e )
 				{
-					Log.Error( e, ( LocalizationModule.Locale?.BaseFailedToLoadModule ?? "Module of type, {0}, failed to load." ).Format( type.FullName ) );
+					Log.Error( e, LocalizationModule.Locale.BaseFailedToLoadModule.Format( type.FullName ) );
 				}
 			}
 

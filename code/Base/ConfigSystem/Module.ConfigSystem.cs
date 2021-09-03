@@ -40,7 +40,11 @@ namespace ChetoRp
 		/// <returns>The initialized config store.</returns>
 		private void InitializeConfig()
 		{
-			localizedConfigOptions = new();
+			if ( localizedConfigOptions == null )
+			{
+				localizedConfigOptions = new();
+			}
+
 			configFileName = GetType().FullName + ".txt";
 			configFilePath = ConfigFolderName + "/" + configFileName;
 
@@ -53,9 +57,16 @@ namespace ChetoRp
 			// Write regardless of whether the file exists or not to update any fields that are missing or get rid of outdated fields.
 			WriteConfigStoreToDisk( configFilePath );
 
+			if ( typeof( T ) != typeof( LocalizationModuleConfig ) )
+			{
+				// A bit of a hack to refresh localization data manually for the localization config
+
+				localizedConfigOptions.RefreshAllLocalizationData( default, default );
+				WriteConfigStoreToDisk( configFilePath );
+			}
+
 			configFiles.Watch( configFileName ).OnChangedFile += OnConfigFileModified; // TO-DO: Fix this. File watcher does not seem to be calling the event.
 		}
-
 
 		/// <summary>
 		/// Refreshes the config file on a locale change to change its locale.

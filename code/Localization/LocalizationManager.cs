@@ -44,6 +44,7 @@ namespace ChetoRp.Localization
 		/// Refreshes the localization data. This method is called
 		/// when the locale changes.
 		/// </summary>
+		[System.Diagnostics.CodeAnalysis.SuppressMessage( "Style", "IDE0060:Remove unused parameter", Justification = "So the usage of __ doesn't throw a warning." )]
 		[Event( GameEvents.OnLocaleChange )]
 		public void RefreshAllLocalizationData( LocaleType _, LocaleType __ )
 		{

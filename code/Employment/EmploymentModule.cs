@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
 using ChetoRp.Localization;
+
+using Sandbox;
 
 namespace ChetoRp.Employment
 {
@@ -23,7 +24,13 @@ namespace ChetoRp.Employment
 		/// The default weapons given to all players.
 		/// </summary>
 		[GameConfigOptionInfo( "EmploymentConfigDefaultWeapons" )]
-		public string[] DefaultWeapons { get; set; } = Array.Empty<string>();
+		public string[] DefaultWeapons { get; set; } = new string[]
+		{
+			Library.GetAttribute( typeof( GravGun ) ).Name,
+			Library.GetAttribute( typeof( PhysGun ) ).Name,
+			Library.GetAttribute( typeof( Tool ) ).Name,
+			Library.GetAttribute( typeof( Flashlight ) ).Name,
+		};
 
 		/// <summary>
 		/// The teams in the game. Do not use this directly. Use <see cref="EmploymentModule.Teams"/> instead.

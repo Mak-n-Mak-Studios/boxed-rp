@@ -1,6 +1,7 @@
 ﻿using Sandbox;
 
 using System;
+using System.Threading.Tasks;
 
 namespace ChetoRp
 {
@@ -18,31 +19,59 @@ namespace ChetoRp
 	public static class DbTables
 	{
 		/// <summary>
-		/// The <see cref="BaseFileSystem"/> the database resides in.
+		/// The name of the big table marker file with a slash prepended to it.
 		/// </summary>
-		public static BaseFileSystem Database { get; } = FileSystem.Data.CreateSubSystem( "database" );
+		internal const string BigTableFileName = "/.is-big-table";
+		private readonly static BaseFileSystem database;
+
+		/// <summary>
+		/// Sets up <see cref="DbTables"/> for future operations.
+		/// </summary>
+		static DbTables()
+		{
+			FileSystem.Data.CreateDirectory( "database" );
+
+			database = FileSystem.Data.CreateSubSystem( "database" );
+		}
 
 		/// <summary>
 		/// Creates a database table. 
 		/// </summary>
 		/// <param name="tableName">The database table's name.</param>
 		/// <param name="isBig">Whether the table will be a big table. If the table could potentially have over 100,000 entries, this should be set to true.</param>
-		/// <returns>Whether the table was successfully created or not.</returns>
+		/// <returns>Returns true if the table was created successfully. False if it already existed. This has the potential to erroneously return true
+		/// because the check for whether the table exists or not and creating the table together is not atomic.</returns>
 		public static bool Create( string tableName, bool isBig = false )
 		{
-			// Create a subfolder within the database folder and a marker file if it's a big table.
-			throw new NotImplementedException();
+			if ( database.DirectoryExists( tableName ) )
+			{
+				return false;
+			}
+
+			database.CreateDirectory( tableName );
+
+			if ( isBig )
+			{
+				database.OpenWrite( tableName + BigTableFileName );
+			}
+
+			return true;
 		}
 
 		/// <summary>
-		/// Drops a database table.
+		/// Asynchronously drops a database table.
 		/// </summary>
 		/// <param name="tableName">The database table's name.</param>
-		/// <returns>Whether the table was successfully dropped or not.</returns>
-		public static bool Drop( string tableName )
+		/// <returns>Returns a <see cref="Task"/>. If the database table exists, the <see cref="Task"/>
+		/// is a handle to the task of the database being dropped. Otherwise, the <see cref="Task"/> does nothing.</returns>
+		public static async Task Drop( string tableName )
 		{
-			// Delete a subfolder within the database folder
-			throw new NotImplementedException();
+			if ( database.DirectoryExists( tableName ) )
+			{
+				return;
+			}
+
+			await Task.Run( () => database.DeleteDirectory( tableName, true ) );
 		}
 	}
 }

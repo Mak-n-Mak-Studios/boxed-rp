@@ -249,7 +249,7 @@ namespace ChetoRp
 			}
 			catch ( KeyNotFoundException )
 			{
-				throw new Exception( "The property name given on the [ConfigLocalizedProperty] attribute on the property " +
+				throw new InvalidOperationException( "The property name given on the [ConfigLocalizedProperty] attribute on the property " +
 					$"{propertyInfo.Name} in {enclosingObject.GetType().FullName} isn't valid. Check that the property name " +
 					"has been typed properly and that the property that the property name refers to has a subclass of the " +
 					"[LocalizationDataProperty] attached to it." );
@@ -296,7 +296,7 @@ namespace ChetoRp
 		protected virtual StringBuilder AppendConfigObject( StringBuilder configDocBuilder, Type type, int tabsIn )
 		{
 			object configObject = Library.Create<object>( type ) ??
-				throw new Exception( $"The config object of type {type} used in this module's config store does not have the GameConfigObject attribute on it." );
+				throw new ArgumentException( $"The config object of type {type} used in this module's config store does not have the GameConfigObject attribute on it.", nameof( type ) );
 
 			return AppendConfigObject( configDocBuilder, configObject, tabsIn );
 		}
@@ -348,7 +348,7 @@ namespace ChetoRp
 			}
 
 			IReadOnlyList<PropertyAttribute> configStoreProperties = Library.GetAttribute( type )?.Properties ??
-				throw new Exception( $"The config object of type {type} used in this module's config store does not have the GameConfigObject attribute on it." );
+				throw new ArgumentException( $"The config object of type {type} used in this module's config store does not have the GameConfigObject attribute on it.", nameof( obj ) );
 
 			if ( configStoreProperties.Count == 0 )
 			{
@@ -368,12 +368,12 @@ namespace ChetoRp
 				}
 				catch ( ArgumentException )
 				{
-					throw new Exception( $"The {property.Name} property within {type} is not both publicly gettable and settable." );
+					throw new ArgumentException( $"The {property.Name} property within {type} is not both publicly gettable and settable.", nameof( obj ) );
 				}
 
 				if ( property.Attributes.Where( ( attr ) => attr.GetType() == typeof( JsonIgnoreAttribute ) ).Any() )
 				{
-					throw new Exception( $"The {property.Name} property within {type} has [JsonIgnore] on it. This attribute is not compatible with [GameConfigOptionInfo]." );
+					throw new ArgumentException( $"The {property.Name} property within {type} has [JsonIgnore] on it. This attribute is not compatible with [GameConfigOptionInfo].", nameof( obj ) );
 				}
 
 				bool isConfigOption = AppendConfigOption( docBuilder, property, obj, tabsIn ) != null;

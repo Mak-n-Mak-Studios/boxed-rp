@@ -22,7 +22,11 @@ namespace ChetoRp
 		/// The name of the big table marker file with a slash prepended to it.
 		/// </summary>
 		internal const string BigTableFileName = "/.is-big-table";
-		private readonly static BaseFileSystem database;
+
+		/// <summary>
+		/// The file system for the database.
+		/// </summary>
+		internal static BaseFileSystem Database { get; }
 
 		/// <summary>
 		/// Sets up <see cref="DbTables"/> for future operations.
@@ -31,7 +35,7 @@ namespace ChetoRp
 		{
 			FileSystem.Data.CreateDirectory( "database" );
 
-			database = FileSystem.Data.CreateSubSystem( "database" );
+			Database = FileSystem.Data.CreateSubSystem( "database" );
 		}
 
 		/// <summary>
@@ -43,16 +47,16 @@ namespace ChetoRp
 		/// because the check for whether the table exists or not and creating the table together is not atomic.</returns>
 		public static bool Create( string tableName, bool isBig = false )
 		{
-			if ( database.DirectoryExists( tableName ) )
+			if ( Database.DirectoryExists( tableName ) )
 			{
 				return false;
 			}
 
-			database.CreateDirectory( tableName );
+			Database.CreateDirectory( tableName );
 
 			if ( isBig )
 			{
-				database.OpenWrite( tableName + BigTableFileName );
+				Database.OpenWrite( tableName + BigTableFileName );
 			}
 
 			return true;
@@ -66,12 +70,12 @@ namespace ChetoRp
 		/// is a handle to the task of the database being dropped. Otherwise, the <see cref="Task"/> does nothing.</returns>
 		public static async Task Drop( string tableName )
 		{
-			if ( database.DirectoryExists( tableName ) )
+			if ( Database.DirectoryExists( tableName ) )
 			{
 				return;
 			}
 
-			await Task.Run( () => database.DeleteDirectory( tableName, true ) );
+			await Task.Run( () => Database.DeleteDirectory( tableName, true ) );
 		}
 	}
 }

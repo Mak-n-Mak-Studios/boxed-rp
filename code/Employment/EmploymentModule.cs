@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 
+using ChetoRp.Localization;
+
 namespace ChetoRp.Employment
 {
 	/// <summary>
@@ -31,9 +33,9 @@ namespace ChetoRp.Employment
 		{
 			new TeamConfig()
 			{
-				//Category = "Civilian",
-				//PrettyName = "Civilian",
-				//Description = "You are free to do anything you want. Commit crimes, become a drug lord, or start a shop. The world is yours.",
+				Category = new LocaleStrings( "EmploymentConfigStringCivilian" ),
+				PrettyName = new LocaleStrings( "EmploymentConfigStringCivilian" ),
+				Description = new LocaleStrings( "EmploymentConfigStringCivilianDescription" ),
 				Models = new string[]
 				{
 					// TO-DO: Set models.
@@ -44,9 +46,9 @@ namespace ChetoRp.Employment
 			},
 			new TeamConfig()
 			{
-				//Category = "Law Enforcement",
-				//PrettyName = "Police Officer",
-				//Description = "Your job is to enforce laws that the Governor sets. You are the backbone of the police department.",
+				Category = new LocaleStrings( "EmploymentConfigStringLawEnforcement" ),
+				PrettyName = new LocaleStrings( "EmploymentConfigStringPoliceOfficer" ),
+				Description = new LocaleStrings( "EmploymentConfigStringPoliceOfficerDescription" ),
 				Models = new string[]
 				{
 					// TO-DO: Set models.
@@ -64,9 +66,9 @@ namespace ChetoRp.Employment
 			},
 			new TeamConfig()
 			{
-				//Category = "Law Enforcement",
-				//PrettyName = "Undercover Police Officer",
-				//Description = "Your job is to enforce laws that the Governor sets. You can use your cover to trick criminals and arrest them when they commit crimes.",
+				Category = new LocaleStrings( "EmploymentConfigStringLawEnforcement" ),
+				PrettyName = new LocaleStrings( "EmploymentConfigStringUndercoverPoliceOfficer" ),
+				Description = new LocaleStrings( "EmploymentConfigStringUndercoverPoliceOfficerDescription" ),
 				Models = new string[]
 				{
 					// TO-DO: Set models.
@@ -83,9 +85,9 @@ namespace ChetoRp.Employment
 			},
 			new TeamConfig()
 			{
-				//Category = "Law Enforcement",
-				//PrettyName = "S.W.A.T. Officer",
-				//Description = "Your job is to enforce laws that the Governor sets. You will be called in intense situations that require heavy firepower and/or smart tactics.",
+				Category = new LocaleStrings( "EmploymentConfigStringLawEnforcement" ),
+				PrettyName = new LocaleStrings( "EmploymentConfigStringSwatOfficer" ),
+				Description = new LocaleStrings( "EmploymentConfigStringSwatOfficerDescription" ),
 				Models = new string[]
 				{
 					// TO-DO: Set models.
@@ -103,9 +105,9 @@ namespace ChetoRp.Employment
 			},
 			new TeamConfig()
 			{
-				//Category = "Law Enforcement",
-				//PrettyName = "S.W.A.T. Commander",
-				//Description = "Your job is to enforce laws that the Governor sets. You will be called in intense situations that require heavy firepower and/or smart tactics. You are to lead the S.W.A.T. officers under your command.",
+				Category = new LocaleStrings( "EmploymentConfigStringLawEnforcement" ),
+				PrettyName = new LocaleStrings( "EmploymentConfigStringSwatCommander" ),
+				Description = new LocaleStrings( "EmploymentConfigStringSwatCommanderDescription" ),
 				Models = new string[]
 				{
 					// TO-DO: Set models.
@@ -124,9 +126,9 @@ namespace ChetoRp.Employment
 			},
 			new TeamConfig()
 			{
-				//Category = "Law Enforcement",
-				//PrettyName = "Police Chief",
-				//Description = "Your job is to enforce laws that the Governor sets. You are to lead the police officers under your command.",
+				Category = new LocaleStrings( "EmploymentConfigStringLawEnforcement" ),
+				PrettyName = new LocaleStrings( "EmploymentConfigStringPoliceChief" ),
+				Description = new LocaleStrings( "EmploymentConfigStringPoliceChiefDescription" ),
 				Models = new string[]
 				{
 					// TO-DO: Set models.
@@ -145,9 +147,9 @@ namespace ChetoRp.Employment
 			},
 			new TeamConfig()
 			{
-				//Category = "Emergency Medical Services",
-				//PrettyName = "Paramedic",
-				//Description = "Your job is to heal people. If someone becomes incapacitated or requires medical assistance, you are to make sure they stay alive and are healthy.",
+				Category = new LocaleStrings( "EmploymentConfigStringEmergencyMedicalServices" ),
+				PrettyName = new LocaleStrings( "EmploymentConfigStringParamedic" ),
+				Description = new LocaleStrings( "EmploymentConfigStringParamedicDescription" ),
 				Models = new string[]
 				{
 					// TO-DO: Set models.
@@ -163,9 +165,9 @@ namespace ChetoRp.Employment
 			},
 			new TeamConfig()
 			{
-				//Category = "Governor",
-				//PrettyName = "Governor",
-				//Description = "Your job is to lead the state. You will create laws and have ultimate power over law enforcement. Be careful though. If you are unpopular enough, you may be recalled.",
+				Category = new LocaleStrings( "EmploymentConfigStringGovernor" ),
+				PrettyName = new LocaleStrings( "EmploymentConfigStringGovernor" ),
+				Description = new LocaleStrings( "EmploymentConfigStringGovernorDescription" ),
 				Models = new string[]
 				{
 					// TO-DO: Set models.

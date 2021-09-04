@@ -242,6 +242,114 @@ namespace ChetoRp.Localization
 		[LocaleStringsProperty]
 		public string TeamConfigStringDefaultDescription { get; }
 
+		/// <summary>
+		/// The locale string for the civilian team name.
+		/// </summary>
+		[LocaleStringsProperty]
+		public string EmploymentConfigStringCivilian { get; }
+
+		/// <summary>
+		/// The locale string for the civilian team description.
+		/// </summary>
+		[LocaleStringsProperty]
+		public string EmploymentConfigStringCivilianDescription { get; }
+
+		/// <summary>
+		/// The locale string for the law enforcement team category.
+		/// </summary>
+		[LocaleStringsProperty]
+		public string EmploymentConfigStringLawEnforcement { get; }
+
+		/// <summary>
+		/// The locale string for the police officer team name/category.
+		/// </summary>
+		[LocaleStringsProperty]
+		public string EmploymentConfigStringPoliceOfficer { get; }
+
+		/// <summary>
+		/// The locale string for the police officer team description.
+		/// </summary>
+		[LocaleStringsProperty]
+		public string EmploymentConfigStringPoliceOfficerDescription { get; }
+
+		/// <summary>
+		/// The locale string for the undercover police officer team name.
+		/// </summary>
+		[LocaleStringsProperty]
+		public string EmploymentConfigStringUndercoverPoliceOfficer { get; }
+
+		/// <summary>
+		/// The locale string for the undercover police officer team description.
+		/// </summary>
+		[LocaleStringsProperty]
+		public string EmploymentConfigStringUndercoverPoliceOfficerDescription { get; }
+
+		/// <summary>
+		/// The locale string for the S.W.A.T. officer team name.
+		/// </summary>
+		[LocaleStringsProperty]
+		public string EmploymentConfigStringSwatOfficer { get; }
+
+		/// <summary>
+		/// The locale string for the S.W.A.T. officer team description.
+		/// </summary>
+		[LocaleStringsProperty]
+		public string EmploymentConfigStringSwatOfficerDescription { get; }
+
+		/// <summary>
+		/// The locale string for the S.W.A.T. commander team name.
+		/// </summary>
+		[LocaleStringsProperty]
+		public string EmploymentConfigStringSwatCommander { get; }
+
+		/// <summary>
+		/// The locale string for the S.W.A.T. commander team description.
+		/// </summary>
+		[LocaleStringsProperty]
+		public string EmploymentConfigStringSwatCommanderDescription { get; }
+
+		/// <summary>
+		/// The locale string for the police chief team name.
+		/// </summary>
+		[LocaleStringsProperty]
+		public string EmploymentConfigStringPoliceChief { get; }
+
+		/// <summary>
+		/// The locale string for the police chief team description.
+		/// </summary>
+		[LocaleStringsProperty]
+		public string EmploymentConfigStringPoliceChiefDescription { get; }
+
+		/// <summary>
+		/// The locale string for the emergency medical services team category.
+		/// </summary>
+		[LocaleStringsProperty]
+		public string EmploymentConfigStringEmergencyMedicalServices { get; }
+
+		/// <summary>
+		/// The locale string for the paramedic team name.
+		/// </summary>
+		[LocaleStringsProperty]
+		public string EmploymentConfigStringParamedic { get; }
+
+		/// <summary>
+		/// The locale string for the paramedic team description.
+		/// </summary>
+		[LocaleStringsProperty]
+		public string EmploymentConfigStringParamedicDescription { get; }
+
+		/// <summary>
+		/// The locale string for the governor team name/category.
+		/// </summary>
+		[LocaleStringsProperty]
+		public string EmploymentConfigStringGovernor { get; }
+
+		/// <summary>
+		/// The locale string for the governor team description.
+		/// </summary>
+		[LocaleStringsProperty]
+		public string EmploymentConfigStringGovernorDescription { get; }
+
 		#endregion
 
 		#region Localization

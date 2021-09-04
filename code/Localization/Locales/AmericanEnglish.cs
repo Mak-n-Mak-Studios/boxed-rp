@@ -59,6 +59,24 @@ namespace ChetoRp.Localization.Locales
 		public string TeamConfigStringDefaultCategory => "Uncategorized";
 		public string TeamConfigStringDefaultPrettyName => "";
 		public string TeamConfigStringDefaultDescription => "";
+		public string EmploymentConfigStringCivilian => "Civilian";
+		public string EmploymentConfigStringCivilianDescription => "You are free to do anything you want. Commit crimes, become a drug lord, or start a shop. The world is yours.";
+		public string EmploymentConfigStringLawEnforcement => "Law Enforcement";
+		public string EmploymentConfigStringPoliceOfficer => "Police Officer";
+		public string EmploymentConfigStringPoliceOfficerDescription => "Your job is to enforce laws that the Governor sets. You are the backbone of the police department.";
+		public string EmploymentConfigStringUndercoverPoliceOfficer => "Undercover Police Officer";
+		public string EmploymentConfigStringUndercoverPoliceOfficerDescription => "Your job is to enforce laws that the Governor sets. You can use your cover to trick criminals and arrest them when they commit crimes.";
+		public string EmploymentConfigStringSwatOfficer => "S.W.A.T. Officer";
+		public string EmploymentConfigStringSwatOfficerDescription => "Your job is to enforce laws that the Governor sets. You will be called in intense situations that require heavy firepower and/or smart tactics.";
+		public string EmploymentConfigStringSwatCommander => "S.W.A.T. Commander";
+		public string EmploymentConfigStringSwatCommanderDescription => "Your job is to enforce laws that the Governor sets. You will be called in intense situations that require heavy firepower and/or smart tactics. You are to lead the S.W.A.T. officers under your command.";
+		public string EmploymentConfigStringPoliceChief => "Police Chief";
+		public string EmploymentConfigStringPoliceChiefDescription => "Your job is to enforce laws that the Governor sets. You are to lead the police officers under your command.";
+		public string EmploymentConfigStringEmergencyMedicalServices => "Emergency Medical Services";
+		public string EmploymentConfigStringParamedic => "Paramedic";
+		public string EmploymentConfigStringParamedicDescription => "Your job is to heal people. If someone becomes incapacitated or requires medical assistance, you are to make sure they stay alive and are healthy.";
+		public string EmploymentConfigStringGovernor => "Governor";
+		public string EmploymentConfigStringGovernorDescription => "Your job is to lead the state. You will create laws and have ultimate power over law enforcement. Be careful though. If you are unpopular enough, you may be recalled.";
 
 		#endregion
 

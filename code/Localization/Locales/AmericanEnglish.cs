@@ -55,7 +55,7 @@ namespace ChetoRp.Localization.Locales
 		public string TeamConfigIsVoteRequired => "Whether a player needs to be voted into the team.";
 		public string TeamConfigCanBeDemoted => "Whether players in the team can be demoted out of the team.";
 		public string TeamConfigIsDefault => "Whether this team should be the default team given when a player joins. The first default team in the configuration file will be the default team.";
-		public string TeamConfigTeamType => "The type of the team.";
+		public string TeamConfigTeamType => "The type of the team. Enter \"Normal\" for any team that is not a special team type listed below.";
 		public string TeamConfigStringDefaultCategory => "Uncategorized";
 		public string TeamConfigStringDefaultPrettyName => "";
 		public string TeamConfigStringDefaultDescription => "";
@@ -82,7 +82,7 @@ namespace ChetoRp.Localization.Locales
 
 		#region Localization
 
-		public string LocalizationConfigLocale => "The locale to use. By changing this option on the server, configs are regenerated into this locale but will not affect the clients' locales. The client can use the /changelanguage command.";
+		public string LocalizationConfigLocale => "The locale to use. By changing this option on the server, configs are regenerated into this locale but will not affect the clients' locales. The client can use the /changelanguage command. Enter a supported language and region in the list below. The language uses ISO 639-1 language codes. The region uses ISO 3166 country codes.";
 
 		#endregion
 	}

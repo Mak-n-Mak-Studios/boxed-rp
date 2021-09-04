@@ -55,7 +55,7 @@ namespace ChetoRp.Localization.Locales
 		public string TeamConfigIsVoteRequired => "Si se necesita votar para entrar al equipo.";
 		public string TeamConfigCanBeDemoted => "Si se pueden rebajar los jugadores del equipo.";
 		public string TeamConfigIsDefault => "Si el equipo por defecto debería ser este cuando se une un jugador. El primer equipo encontrado con esta configuración activada en el archivo de configuración va a ser el equipo por defecto.";
-		public string TeamConfigTeamType => "El tipo del equipo.";
+		public string TeamConfigTeamType => "El tipo del equipo. Ingrese \"Normal\" para cualquier equipo que no sea de uno de los tipos especiales a continuación.";
 		public string TeamConfigStringDefaultCategory => "Sin categoría";
 		public string TeamConfigStringDefaultPrettyName => "";
 		public string TeamConfigStringDefaultDescription => "";
@@ -82,7 +82,7 @@ namespace ChetoRp.Localization.Locales
 
 		#region Localization
 
-		public string LocalizationConfigLocale => "El idioma y región para usar. Si cambiás esta opción en las configuraciones del servidor, se van a regenerar todos los archivos de configuración para que usen este idioma pero no va a afectar a los clientes. Para cambiar su idioma y región, los clientes pueden usar el comando /changelanguage.";
+		public string LocalizationConfigLocale => "El idioma y región para usar. Si usted cambia esta opción en las configuraciones del servidor, se van a regenerar todos los archivos de configuración para que usen este idioma pero no va a afectar a los clientes. Para cambiar su idioma y región, los clientes pueden usar el comando /changelanguage. Ingrese un idioma y región compatible en la lista abajo. El idioma es un código ISO 639-1. La región es un código ISO 3166.";
 
 		#endregion
 	}

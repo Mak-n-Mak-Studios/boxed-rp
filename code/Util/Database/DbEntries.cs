@@ -94,7 +94,7 @@ namespace ChetoRp
 		/// already exists and <see cref="AddQueryType.Replace"/> will throw an <see cref="InvalidOperationException"/> if the entry doesn't exist.
 		/// An <see cref="ArgumentException"/> will be thrown if the entry's type doesn't have the <see cref="DbEntryAttribute"/> on it.<br/>
 		/// An <see cref="InvalidCastException"/> will be thrown if the table is a big table and the entry type's unique identifier isn't able to
-		/// be converted to a <see cref="ulong"/>. If the entry can't be serialized into JSON, a <see cref="JsonException"/> will be thrown.
+		/// be converted to a <see cref="ulong"/>. <br/>If the entry can't be serialized into JSON, a <see cref="JsonException"/> will be thrown.
 		/// </summary>
 		/// <param name="table">The database table.</param>
 		/// <param name="entry">The object containing the entry's data. The entry class used must be in accordance to the specification described in <see cref="DbEntries"/></param>
@@ -135,7 +135,11 @@ namespace ChetoRp
 		}
 
 		/// <summary>
-		/// Attempts to get a database entry using the given key as the unique identifier.
+		/// Attempts to get a database entry using the given key as the unique identifier.<br/>
+		/// Gives an <see cref="ArgumentNullException"/> if the key is null.<br/>
+		/// An <see cref="InvalidCastException"/> will be thrown if the table is a big table and the entry type's unique identifier isn't able to
+		/// be converted to a <see cref="ulong"/>.<br/>
+		/// A <see cref="JsonException"/> will be thrown if entry can't be deserialized into the given path.<br/>
 		/// </summary>
 		/// <param name="table">The table.</param>
 		/// <param name="key">The unique identifier.</param>
@@ -143,14 +147,20 @@ namespace ChetoRp
 		/// <returns>Whether or not an entry could be retrieved or not.</returns>
 		public static bool TryGet<K, V>( string table, K key, out V val )
 		{
-			// Attempts to get an entry file based on its unique identifier key.
-			// Returns false if it couldn't be retrieved.
-			// If the table is a small table, turn the key into a string.
-			// If it's a big table and the key is not able to be converted to a ulong with Convert.ToUInt64, propagate the exception.
-			// Document cases where this happens (if K does not implement IConvertible or a conversion to a ulong is unsupported).
-			// If the file can't be found, throw an exception.
-			// If the object found can't be deserialized into V, then throw an exception
-			throw new NotImplementedException();
+			string entryPath = ResolveEntryPath( key ?? throw new ArgumentNullException( nameof( key ), "The provided unique identifier can't be null." ), table );
+
+			try
+			{
+				val = DbTables.Database.ReadJson<V>( entryPath );
+
+				return true;
+			}
+			catch ( System.IO.IOException )
+			{
+				val = default;
+
+				return false;
+			}
 		}
 
 		/// <summary>
@@ -162,8 +172,14 @@ namespace ChetoRp
 		/// <returns>The entry found or defaultValue if none was found.</returns>
 		public static V GetOrElse<K, V>( string table, K key, V defaultValue )
 		{
-			// Do all of the above except if the file can't be found then use defaultValue.
-			throw new NotImplementedException();
+			if ( TryGet( table, key, out V val ) )
+			{
+				return val;
+			}
+			else
+			{
+				return defaultValue;
+			}
 		}
 
 		/// <summary>

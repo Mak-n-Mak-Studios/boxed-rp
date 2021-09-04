@@ -91,7 +91,7 @@ namespace ChetoRp.Localization
 			}
 			else if ( LocalizationModule.Locale == null )
 			{
-				throw new Exception( "Couldn't initialize LocaleStrings because the language module hasn't loaded yet." );
+				throw new InvalidOperationException( "Couldn't initialize LocaleStrings because the language module hasn't loaded yet." );
 			}
 		}
 
@@ -106,6 +106,10 @@ namespace ChetoRp.Localization
 				if ( propertyCache.TryGetValue( propertyName, out LocaleStringsPropertyAttribute propertyAttribute ) )
 				{
 					LocalizedStrings.Add( localeType, propertyAttribute.GetValue<string>( Modules.Get<LocalizationModule>().LocaleDictionary[ localeType ] ) );
+				}
+				else
+				{
+					throw new ArgumentException( "Invalid locale string property name.", nameof( propertyName ) );
 				}
 			}
 		}

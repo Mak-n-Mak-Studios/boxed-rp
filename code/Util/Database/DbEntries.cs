@@ -73,6 +73,11 @@ namespace ChetoRp
 		/// <returns>The path relative to the database.</returns>
 		private static string ResolveEntryPath( object key, string table )
 		{
+			if ( key == null )
+			{
+				throw new ArgumentNullException( nameof( key ), "The provided unique identifier can't be null." );
+			}
+
 			if ( DbTables.Database.FileExists( table + DbTables.BigTableFileName ) ) // Is a big table
 			{
 				ulong identifierHash = ( 14695981039346656037L ^ Convert.ToUInt64( key ) ) * 1099511628211;
@@ -91,7 +96,8 @@ namespace ChetoRp
 		/// described in <see cref="DbEntries"/>'s documentation header. <br/> The default operation type provided by operationType in this method is 
 		/// <see cref="AddQueryType.InsertOrReplace"/>, which means the entry provided will be inserted if one with its unique identifier
 		/// doesn't exist already. <br/><see cref="AddQueryType.Insert"/> will throw an <see cref="InvalidOperationException"/> if the entry 
-		/// already exists and <see cref="AddQueryType.Replace"/> will throw an <see cref="InvalidOperationException"/> if the entry doesn't exist.
+		/// already exists and <see cref="AddQueryType.Replace"/> will throw an <see cref="InvalidOperationException"/> if the entry doesn't exist.<br/>
+		/// Note that the check for file existence and the addition of the file together is not atomic.<br/>
 		/// An <see cref="ArgumentException"/> will be thrown if the entry's type doesn't have the <see cref="DbEntryAttribute"/> on it.<br/>
 		/// An <see cref="InvalidCastException"/> will be thrown if the table is a big table and the entry type's unique identifier isn't able to
 		/// be converted to a <see cref="ulong"/>. <br/>If the entry can't be serialized into JSON, a <see cref="JsonException"/> will be thrown.
@@ -126,6 +132,7 @@ namespace ChetoRp
 					{
 						throw new InvalidOperationException( $"The {nameof( operationType )} was set to {nameof( AddQueryType.Insert )} and the entry being added already exists." );
 					}
+
 					break;
 				default:
 					throw new ArgumentException( "Unknown enum encountered." );
@@ -147,7 +154,7 @@ namespace ChetoRp
 		/// <returns>Whether or not an entry could be retrieved or not.</returns>
 		public static bool TryGet<K, V>( string table, K key, out V val )
 		{
-			string entryPath = ResolveEntryPath( key ?? throw new ArgumentNullException( nameof( key ), "The provided unique identifier can't be null." ), table );
+			string entryPath = ResolveEntryPath( key, table );
 
 			try
 			{
@@ -186,7 +193,8 @@ namespace ChetoRp
 		/// Removes an entry given its unique identifier. The default operation type is 
 		/// <see cref="RemoveQueryType.RemoveIfPresent"/>. This will remove an entry if it's
 		/// not present and do nothing if it doesn't exist. <see cref="RemoveQueryType.Remove"/>
-		/// will throw an <see cref="InvalidOperationException"/> if no entry with the given identifier exist.
+		/// will throw an <see cref="InvalidOperationException"/> if no entry with the given identifier exist.<br/>
+		/// Note that the check for file existence and the removal of the file together is not atomic.
 		/// </summary>
 		/// <param name="table">The table.</param>
 		/// <param name="key">The unique identifier.</param>
@@ -195,8 +203,21 @@ namespace ChetoRp
 		/// <see cref="RemoveQueryType.Remove"/>.</returns>
 		public static bool Remove<K>( string table, K key, RemoveQueryType operationType = RemoveQueryType.RemoveIfPresent )
 		{
-			// Removes an entry based on its unique identifier. Unique identifiers will be resolved the same way it is for the get operations. By default, this will remove the entry if it's present and return whether or not anything was actually removed. However, if set to RemoveQueryType.Remove, it will throw an exception if the entry didn't exist.
-			throw new NotImplementedException();
+			string entryPath = ResolveEntryPath( key, table );
+
+			if ( !DbTables.Database.FileExists( entryPath ) )
+			{
+				return operationType switch
+				{
+					RemoveQueryType.RemoveIfPresent => false,
+					RemoveQueryType.Remove => throw new InvalidOperationException( $"The {nameof( operationType )} was set to {nameof( RemoveQueryType.Remove )} and the entry being removed doesn't exist." ),
+					_ => throw new ArgumentException( "Unknown enum encountered." ),
+				};
+			}
+
+			DbTables.Database.DeleteFile( entryPath );
+
+			return true;
 		}
 	}
 }

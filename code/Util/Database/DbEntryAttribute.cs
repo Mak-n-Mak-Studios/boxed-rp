@@ -1,6 +1,7 @@
-﻿using Sandbox;
+﻿
+using Sandbox;
 
-namespace ChetoRp
+namespace ChetoRp.Database
 {
 	/// <summary>
 	/// The attribute to put on a database entry.

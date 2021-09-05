@@ -1,13 +1,11 @@
-﻿using ChetoRp.Localization.Locales;
-
-using Sandbox;
+﻿using Sandbox;
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 
-namespace ChetoRp
+namespace ChetoRp.Database
 {
 	/// <summary>
 	/// A static class to deal with database table entries in the game database.

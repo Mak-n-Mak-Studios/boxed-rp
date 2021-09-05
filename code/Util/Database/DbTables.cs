@@ -1,9 +1,10 @@
-﻿using Sandbox;
+﻿
+using Sandbox;
 
 using System;
 using System.Threading.Tasks;
 
-namespace ChetoRp
+namespace ChetoRp.Database
 {
 	/// <summary>
 	/// A static class to deal with tables in the game database.

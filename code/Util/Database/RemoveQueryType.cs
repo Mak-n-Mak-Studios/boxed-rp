@@ -1,4 +1,4 @@
-﻿namespace ChetoRp
+﻿namespace ChetoRp.Database
 {
 	/// <summary>
 	/// The query type enum for removing existing database entries.

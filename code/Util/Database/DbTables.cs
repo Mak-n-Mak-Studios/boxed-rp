@@ -64,19 +64,31 @@ namespace ChetoRp.Database
 		}
 
 		/// <summary>
-		/// Asynchronously drops a database table.
+		/// Drops a database table. Be careful when dropping tables. If
+		/// the table has 100s of thousands of entries, it could potentially take
+		/// minutes to delete one. When dropping large tables, use <see cref="DropAsync(string)"/>
 		/// </summary>
 		/// <param name="tableName">The database table's name.</param>
-		/// <returns>Returns a <see cref="Task"/>. If the database table exists, the <see cref="Task"/>
-		/// is a handle to the task of the database being dropped. Otherwise, the <see cref="Task"/> does nothing.</returns>
-		public static async Task Drop( string tableName )
+		public static void Drop( string tableName )
 		{
 			if ( Database.DirectoryExists( tableName ) )
 			{
 				return;
 			}
 
-			await Task.Run( () => Database.DeleteDirectory( tableName, true ) );
+			Database.DeleteDirectory( tableName, true );
+		}
+
+		/// <summary>
+		/// Asynchronously drops a database table. It is highly recommended to use this over
+		/// <see cref="Drop(string)"/> because this operation could take a lot of time.
+		/// </summary>
+		/// <param name="tableName">The database table's name.</param>
+		/// <returns>Returns a <see cref="Task"/>. If the database table exists, the <see cref="Task"/>
+		/// is a handle to the task of the database being dropped. Otherwise, the <see cref="Task"/> does nothing.</returns>
+		public static async Task DropAsync( string tableName )
+		{
+			await Task.Factory.StartNew( () => Drop( tableName ), TaskCreationOptions.LongRunning );
 		}
 	}
 }

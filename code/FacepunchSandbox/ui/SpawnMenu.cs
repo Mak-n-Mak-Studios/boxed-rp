@@ -2,6 +2,9 @@
 using Sandbox;
 using Sandbox.UI;
 using Sandbox.UI.Construct;
+using System;
+using System.Reflection.Metadata;
+using System.Threading.Tasks;
 
 [Library]
 public partial class SpawnMenu : Panel
@@ -13,7 +16,7 @@ public partial class SpawnMenu : Panel
 	{
 		Instance = this;
 
-		StyleSheet.Load( "/FacepunchSandbox/ui/SpawnMenu.scss" );
+		StyleSheet.Load( "/ui/SpawnMenu.scss" );
 
 		var left = Add.Panel( "left" );
 		{

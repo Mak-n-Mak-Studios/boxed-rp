@@ -26,7 +26,8 @@ var NAVTREE =
 [
   [ "ChetoRP", "index.html", [
     [ "ChetoRP", "md__r_e_a_d_m_e.html", [
-      [ "How to install", "md__r_e_a_d_m_e.html#autotoc_md1", null ]
+      [ "How to install", "md__r_e_a_d_m_e.html#autotoc_md1", null ],
+      [ "Documentation", "md__r_e_a_d_m_e.html#autotoc_md2", null ]
     ] ],
     [ "Packages", "namespaces.html", [
       [ "Packages", "namespaces.html", "namespaces_dup" ],

@@ -29,9 +29,9 @@ jobs:
       - name: Execute Doxygen
         run: doxygen Doxyfile
       - name: Add .nojekyll
-        run: touch cheto_rp_c#_docs/.nojekyll
+        run: touch cheto_rp_c#_docs/html/.nojekyll
       - name: Upload to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           branch: gh-pages
-          folder: cheto_rp_c#_docs
+          folder: cheto_rp_c#_docs/html

@@ -1,0 +1,37 @@
+name: Generate Documentation and Upload to GitHub Pages
+
+on: push
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Doxygen v1.9.2
+        run: |
+          sudo apt-get -y install libclang1-9 libclang-cpp9
+          wget https://netactuate.dl.sourceforge.net/project/doxygen/rel-1.9.2/doxygen-1.9.2.linux.bin.tar.gz
+          tar -xf doxygen-1.9.2.linux.bin.tar.gz
+          rm -f doxygen-1.9.2.linux.bin.tar.gz
+          cd doxygen-1.9.2
+          sudo make install
+          cd ../
+          rm -rf doxygen-1.9.2
+      - name: Add Doxygen Awesome theme v1.5.0
+        run: |
+          git submodule add https://github.com/jothepro/doxygen-awesome-css.git
+          cd doxygen-awesome-css
+          git checkout v1.5.0
+          find . -type f -not \( -name '*.js' -or -name '*.css' \) -delete
+          rm -rf -- */
+          rm -rf .github
+          cd ../
+      - name: Execute Doxygen
+        run: doxygen Doxyfile
+      - name: Add .nojekyll
+        run: touch cheto_rp_c#_docs/.nojekyll
+      - name: Upload to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.1.5
+        with:
+          branch: gh-pages
+          folder: cheto_rp_c#_docs

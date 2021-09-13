@@ -8,6 +8,14 @@ namespace ChetoRp
 	internal partial class GamePlayer : SandboxPlayer, IGamePlayer
 	{
 		/// <summary>
+		/// Initializes a new instance of the <see cref="GamePlayer"/> class.
+		/// </summary>
+		/// <param name="client">The player client.</param>
+		public GamePlayer( Client client ) : base( client )
+		{
+		}
+
+		/// <summary>
 		/// Called when a player respawns.
 		/// </summary>
 		public override void Respawn()

@@ -28,7 +28,7 @@ namespace ChetoRp
 			string joinedMessage = LocalizationModule.Locale.BaseClientJoined.Format( client.Name );
 			Log.Info( joinedMessage );
 			ChatBox.AddInformation( To.Everyone, joinedMessage, $"avatar:{client.SteamId}" );
-			GamePlayer player = new();
+			GamePlayer player = new( client );
 			client.Pawn = player;
 			player.Respawn();
 		}

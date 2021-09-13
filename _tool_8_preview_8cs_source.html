@@ -169,11 +169,11 @@ $(document).ready(function(){initNavTree('_tool_8_preview_8cs_source.html',''); 
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>                <span class="keywordflow">if</span> ( <a class="code hl_function" href="class_sandbox_1_1_tools_1_1_base_tool.html#a6d0ce06110847f15c49cfbe6412c34d1">IsPreviewTraceValid</a>( tr ) &amp;&amp; preview.UpdateFromTrace( tr ) )</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                {</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                    preview.RenderAlpha = 0.5f;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>                    preview.RenderColor = preview.RenderColor.WithAlpha( 0.5f );</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                }</div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                <span class="keywordflow">else</span></div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                {</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                    preview.RenderAlpha = 0.0f;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                    preview.RenderColor = preview.RenderColor.WithAlpha( 0.0f );</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                }</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            }</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        }</div>

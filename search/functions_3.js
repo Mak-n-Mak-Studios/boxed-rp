@@ -14,8 +14,7 @@ var searchData=
   ['dorotate_11',['DoRotate',['../class_phys_gun.html#a4b63c44e229cd0fe3e0073af41b907e2',1,'PhysGun']]],
   ['dothirdperson_12',['DoThirdPerson',['../class_car_camera.html#a583a8d70d5d0314ac54ab1760ee72290',1,'CarCamera']]],
   ['doubleshooteffects_13',['DoubleShootEffects',['../class_shotgun.html#a16bf998b497ac28e0449318dc4dde02a',1,'Shotgun']]],
-  ['dress_14',['Dress',['../class_sandbox_player.html#acdde894ead7f2155a94419e70302094a',1,'SandboxPlayer']]],
-  ['drop_15',['Drop',['../class_inventory.html#afa8f6cbb3183723be19e446ce37a197c',1,'Inventory.Drop()'],['../class_cheto_rp_1_1_database_1_1_db_tables.html#a9c9d00121cd80621c08cbf78d4e40c24',1,'ChetoRp.Database.DbTables.Drop(string tableName)']]],
-  ['dropasync_16',['DropAsync',['../class_cheto_rp_1_1_database_1_1_db_tables.html#a1dc0f263ed70e470ccebad9c942373ec',1,'ChetoRp::Database::DbTables']]],
-  ['droptable_17',['DropTable',['../class_cheto_rp_1_1_database_1_1_db_transaction.html#a7056bf6caa72a7dd2766663a6ef140d5',1,'ChetoRp::Database::DbTransaction']]]
+  ['drop_14',['Drop',['../class_inventory.html#afa8f6cbb3183723be19e446ce37a197c',1,'Inventory.Drop()'],['../class_cheto_rp_1_1_database_1_1_db_tables.html#a9c9d00121cd80621c08cbf78d4e40c24',1,'ChetoRp.Database.DbTables.Drop(string tableName)']]],
+  ['dropasync_15',['DropAsync',['../class_cheto_rp_1_1_database_1_1_db_tables.html#a1dc0f263ed70e470ccebad9c942373ec',1,'ChetoRp::Database::DbTables']]],
+  ['droptable_16',['DropTable',['../class_cheto_rp_1_1_database_1_1_db_transaction.html#a7056bf6caa72a7dd2766663a6ef140d5',1,'ChetoRp::Database::DbTransaction']]]
 ];

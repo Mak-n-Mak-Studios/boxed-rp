@@ -10,7 +10,7 @@ var searchData=
   ['gameevents_2eemployment_2ecs_7',['GameEvents.Employment.cs',['../_game_events_8_employment_8cs.html',1,'']]],
   ['gamemoduleattribute_8',['GameModuleAttribute',['../class_cheto_rp_1_1_game_module_attribute.html',1,'ChetoRp.GameModuleAttribute'],['../class_cheto_rp_1_1_game_module_attribute.html#a43987169a69ad394ce9d88c6eaec55ef',1,'ChetoRp.GameModuleAttribute.GameModuleAttribute(int priority)'],['../class_cheto_rp_1_1_game_module_attribute.html#a93a7da56c127c08af5c1a94bc6e0fc30',1,'ChetoRp.GameModuleAttribute.GameModuleAttribute(uint priority=DefaultPriority)']]],
   ['gamemoduleattribute_2ecs_9',['GameModuleAttribute.cs',['../_game_module_attribute_8cs.html',1,'']]],
-  ['gameplayer_10',['GamePlayer',['../class_cheto_rp_1_1_game_player.html',1,'ChetoRp']]],
+  ['gameplayer_10',['GamePlayer',['../class_cheto_rp_1_1_game_player.html',1,'ChetoRp.GamePlayer'],['../class_cheto_rp_1_1_game_player.html#ac914fc28478ca1152ca0ae5a929413b1',1,'ChetoRp.GamePlayer.GamePlayer()']]],
   ['gameplayer_2ecs_11',['GamePlayer.cs',['../_game_player_8cs.html',1,'']]],
   ['gameplayer_2eeconomy_2ecs_12',['GamePlayer.Economy.cs',['../_game_player_8_economy_8cs.html',1,'']]],
   ['gameplayer_2eteam_2ecs_13',['GamePlayer.Team.cs',['../_game_player_8_team_8cs.html',1,'']]],

@@ -1,8 +1,5 @@
 var NAVTREEINDEX7 =
 {
-"interface_cheto_rp_1_1_localization_1_1_i_localization_data.html#a883ca0638ea954025dcbb25f5049751a":[2,0,0,3,2,0],
-"md__r_e_a_d_m_e.html":[0],
-"md__r_e_a_d_m_e.html#autotoc_md1":[0,0],
 "md__r_e_a_d_m_e.html#autotoc_md2":[0,1],
 "namespace_cheto_rp.html":[1,0,0],
 "namespace_cheto_rp_1_1_database.html":[1,0,0,0],

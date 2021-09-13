@@ -54,7 +54,7 @@ var searchData=
   ['timesinceorbit_51',['timeSinceOrbit',['../class_car_camera.html#ae593be6f1022dd09b98474014ff4ebf8',1,'CarCamera']]],
   ['timesincereload_52',['TimeSinceReload',['../class_weapon.html#a47c826e1ed66d8af9e41c096beabbdf2',1,'Weapon']]],
   ['timesinceshoot_53',['timeSinceShoot',['../class_sandbox_1_1_tools_1_1_box_shooter.html#ae8c63e37fa10d6c16633767263fa61bc',1,'Sandbox::Tools::BoxShooter']]],
-  ['tint_54',['Tint',['../class_sandbox_1_1_tools_1_1_balloon_tool.html#a8b89ada00b76a662e5943765eb45f09a',1,'Sandbox::Tools::BalloonTool']]],
+  ['tint_54',['Tint',['../class_sandbox_1_1_tools_1_1_balloon_tool.html#a9297ee6e1afd980b6a0f6bbc3cefcd05',1,'Sandbox::Tools::BalloonTool']]],
   ['title_55',['Title',['../class_current_tool.html#ad9e576e506d9133ccbe2d320f51a09b1',1,'CurrentTool']]],
   ['tookdamage_56',['TookDamage',['../class_sandbox_player.html#ae71616c5227f94fca848f3d7455b2123',1,'SandboxPlayer']]],
   ['tool_57',['Tool',['../class_tool.html',1,'']]],

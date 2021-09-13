@@ -17,6 +17,6 @@ var searchData=
   ['wheelspeed_14',['WheelSpeed',['../class_car_entity.html#abb9c0e0a5e6d98e1ee0555218f20faae',1,'CarEntity']]],
   ['wheeltool_15',['WheelTool',['../class_sandbox_1_1_tools_1_1_wheel_tool.html',1,'Sandbox::Tools']]],
   ['worldlight_16',['worldLight',['../class_flashlight.html#a001a202dc7781efe279f0ed53db7147d',1,'Flashlight']]],
-  ['write_17',['Write',['../class_cheto_rp_1_1_localization_1_1_locale_string_converter.html#a464b5516ea79d6a7368de6ec8a07b7ed',1,'ChetoRp::Localization::LocaleStringConverter']]],
+  ['write_17',['Write',['../class_sandbox_game.html#ac5df01ddc38c12de105da4ec33cec0cd',1,'SandboxGame.Write()'],['../class_cheto_rp_1_1_localization_1_1_locale_string_converter.html#a464b5516ea79d6a7368de6ec8a07b7ed',1,'ChetoRp.Localization.LocaleStringConverter.Write()']]],
   ['writeconfigstoretodisk_18',['WriteConfigStoreToDisk',['../class_cheto_rp_1_1_module.html#aa844582cf9898cbf03cb378ff2b93449',1,'ChetoRp::Module']]]
 ];

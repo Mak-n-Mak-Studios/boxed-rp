@@ -1,8 +1,8 @@
 var class_sandbox_player =
 [
     [ "SandboxPlayer", "class_sandbox_player.html#a99183175a85b8a3277453c358771d8c5", null ],
+    [ "SandboxPlayer", "class_sandbox_player.html#ab492149121807453401e28f43116a7ab", null ],
     [ "BecomeRagdollOnClient", "class_sandbox_player.html#aa40ae83faeb342206493952232f825e2", null ],
-    [ "Dress", "class_sandbox_player.html#acdde894ead7f2155a94419e70302094a", null ],
     [ "FindUsable", "class_sandbox_player.html#a8d4e70f6dbd15dbf8e8eeabd8972e7d9", null ],
     [ "GetActiveAnimator", "class_sandbox_player.html#a756d43f15cb9a3bbed37b1632d81cbd5", null ],
     [ "GetActiveCamera", "class_sandbox_player.html#ad72af2cfc6d6e70233724f603ef24602", null ],
@@ -17,12 +17,8 @@ var class_sandbox_player =
     [ "TakeDamage", "class_sandbox_player.html#ae1fa595d57b200999ae7cf9b64e00b06", null ],
     [ "TookDamage", "class_sandbox_player.html#ae71616c5227f94fca848f3d7455b2123", null ],
     [ "UseFail", "class_sandbox_player.html#ad1995fd908fb13671bb57c980f9ad951", null ],
-    [ "dressed", "class_sandbox_player.html#a7ec8203ea6d337f2947856002853acd4", null ],
-    [ "hat", "class_sandbox_player.html#a1af127e134db4cec1ab3f13ce2359b3d", null ],
-    [ "jacket", "class_sandbox_player.html#a4937181ac928362553c3baadcca3fd2e", null ],
+    [ "Clothing", "class_sandbox_player.html#a62cd6fd09eaf6b99d1d71be3d3cebd7a", null ],
     [ "lastDamage", "class_sandbox_player.html#a0da4b3523cd0696232218a536d9650a6", null ],
-    [ "pants", "class_sandbox_player.html#a72081c0015d3d4d74f5df532f4be725a", null ],
-    [ "shoes", "class_sandbox_player.html#aa63d69de87eff5c52015f88f7d951fb3", null ],
     [ "timeSinceDropped", "class_sandbox_player.html#ab44eb43f7f7c2bc032919fc84b163874", null ],
     [ "timeSinceJumpReleased", "class_sandbox_player.html#ad526145e825e6ea2a3ecdb50e881a407", null ],
     [ "LastCamera", "class_sandbox_player.html#a853919a89df194bee5327ed14bbb6e82", null ],

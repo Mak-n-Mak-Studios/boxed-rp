@@ -1,5 +1,6 @@
 var class_cheto_rp_1_1_game_player =
 [
+    [ "GamePlayer", "class_cheto_rp_1_1_game_player.html#ac914fc28478ca1152ca0ae5a929413b1", null ],
     [ "ModifyBankBalance", "class_cheto_rp_1_1_game_player.html#ad901e68e3072e94148ceb2ff5c9c8d4e", null ],
     [ "ModifyCash", "class_cheto_rp_1_1_game_player.html#a8db9b5dab7ec5756b07be917a6713ddb", null ],
     [ "OnKilled", "class_cheto_rp_1_1_game_player.html#aed62f713d0347db3e5c32deae30aa7c6", null ],

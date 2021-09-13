@@ -13,9 +13,6 @@ var dir_0b099eed6bcb12c53702dedd382ef608 =
     [ "Inventory.cs", "_inventory_8cs.html", [
       [ "Inventory", "class_inventory.html", "class_inventory" ]
     ] ],
-    [ "Player.Clothes.cs", "_player_8_clothes_8cs.html", [
-      [ "SandboxPlayer", "class_sandbox_player.html", "class_sandbox_player" ]
-    ] ],
     [ "Player.cs", "_player_8cs.html", [
       [ "SandboxPlayer", "class_sandbox_player.html", "class_sandbox_player" ]
     ] ],
